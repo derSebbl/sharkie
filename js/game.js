@@ -8,4 +8,5 @@ world = new World(canvas);
 
 
 console.log('my character is', world.char)
+console.log('my enemie is', world.enemies[0])
 }
