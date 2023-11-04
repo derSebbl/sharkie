@@ -17,6 +17,8 @@ class Fish extends movableObject {
         this.animate();
 
         this.x = 30 + Math.random() * 250;
+        this.y = 0 + Math.random() * 100;
+        this.speed = 0.15 + Math.random() * 0.25;
     }
 
     animate() {
@@ -26,6 +28,8 @@ class Fish extends movableObject {
         this.img = this.imageCache[path];
         this.currentImg++;
     }, 280)
+
+    this.moveLeft();
 };
 
 

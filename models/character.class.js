@@ -10,7 +10,7 @@ class Character extends movableObject {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png'
     ];
-    currentImg = 0;
+
 
     constructor() {
         super().loadImg('img/1.Sharkie/3.Swim/1.png');
@@ -18,6 +18,8 @@ class Character extends movableObject {
 
         this.animate();
     }
+
+
 
     animate() {
         setInterval(() => {
@@ -27,6 +29,8 @@ class Character extends movableObject {
         this.currentImg++;
     }, 280)
 };
+
+
 
     jump() {
 
