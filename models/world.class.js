@@ -1,18 +1,22 @@
 class World {
+    ctx;
+    canvas;
 
-char = new Character();
+    char = new Character();
 
-enemies =   [
-new Fish(),
-new Fish(),
-new Fish(),
-            ];
+    water = new water();
 
+    enemies = [
+    new Fish(),
+    new Fish(),
+    new Fish(),
+    ];
 
-
-ctx;
-canvas;
-
+    BackgroundObjects = [
+        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D.png', 0, 70),
+        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D.png', 0, 70),
+        new BackgroundObject('img/3. Background/Layers/2. Floor/D.png', 0, 70),
+    ];
 
 
     constructor(canvas) {
@@ -21,15 +25,23 @@ canvas;
         this.draw();
     }
 
+    addToWorld(object) {
+        this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+    };
 
-
+    addObjectsToWorld(objects) {
+        objects.forEach(o => {
+            this.addToWorld(o);
+        })
+    };
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.drawImage(this.char.img, this.char.x, this.char.y, this.char.width, this.char.height);
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-        });
+        
+        this.addToWorld(this.water);
+        this.addObjectsToWorld(this.BackgroundObjects);
+        this.addToWorld(this.char);
+        this.addObjectsToWorld(this.enemies);
         
 
         let self = this;
@@ -37,4 +49,5 @@ canvas;
             self.draw();
         });
     }
-}
+
+};
