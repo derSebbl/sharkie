@@ -13,9 +13,9 @@ class World {
     ];
 
     BackgroundObjects = [
-        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D.png', 0, 70),
-        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D.png', 0, 70),
-        new BackgroundObject('img/3. Background/Layers/2. Floor/D.png', 0, 70),
+        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D.png', 0, 0),
+        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D.png', 0, 0),
+        new BackgroundObject('img/3. Background/Layers/2. Floor/D.png', 0, 0),
     ];
 
 
@@ -37,7 +37,7 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+
         this.addToWorld(this.water);
         this.addObjectsToWorld(this.BackgroundObjects);
         this.addToWorld(this.char);
