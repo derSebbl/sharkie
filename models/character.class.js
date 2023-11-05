@@ -11,6 +11,8 @@ class Character extends movableObject {
         'img/1.Sharkie/3.Swim/6.png'
     ];
 
+    World;
+
 
     constructor() {
         super().loadImg('img/1.Sharkie/3.Swim/1.png');
@@ -22,13 +24,18 @@ class Character extends movableObject {
 
 
     animate() {
+       
         setInterval(() => {
-            let i = this.currentImg % this.IMAGES_SWIM.length;
+            
+        if (this.World.keyboard.RIGHT) {
+
+        let i = this.currentImg % this.IMAGES_SWIM.length;
         let path = this.IMAGES_SWIM[i];
         this.img = this.imageCache[path];
         this.currentImg++;
+        }
     }, 280)
-};
+    };
 
 
 

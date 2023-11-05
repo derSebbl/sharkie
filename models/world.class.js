@@ -1,9 +1,10 @@
 class World {
+
     ctx;
     canvas;
+    keyboard;
 
     char = new Character();
-
     water = new water();
 
     enemies = [
@@ -20,10 +21,19 @@ class World {
     ];
 
 
-    constructor(canvas) {
+
+
+
+    constructor(canvas, Kboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
+        this.keyboard = Kboard;
         this.draw();
+        this.setWorld();
+    }
+
+    setWorld() {
+        this.char.World = this;
     }
 
     addToWorld(object) {
