@@ -32,10 +32,26 @@ class Character extends movableObject {
                 this.otherDirection = false;
             };
 
+
             if (this.World.keyboard.LEFT){
                 this.x -= this.speed;
                 this.otherDirection = true;
             };
+
+
+            if (this.World.keyboard.UP){
+                if(this.y == -36.5){return this.World.camera_x = -this.x;}
+                else{
+                this.y -= this.speed;
+            }};
+
+
+            if (this.World.keyboard.DOWN){
+                if(this.y == 88){return this.World.camera_x = -this.x;}
+                else{
+                this.y += this.speed;
+            }};
+
             this.World.camera_x = -this.x;
         }, 1000 / 60);
 
