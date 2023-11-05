@@ -1,5 +1,5 @@
 class movableObject {
-    x = 40;
+    x = 0;
     y = 0;
     img;
     height = 80;
@@ -7,6 +7,7 @@ class movableObject {
     imageCache = {};
     currentImg = 0;
     speed = 0.15;
+    otherDirection = false;
 
     loadImg(path){
         this.img = new Image();

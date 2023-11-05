@@ -1,4 +1,4 @@
-class Fish extends movableObject {
+class FishPuffer extends movableObject {
     height = 26;
     width = 26;
 
@@ -16,7 +16,7 @@ class Fish extends movableObject {
 
         this.animate();
 
-        this.x = 30 + Math.random() * 250;
+        this.x = 300 + Math.random() * 1000;
         this.y = 0 + Math.random() * 100;
         this.speed = 0.15 + Math.random() * 0.25;
     }

@@ -1,6 +1,7 @@
 class Character extends movableObject {
 
-    y = 50;
+    y = 10;
+    speed = 1.5;
 
     IMAGES_SWIM = [
         'img/1.Sharkie/3.Swim/1.png',
@@ -24,17 +25,31 @@ class Character extends movableObject {
 
 
     animate() {
+
+        setInterval(() =>{
+            if (this.World.keyboard.RIGHT){
+                this.x += this.speed;
+                this.otherDirection = false;
+            };
+
+            if (this.World.keyboard.LEFT){
+                this.x -= this.speed;
+                this.otherDirection = true;
+            };
+            this.World.camera_x = -this.x;
+        }, 1000 / 60);
+
        
         setInterval(() => {
-            
-        if (this.World.keyboard.RIGHT) {
+
+        if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT) {
 
         let i = this.currentImg % this.IMAGES_SWIM.length;
         let path = this.IMAGES_SWIM[i];
         this.img = this.imageCache[path];
         this.currentImg++;
         }
-    }, 280)
+    }, 120)
     };
 
 
