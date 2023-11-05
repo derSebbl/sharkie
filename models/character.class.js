@@ -14,6 +14,8 @@ class Character extends movableObject {
 
     World;
 
+    swim_sound = new Audio('audio/Water Splash.mp3');
+
 
     constructor() {
         super().loadImg('img/1.Sharkie/3.Swim/1.png');
@@ -27,19 +29,23 @@ class Character extends movableObject {
     animate() {
 
         setInterval(() =>{
+            this.swim_sound.pause();
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.swim_sound.play();
             };
 
 
             if (this.World.keyboard.LEFT && this.x > -100){
                 this.x -= this.speed;
                 this.otherDirection = true;
+                this.swim_sound.play();
             };
 
 
             if (this.World.keyboard.UP){
+                this.swim_sound.play();
                 if(this.y == -44){return this.World.camera_x = -this.x;}
                 else{
                 this.y -= this.speed;
@@ -47,6 +53,7 @@ class Character extends movableObject {
 
 
             if (this.World.keyboard.DOWN){
+                this.swim_sound.play();
                 if(this.y == 73){return this.World.camera_x = -this.x;}
                 else{
                 this.y += this.speed;
