@@ -40,14 +40,14 @@ class Character extends movableObject {
 
 
             if (this.World.keyboard.UP){
-                if(this.y == -36.5){return this.World.camera_x = -this.x;}
+                if(this.y == -44){return this.World.camera_x = -this.x;}
                 else{
                 this.y -= this.speed;
             }};
 
 
             if (this.World.keyboard.DOWN){
-                if(this.y == 88){return this.World.camera_x = -this.x;}
+                if(this.y == 73){return this.World.camera_x = -this.x;}
                 else{
                 this.y += this.speed;
             }};

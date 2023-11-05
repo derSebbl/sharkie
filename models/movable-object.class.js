@@ -2,8 +2,8 @@ class movableObject {
     x = 0;
     y = 0;
     img;
-    height = 80;
-    width = 120;
+    height = 101;
+    width = 125;
     imageCache = {};
     currentImg = 0;
     speed = 0.15;
@@ -19,7 +19,6 @@ class movableObject {
             let img = new Image();
             img.src = path;
             this.imageCache[path] = img;
-            
         });
     }
 
