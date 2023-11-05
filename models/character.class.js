@@ -27,13 +27,13 @@ class Character extends movableObject {
     animate() {
 
         setInterval(() =>{
-            if (this.World.keyboard.RIGHT){
+            if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
                 this.x += this.speed;
                 this.otherDirection = false;
             };
 
 
-            if (this.World.keyboard.LEFT){
+            if (this.World.keyboard.LEFT && this.x > -100){
                 this.x -= this.speed;
                 this.otherDirection = true;
             };
