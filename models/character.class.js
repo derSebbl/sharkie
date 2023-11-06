@@ -1,5 +1,10 @@
 class Character extends movableObject {
 
+    FrameX = 23;
+    FrameY = 45;
+    FrameWidth = 80;
+    FrameHeight = 30;
+    
     World;
 
     swim_sound = new Audio('audio/Water Splash.mp3');

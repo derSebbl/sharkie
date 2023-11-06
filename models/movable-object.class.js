@@ -2,14 +2,14 @@ class movableObject {
     x = 0;
     y = 0;
     img;
-    height = 101;
-    width = 125;
+    height = 100;
+    width = 123;
     imageCache = {};
     currentImg = 0;
     speed = 0.15;
     otherDirection = false;
 
-    
+
     loadImg(path){
         this.img = new Image();
         this.img.src = path;
@@ -22,6 +22,29 @@ class movableObject {
             this.imageCache[path] = img;
         });
     }
+
+    draw(ctx){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    };
+
+    drawFrame(ctx){
+        if (this instanceof Character || this instanceof FishPuffer) {
+        ctx.beginPath();
+        ctx.lineWidth = "1";
+        ctx.strokeStyle = "red";
+        ctx.rect(this.x+this.FrameX, this.y+this.FrameY,this.FrameWidth, this.FrameHeight)
+        //ctx.rect(this.x, this.y, this.width, this.height)
+        ctx.stroke()
+        }
+    };
+
+
+    isColliding(obj) {
+        return  this.x + this.FrameX < obj.x + obj.width &&
+                this.x + this.FrameX + this.FrameWidth > obj.x &&
+                this.y + this.FrameY < obj.y + obj.height &&
+                this.y + this.FrameY + this.FrameHeight > obj.y;
+    };
 
 
     moveRight() {

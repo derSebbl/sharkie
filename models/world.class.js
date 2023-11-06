@@ -15,6 +15,7 @@ class World {
         this.keyboard = Kboard;
         this.draw();
         this.setWorld();
+        this.checkCollision();
     };
 
 
@@ -23,18 +24,44 @@ class World {
     };
 
 
+    checkCollision(){
+        setInterval(() => {
+         this.level.enemies.forEach((enemy) =>{
+           if( this.char.isColliding(enemy) ){
+            console.log('collision with', enemy);
+           };
+         })   
+        }, 100);
+    }
+
+
     addToWorld(object) {
         if(object.otherDirection){
-            this.ctx.save();
-            this.ctx.translate(object.width, 0);
-            this.ctx.scale(-1, 1);
-            object.x = object.x *-1;
-        }
-        this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+            this.flipImage(object);
+        };
+
+        object.draw(this.ctx);
+
         if(object.otherDirection){
-            object.x = object.x *-1;
-            this.ctx.restore();
-        }
+            this.flipImageBack(object);
+        };
+
+        object.drawFrame(this.ctx);
+
+    };
+
+
+    flipImage(object){
+        this.ctx.save();
+        this.ctx.translate(object.width, 0);
+        this.ctx.scale(-1, 1);
+        object.x = object.x *-1;
+    };
+
+
+    flipImageBack(object) {
+        object.x = object.x *-1;
+        this.ctx.restore();
     };
 
 
