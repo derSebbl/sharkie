@@ -23,13 +23,12 @@ class FishPuffer extends movableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImg % this.IMAGES_SWIM.length;
-        let path = this.IMAGES_SWIM[i];
-        this.img = this.imageCache[path];
-        this.currentImg++;
+            this.playAnimation(this.IMAGES_SWIM);
     }, 280)
-
-    this.moveLeft();
+    setInterval(() => {
+        this.moveLeft();
+        this.otherDirection = false;
+    }, 1000/60);
 };
 
 

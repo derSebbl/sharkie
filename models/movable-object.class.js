@@ -9,6 +9,7 @@ class movableObject {
     speed = 0.15;
     otherDirection = false;
 
+    
     loadImg(path){
         this.img = new Image();
         this.img.src = path;
@@ -22,15 +23,33 @@ class movableObject {
         });
     }
 
+
     moveRight() {
-        console.log('move right')
+        this.x += this.speed;
+        this.otherDirection = false;
     };
 
 
-
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000/60);
+        this.x -= this.speed;
+        this.otherDirection = true;
+    };
+
+
+    moveUp() {
+        this.y -= this.speed;
+    };
+
+
+    moveDown() {
+        this.y += this.speed;
+    };
+
+
+    playAnimation(images) {
+        let i = this.currentImg % this.IMAGES_SWIM.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImg++;
     };
 }
