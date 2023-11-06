@@ -15,7 +15,7 @@ console.log('my character is', world.char)
 window.addEventListener('keyup', (e) => {
     if (e.keyCode == 39) {
         Kboard.RIGHT = false;
-    };
+    }; 
 
     if (e.keyCode == 37) {
         Kboard.LEFT = false;

@@ -6,6 +6,7 @@ class World {
     camera_x;
     level = level1;
     healthbar = new healthBar;
+    bubbles = [];
    
 
     char = new Character();
@@ -17,7 +18,7 @@ class World {
         this.keyboard = Kboard;
         this.draw();
         this.setWorld();
-        this.checkCollision();
+        this.run();
     };
 
 
@@ -25,18 +26,31 @@ class World {
         this.char.World = this;
     };
 
+    shootBubbles() {
+        if (this.keyboard.SPACE){
+            let blub = new bubble(this.char.x + 80, this.char.y + 60);
+            this.bubbles.push(blub);
+        }
+    }; 
 
-    checkCollision(){
+
+    run(){
         setInterval(() => {
-         this.level.enemies.forEach((enemy) =>{
-           if( this.char.isColliding(enemy) ){
-            this.char.hit();
-            this.healthbar.setPercantage(this.char.energy);
-            console.log(this.char.energy)
-           };
-         })   
-        }, 200);
-    }
+        this.checkCollisions();
+        this.shootBubbles();
+    }, 200);
+    };
+
+
+    checkCollisions() {
+            this.level.enemies.forEach((enemy) =>{
+              if( this.char.isColliding(enemy) ){
+               this.char.hit();
+               this.healthbar.setPercantage(this.char.energy);
+               console.log(this.char.energy);
+              };
+            });
+    };
 
 
     addToWorld(object) {
@@ -90,6 +104,7 @@ class World {
 
         this.addToWorld(this.char);
         this.addObjectsToWorld(this.level.enemies);
+        this.addObjectsToWorld(this.bubbles);
 
         this.ctx.translate(-this.camera_x, 0);
         
