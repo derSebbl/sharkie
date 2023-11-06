@@ -29,4 +29,15 @@ class drawableObjects {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     };
 
+
+    drawFrame(ctx){
+        if (this instanceof Character || this instanceof FishPuffer || this instanceof endboss) {
+        ctx.beginPath();
+        ctx.lineWidth = "1";
+        ctx.strokeStyle = "red";
+        ctx.rect(this.x + this.FrameX, this.y + this.FrameY,this.FrameWidth, this.FrameHeight)
+        //ctx.rect(this.x, this.y, this.width, this.height)
+        ctx.stroke()
+        }
+    };
 }

@@ -1,25 +1,31 @@
-class statusBar extends drawableObjects {
+class healthBar extends drawableObjects {
 
     HEALTH_IMAGES = [
-        'img/4. Marcadores/Purple/0__1.png',
+        'img/4. Marcadores/Purple/0_ .png',
         'img/4. Marcadores/Purple/20__1.png',
-        'img/4. Marcadores/Purple/40__1.png',
-        'img/4. Marcadores/Purple/60__1.png',
-        'img/4. Marcadores/Purple/80__1.png',
-        'img/4. Marcadores/Purple/100__1.png',
+        'img/4. Marcadores/Purple/40_ .png',
+        'img/4. Marcadores/Purple/60_ .png',
+        'img/4. Marcadores/Purple/80_ .png',
+        'img/4. Marcadores/Purple/100_ .png',
     ];
 
     percentage = 100;
 
     constructor() {
+        super();
         this.loadImages(this.HEALTH_IMAGES);
+        this.x = 5;
+        this.y = -5;
+        this.height = 20;
+        this.width = 75;
+        this.setPercantage(100);
     };
 
 
     setPercantage(percent){
         this.percentage = percent;
-        let path = images[this.setPercentIndex];
-        this.img = this.HEALTH_IMAGES[path];
+        let path = this.HEALTH_IMAGES[this.setPercentIndex()];
+        this.img = this.imageCache[path];
     };
 
 
@@ -36,7 +42,7 @@ class statusBar extends drawableObjects {
         else if (this.percentage >= 40){
             return 2;
         }
-        else if (this.percentage >= 20){
+        else if (this.percentage >= 1){
             return 1;
         }
         else {

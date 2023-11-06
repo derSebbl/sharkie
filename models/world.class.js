@@ -5,6 +5,7 @@ class World {
     keyboard;
     camera_x;
     level = level1;
+    healthbar = new healthBar;
    
 
     char = new Character();
@@ -30,9 +31,11 @@ class World {
          this.level.enemies.forEach((enemy) =>{
            if( this.char.isColliding(enemy) ){
             this.char.hit();
+            this.healthbar.setPercantage(this.char.energy);
+            console.log(this.char.energy)
            };
          })   
-        }, 100);
+        }, 200);
     }
 
 
@@ -78,7 +81,13 @@ class World {
 
         this.ctx.translate(this.camera_x, 0);
 
+        
         this.addObjectsToWorld(this.level.BackgroundObjects);
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToWorld(this.healthbar);
+        this.ctx.translate(this.camera_x, 0);
+
         this.addToWorld(this.char);
         this.addObjectsToWorld(this.level.enemies);
 
