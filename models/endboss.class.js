@@ -1,9 +1,14 @@
 class endboss extends movableObject {
 
-    height = 202;
-    width = 250;
+    height = 232;
+    width = 280;
     y = -70;
-    x = 1600;
+    x = 1400;
+
+    FrameX = 0;
+    FrameY = 0;
+    FrameWidth = 250;
+    FrameHeight = 200;
 
     IMAGES_SWIM = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',

@@ -28,11 +28,11 @@ class movableObject {
     };
 
     drawFrame(ctx){
-        if (this instanceof Character || this instanceof FishPuffer) {
+        if (this instanceof Character || this instanceof FishPuffer || this instanceof endboss) {
         ctx.beginPath();
         ctx.lineWidth = "1";
         ctx.strokeStyle = "red";
-        ctx.rect(this.x+this.FrameX, this.y+this.FrameY,this.FrameWidth, this.FrameHeight)
+        ctx.rect(this.x + this.FrameX, this.y + this.FrameY,this.FrameWidth, this.FrameHeight)
         //ctx.rect(this.x, this.y, this.width, this.height)
         ctx.stroke()
         }
@@ -40,10 +40,10 @@ class movableObject {
 
 
     isColliding(obj) {
-        return  this.x + this.FrameX < obj.x + obj.width &&
-                this.x + this.FrameX + this.FrameWidth > obj.x &&
-                this.y + this.FrameY < obj.y + obj.height &&
-                this.y + this.FrameY + this.FrameHeight > obj.y;
+        return  this.x + this.FrameX < obj.x + obj.FrameWidth &&
+                this.x + this.FrameX + this.FrameWidth > obj.x + obj.FrameX &&
+                this.y + this.FrameY < obj.y + obj.FrameHeight &&
+                this.y + this.FrameY + this.FrameHeight > obj.y + obj.FrameY;
     };
 
 
