@@ -5,6 +5,7 @@ class World {
     keyboard;
     camera_x;
     level = level1;
+   
 
     char = new Character();
 
@@ -28,8 +29,7 @@ class World {
         setInterval(() => {
          this.level.enemies.forEach((enemy) =>{
            if( this.char.isColliding(enemy) ){
-            this.char.energy -= 5;
-            console.log('char energy', this.char.energy)
+            this.char.hit();
            };
          })   
         }, 100);
