@@ -1,34 +1,11 @@
-class movableObject {
-    x = 0;
-    y = 0;
-    img;
-    height = 100;
-    width = 123;
-    imageCache = {};
-    currentImg = 0;
+class movableObject extends drawableObjects {
+
     speed = 0.15;
     otherDirection = false;
     energy = 100;
     lastHit = 0;
 
-
-    loadImg(path){
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
-
-    draw(ctx){
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    };
-
+    
     drawFrame(ctx){
         if (this instanceof Character || this instanceof FishPuffer || this instanceof endboss) {
         ctx.beginPath();
