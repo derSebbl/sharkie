@@ -9,6 +9,7 @@ class World {
     bubbles = [];
     bubbleShot = false;
     dead = false;
+    slap = false;
     hitBy;
    
 

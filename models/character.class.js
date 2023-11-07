@@ -167,6 +167,7 @@ class Character extends movableObject {
         }
 
         else if (this.World.keyboard.D) {
+            this.World.slap = true;
             this.finSlap();
         }
 
@@ -200,6 +201,7 @@ class Character extends movableObject {
                 loadedImagesCount++;
                 if (loadedImagesCount === this.IMAGES_FIN_SLAP.length - 1) {
                     this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
+                    this.World.slap = false;
                 }
             }, i * delayBetweenImages);
         }
