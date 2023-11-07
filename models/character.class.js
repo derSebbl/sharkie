@@ -159,6 +159,10 @@ class Character extends movableObject {
         this.World.dead = true;
         }
 
+        else if(this.World.dead === true){
+            this.y -= 15;
+        }
+
         else if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
             this.playAnimation(this.IMAGES_SWIM);
         } 
@@ -169,10 +173,10 @@ class Character extends movableObject {
         }
 
         else if (this.World.keyboard.D) {
-            this.World.slap = true;
             this.finSlap();
+            this.World.slap = true;
         }
-        else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead || this.World.bubbleBuild === false) {
+        else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 
@@ -181,15 +185,13 @@ class Character extends movableObject {
 
     blubShoot() {
         const delayBetweenImages = 80;
-        let loadedImagesCount = 0;
-    
+        let loadedImagesCount = 1;
         for (let i = 1; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
             setTimeout(() => {
                 this.loadImg(this.IMAGES_BUILD_BUBBLE[i]);
                 loadedImagesCount++;
-                if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length - 1) {
+                if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length) {
                     this.World.bubbleShot = true;
-                    this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
                     this.World.bubbleBuild = false;
                 }
             }, i * delayBetweenImages);
@@ -213,7 +215,6 @@ class Character extends movableObject {
     finSlap(){
         const delayBetweenImages = 80;
         let loadedImagesCount = 0;
-    
         for (let i = 1; i < this.IMAGES_FIN_SLAP.length; i++) {
             setTimeout(() => {
                 this.loadImg(this.IMAGES_FIN_SLAP[i]);
