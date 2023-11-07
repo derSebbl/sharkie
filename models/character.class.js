@@ -44,6 +44,17 @@ class Character extends movableObject {
         'img/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ];
 
+    IMAGES_BUILD_BUBBLE = [
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
+    ];
+
 
 
     constructor() {
@@ -51,6 +62,7 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HIT_PUFFER);
+        this.loadImages(this.IMAGES_BUILD_BUBBLE);
 
         this.animate();
     }
@@ -100,11 +112,29 @@ class Character extends movableObject {
         }
         else if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
             this.playAnimation(this.IMAGES_SWIM);
-        }
+        } 
+        else if (this.World.keyboard.SPACE) {
+            this.shoot();
+        };
     }, 120)
     };
 
 
+    shoot() {
+        const delayBetweenImages = 80;
+        let loadedImagesCount = 0;
+    
+        for (let i = 1; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
+            setTimeout(() => {
+                this.loadImg(`img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/${i}.png`);
+                loadedImagesCount++;
+                if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length - 1) {
+                    this.World.bubbleShot = true;
+                    this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
+                }
+            }, i * delayBetweenImages);
+        }
+    };
 
 
 

@@ -7,6 +7,7 @@ class World {
     level = level1;
     healthbar = new healthBar;
     bubbles = [];
+    bubbleShot = false;
    
 
     char = new Character();
@@ -27,9 +28,10 @@ class World {
     };
 
     shootBubbles() {
-        if (this.keyboard.SPACE){
+        if (this.bubbleShot == true){
             let blub = new bubble(this.char.x + 80, this.char.y + 60);
             this.bubbles.push(blub);
+            this.bubbleShot = false;
         }
     }; 
 
@@ -102,9 +104,10 @@ class World {
         this.addToWorld(this.healthbar);
         this.ctx.translate(this.camera_x, 0);
 
+        this.addObjectsToWorld(this.bubbles);
         this.addToWorld(this.char);
         this.addObjectsToWorld(this.level.enemies);
-        this.addObjectsToWorld(this.bubbles);
+        
 
         this.ctx.translate(-this.camera_x, 0);
         
