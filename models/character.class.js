@@ -107,20 +107,21 @@ class Character extends movableObject {
         if (this.isHurt()) {
             this.playAnimation(this.IMAGES_HIT_PUFFER);
         }
-        else if (this.isDead()) { 
-        this.playAnimation(this.IMAGES_DEAD);
+        else if (this.isDead() && this.World.dead == false) { 
+        this.deadAnimation();
+        this.World.dead = true;
         }
         else if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
             this.playAnimation(this.IMAGES_SWIM);
         } 
         else if (this.World.keyboard.SPACE) {
-            this.shoot();
+            this.blubShoot();
         };
     }, 120)
     };
 
 
-    shoot() {
+    blubShoot() {
         const delayBetweenImages = 80;
         let loadedImagesCount = 0;
     
@@ -137,5 +138,16 @@ class Character extends movableObject {
     };
 
 
+    deadAnimation() {
+        const delayBetweenImages = 80;
+        let loadedImagesCount = 0;
+    
+        for (let i = 1; i < this.IMAGES_DEAD.length; i++) {
+            setTimeout(() => {
+                this.loadImg(`img/1.Sharkie/6.dead/1.Poisoned/${i}.png`);
+                loadedImagesCount++;
+            }, i * delayBetweenImages);
+        }
+    };
 
 }

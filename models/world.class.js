@@ -8,6 +8,7 @@ class World {
     healthbar = new healthBar;
     bubbles = [];
     bubbleShot = false;
+    dead = false;
    
 
     char = new Character();
