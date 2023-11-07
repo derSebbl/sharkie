@@ -8,6 +8,7 @@ class World {
     healthbar = new healthBar;
     bubbles = [];
     bubbleShot = false;
+    bubbleBuild = false;
     dead = false;
     slap = false;
     hitBy;

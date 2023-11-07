@@ -145,6 +145,7 @@ class Character extends movableObject {
 
        
         setInterval(() => {
+
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
                 this.hitByPufferFish();
         }
@@ -163,6 +164,7 @@ class Character extends movableObject {
         } 
 
         else if (this.World.keyboard.SPACE) {
+            this.World.bubbleBuild = true;
             this.blubShoot();
         }
 
@@ -170,6 +172,9 @@ class Character extends movableObject {
             this.World.slap = true;
             this.finSlap();
         }
+        else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead || this.World.bubbleBuild === false) {
+            this.playAnimation(this.IMAGES_IDLE);
+        } 
 
     }, 120);
 };
@@ -185,7 +190,21 @@ class Character extends movableObject {
                 if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length - 1) {
                     this.World.bubbleShot = true;
                     this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
+                    this.World.bubbleBuild = false;
                 }
+            }, i * delayBetweenImages);
+        }
+    };
+
+
+    idleAnimation() {
+        const delayBetweenImages = 80;
+        let loadedImagesCount = 0;
+    
+        for (let i = 1; i < this.IMAGES_IDLE.length; i++) {
+            setTimeout(() => {
+                this.loadImg(this.IMAGES_IDLE[i]);
+                loadedImagesCount++;
             }, i * delayBetweenImages);
         }
     };
@@ -219,6 +238,7 @@ class Character extends movableObject {
             }, i * delayBetweenImages);
         }
     };
+
 
     hitByPufferFish(){
         return this.playAnimation(this.IMAGES_HIT_PUFFER);
