@@ -1,11 +1,11 @@
 class FishPuffer extends movableObject {
-    height = 26;
-    width = 26;
+    height = 60;
+    width = 60;
 
     FrameX = 0;
     FrameY = 0;
-    FrameWidth = 26;
-    FrameHeight = 22;
+    FrameWidth = 50;
+    FrameHeight = 40;
 
     IMAGES_SWIM = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png',
@@ -23,7 +23,7 @@ class FishPuffer extends movableObject {
 
         this.x = 300 + Math.random() * 1000;
         this.y = 0 + Math.random() * 100;
-        this.speed = 0.15 + Math.random() * 0.25; 
+        this.speed = 0.5 + Math.random() * 0.25; 
     }
 
     animate() {

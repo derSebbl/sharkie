@@ -31,7 +31,7 @@ class World {
 
     shootBubbles() {
         if (this.bubbleShot == true){
-            let blub = new bubble(this.char.x + 80, this.char.y + 60);
+            let blub = new bubble(this.char.x + 200, this.char.y +150);
             this.bubbles.push(blub);
             this.bubbleShot = false;
         }

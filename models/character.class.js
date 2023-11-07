@@ -1,9 +1,9 @@
 class Character extends movableObject {
 
-    FrameX = 23;
-    FrameY = 45;
-    FrameWidth = 80;
-    FrameHeight = 30;
+    FrameX = 53;
+    FrameY = 120;
+    FrameWidth = 170;
+    FrameHeight = 65;
     
     World;
 
@@ -93,7 +93,7 @@ class Character extends movableObject {
 
             if (this.World.keyboard.UP){
                 this.swim_sound.play();
-                if(this.y == -44){return this.World.camera_x = -this.x;}
+                if(this.y == 0){return this.World.camera_x = -this.x;}
                 else{
                 this.moveUp();
             }};
@@ -101,7 +101,7 @@ class Character extends movableObject {
 
             if (this.World.keyboard.DOWN){
                 this.swim_sound.play();
-                if(this.y == 73){return this.World.camera_x = -this.x;}
+                if(this.y == 180){return this.World.camera_x = -this.x;}
                 else{
                 this.moveDown();
             }};

@@ -1,11 +1,11 @@
 class jellyFish extends movableObject {
-    height = 32;
-    width = 26;
+    height = 80;
+    width = 80;
 
-    FrameX = 0;
-    FrameY = 0;
-    FrameWidth = 26;
-    FrameHeight = 28;
+    FrameX = 5;
+    FrameY = 5;
+    FrameWidth = 70;
+    FrameHeight = 70;
 
     IMAGES_SWIM = [
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png',
