@@ -13,6 +13,27 @@ class Character extends movableObject {
 
     speed = 1.5;
 
+    IMAGES_IDLE = [
+        'img/1.Sharkie/1.IDLE/1.png',
+        'img/1.Sharkie/1.IDLE/2.png',
+        'img/1.Sharkie/1.IDLE/3.png',
+        'img/1.Sharkie/1.IDLE/4.png',
+        'img/1.Sharkie/1.IDLE/5.png',
+        'img/1.Sharkie/1.IDLE/6.png',
+        'img/1.Sharkie/1.IDLE/7.png',
+        'img/1.Sharkie/1.IDLE/8.png',
+        'img/1.Sharkie/1.IDLE/9.png',
+        'img/1.Sharkie/1.IDLE/10.png',
+        'img/1.Sharkie/1.IDLE/11.png',
+        'img/1.Sharkie/1.IDLE/12.png',
+        'img/1.Sharkie/1.IDLE/13.png',
+        'img/1.Sharkie/1.IDLE/14.png',
+        'img/1.Sharkie/1.IDLE/15.png',
+        'img/1.Sharkie/1.IDLE/16.png',
+        'img/1.Sharkie/1.IDLE/17.png',
+        'img/1.Sharkie/1.IDLE/18.png',
+    ];
+
     IMAGES_SWIM = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -47,7 +68,7 @@ class Character extends movableObject {
     IMAGES_HIT_JELLY = [
         'img/1.Sharkie/5.Hurt/2.Electric shock/1.png',
         'img/1.Sharkie/5.Hurt/2.Electric shock/2.png',
-        'img/1.Sharkie/5.Hurt/2.Electric shock/3.png'
+        'img/1.Sharkie/5.Hurt/2.Electric shock/3.png',
     ];
 
     IMAGES_BUILD_BUBBLE = [
@@ -61,15 +82,26 @@ class Character extends movableObject {
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
     ];
 
+    IMAGES_FIN_SLAP = [
+        'img/1.Sharkie/4.Attack/Fin slap/1.png',
+        'img/1.Sharkie/4.Attack/Fin slap/4.png',
+        'img/1.Sharkie/4.Attack/Fin slap/5.png',
+        'img/1.Sharkie/4.Attack/Fin slap/6.png',
+        'img/1.Sharkie/4.Attack/Fin slap/7.png',
+        'img/1.Sharkie/4.Attack/Fin slap/8.png',
+    ];
+
 
 
     constructor() {
         super().loadImg('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HIT_PUFFER);
         this.loadImages(this.IMAGES_HIT_JELLY);
         this.loadImages(this.IMAGES_BUILD_BUBBLE);
+        this.loadImages(this.IMAGES_FIN_SLAP);
 
         this.animate();
         this.speed = 3;
@@ -80,6 +112,7 @@ class Character extends movableObject {
 
         setInterval(() =>{
             this.swim_sound.pause();
+
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
                 this.moveRight();
                 this.swim_sound.play();
@@ -131,11 +164,14 @@ class Character extends movableObject {
 
         else if (this.World.keyboard.SPACE) {
             this.blubShoot();
-        };
+        }
 
-    }, 120)
-    };
+        else if (this.World.keyboard.D) {
+            this.finSlap();
+        }
 
+    }, 120);
+};
 
     blubShoot() {
         const delayBetweenImages = 80;
@@ -143,10 +179,26 @@ class Character extends movableObject {
     
         for (let i = 1; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
             setTimeout(() => {
-                this.loadImg(`img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/${i}.png`);
+                this.loadImg(this.IMAGES_BUILD_BUBBLE[i]);
                 loadedImagesCount++;
                 if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length - 1) {
                     this.World.bubbleShot = true;
+                    this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
+                }
+            }, i * delayBetweenImages);
+        }
+    };
+
+
+    finSlap(){
+        const delayBetweenImages = 80;
+        let loadedImagesCount = 0;
+    
+        for (let i = 1; i < this.IMAGES_FIN_SLAP.length; i++) {
+            setTimeout(() => {
+                this.loadImg(this.IMAGES_FIN_SLAP[i]);
+                loadedImagesCount++;
+                if (loadedImagesCount === this.IMAGES_FIN_SLAP.length - 1) {
                     this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
                 }
             }, i * delayBetweenImages);
@@ -165,5 +217,4 @@ class Character extends movableObject {
             }, i * delayBetweenImages);
         }
     };
-
 }

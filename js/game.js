@@ -32,6 +32,10 @@ window.addEventListener('keyup', (e) => {
     if (e.keyCode == 32) {
         Kboard.SPACE = false;
     };
+
+    if (e.keyCode == 68) {
+        Kboard.D = false;
+    }; 
 });
 
 window.addEventListener('keydown', (e) => {
@@ -54,4 +58,8 @@ window.addEventListener('keydown', (e) => {
     if (e.keyCode == 32) {
         Kboard.SPACE = true;
     };
+
+    if (e.keyCode == 68) {
+        Kboard.D = true;
+    }; 
 });
