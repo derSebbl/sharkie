@@ -9,6 +9,7 @@ class World {
     bubbles = [];
     bubbleShot = false;
     dead = false;
+    hitBy;
    
 
     char = new Character();
@@ -50,7 +51,8 @@ class World {
               if( this.char.isColliding(enemy) ){
                this.char.hit();
                this.healthbar.setPercantage(this.char.energy);
-               console.log(this.char.energy);
+               this.hitBy = enemy;
+               console.log(this.char.energy, this.hitBy);
               };
             });
     };
