@@ -180,6 +180,10 @@ class Character extends movableObject {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 
+        if(this.x === 2808) {
+            this.World.Contact = true;
+        }
+
     }, 120);
 };
 

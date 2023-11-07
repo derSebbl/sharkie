@@ -27,15 +27,45 @@ class endboss extends movableObject {
         'img/2.Enemy/3 Final Enemy/2.floating/13.png',
     ];
 
+    IMAGES_INTRODUCE = [
+        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/2.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/3.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/4.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/5.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/6.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/7.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/8.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/9.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/10.png',
+    ];
+
+    firstContact = false;
+
     constructor() {
         super().loadImg(this.IMAGES_SWIM[0]);
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_INTRODUCE);
         this.animate();
     }
 
     animate() {
+        let i = 0;
         setInterval(() => {
-            this.playAnimation(this.IMAGES_SWIM);
+            if(i > 10) {
+                this.playAnimation(this.IMAGES_INTRODUCE);
+            } 
+            else {
+                this.playAnimation(this.IMAGES_SWIM);
+            }
+            i++;
+
+            if(World.Contact && !this.firstContact){
+                i = 0;
+                this.firstContact = true;
+            } 
+
+            console.log('hi');
     }, 200) 
 };
     
