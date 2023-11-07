@@ -146,11 +146,11 @@ class Character extends movableObject {
        
         setInterval(() => {
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
-                this.playAnimation(this.IMAGES_HIT_PUFFER);
+                this.hitByPufferFish();
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
-                this.playAnimation(this.IMAGES_HIT_JELLY);
+                this.hitByJellyFish();
         }
 
         else if (this.isDead() && this.World.dead == false) { 
@@ -218,5 +218,14 @@ class Character extends movableObject {
                 loadedImagesCount++;
             }, i * delayBetweenImages);
         }
+    };
+
+    hitByPufferFish(){
+        return this.playAnimation(this.IMAGES_HIT_PUFFER);
+    };
+
+
+    hitByJellyFish() {
+        return this.playAnimation(this.IMAGES_HIT_JELLY);
     };
 }
