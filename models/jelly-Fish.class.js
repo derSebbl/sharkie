@@ -20,8 +20,8 @@ class jellyFish extends movableObject {
 
         this.animate();
 
-        this.x = 300 + Math.random() * 1000;
-        this.y = 0 + Math.random() * 100;
+        this.x = 300 + Math.random() * 2500;
+        this.y = 0 + Math.random() * 350;
         this.speed = 0.15 + Math.random() * 0.25; 
     }
 

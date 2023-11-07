@@ -17,7 +17,7 @@ throw() {
         else if (this.otherDirection == true){
             this.x -= 10;
         }
-    }, 25);
+    }, 1000 / 60);
 };
 
 }

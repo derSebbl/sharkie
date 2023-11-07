@@ -21,8 +21,8 @@ class FishPuffer extends movableObject {
 
         this.animate();
 
-        this.x = 300 + Math.random() * 1000;
-        this.y = 0 + Math.random() * 100;
+        this.x = 300 + Math.random() * 3000;
+        this.y = 0 + Math.random() * 350;
         this.speed = 1 + Math.random() * 0.25; 
     }
 

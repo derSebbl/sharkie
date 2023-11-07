@@ -16,8 +16,8 @@ class healthBar extends drawableObjects {
         this.loadImages(this.HEALTH_IMAGES);
         this.x = 5;
         this.y = -5;
-        this.height = 20;
-        this.width = 75;
+        this.height = 50;
+        this.width = 140;
         this.setPercantage(100);
     };
 
