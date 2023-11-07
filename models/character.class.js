@@ -72,6 +72,7 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_BUILD_BUBBLE);
 
         this.animate();
+        this.speed = 3;
     }
 
 

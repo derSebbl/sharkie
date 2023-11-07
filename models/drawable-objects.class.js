@@ -6,6 +6,7 @@ class drawableObjects {
     img;
     imageCache = {};
     currentImg = 0;
+    speed = 10;
 
 
 

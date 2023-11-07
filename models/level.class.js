@@ -1,7 +1,7 @@
 class level {
     enemies;
     BackgroundObjects;
-    level_end_x = 1492.5;
+    level_end_x = 3500;
     
 
     constructor(enemies, BackgroundObjects) {
