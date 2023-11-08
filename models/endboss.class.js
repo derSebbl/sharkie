@@ -13,6 +13,8 @@ class endboss extends movableObject {
     FrameWidth = 0;
     FrameHeight = 0;
 
+    boss_sound = new Audio('audio/Boss Music.mp3');
+
     IMAGES_SWIM = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
         'img/2.Enemy/3 Final Enemy/2.floating/2.png',
@@ -65,6 +67,7 @@ class endboss extends movableObject {
             if(world.char.x > 3050 && !this.firstContact){
                 i = 0;
                 this.firstContact = true;
+                this.boss_sound.play();
             } 
     }, 180) 
 };

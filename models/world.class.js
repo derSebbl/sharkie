@@ -13,9 +13,9 @@ class World {
     slap = false;
     hitBy;
    
+    
 
     char = new Character();
-
 
     constructor(canvas, Kboard) {
         this.ctx = canvas.getContext('2d');

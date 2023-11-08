@@ -6,9 +6,6 @@ let Kboard = new keyboard();
 function init() {
 canvas = document.getElementById('canvas');
 world = new World(canvas, Kboard);
-
-
-//console.log('my character is', world.char)
 }
 
 
