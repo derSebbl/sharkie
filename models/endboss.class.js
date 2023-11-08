@@ -61,6 +61,7 @@ class endboss extends movableObject {
             } 
             if(this.firstContact && i > 8) {
                 this.playAnimation(this.IMAGES_SWIM);
+                this.boss_sound.play();
             }
             i++;
 

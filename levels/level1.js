@@ -26,6 +26,15 @@ const level1 = new level(
         new coins(),
         ],
         [
+        new poison(),
+        new poison(),
+        new poison(),
+        new poison(),
+        new poison(),
+        new poison(),
+        new poison(),
+        ],
+        [
         new BackgroundObject('img/3. Background/Layers/5. Water/D2.png', -719, 0),
         new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D2.png', -719, 0),
         new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D2.png', -719, 0),
