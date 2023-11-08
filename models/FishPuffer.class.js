@@ -51,22 +51,27 @@ class FishPuffer extends movableObject {
         setInterval(() => {
             if(e > 17 && e < 20){
                 this.playAnimation(this.IMAGES_TRANSITION);
+                this.FrameHeight = 40;
             }
 
            else if(e > 20 && e < 45){
                 this.playAnimation(this.IMAGES_PUFFED);
+                this.FrameHeight = 54;
             } 
 
             else if(e > 67 && e < 70){
                 this.playAnimation(this.IMAGES_TRANSITION);
+                this.FrameHeight = 40;
             }
 
             else if (e > 70 && e < 95){
                 this.playAnimation(this.IMAGES_PUFFED);
+                this.FrameHeight = 54;
             } 
 
             else {
             this.playAnimation(this.IMAGES_SWIM);
+            this.FrameHeight = 40;
             }
             e++
     }, 280)
