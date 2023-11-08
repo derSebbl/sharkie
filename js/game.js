@@ -8,7 +8,7 @@ canvas = document.getElementById('canvas');
 world = new World(canvas, Kboard);
 
 
-console.log('my character is', world.char)
+//console.log('my character is', world.char)
 }
 
 

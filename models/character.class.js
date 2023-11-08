@@ -10,6 +10,7 @@ class Character extends movableObject {
     swim_sound = new Audio('audio/Water Splash.mp3');
 
     y = 10;
+    x = 0;
 
     speed = 1.5;
 
@@ -179,10 +180,6 @@ class Character extends movableObject {
         else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
-
-        if(this.x === 2808) {
-            this.World.Contact = true;
-        }
 
     }, 120);
 };

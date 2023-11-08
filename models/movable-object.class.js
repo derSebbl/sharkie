@@ -6,6 +6,7 @@ class movableObject extends drawableObjects {
     lastHit = 0;
 
 
+
     isColliding(obj) {
         return  this.x + this.FrameX < obj.x + obj.FrameWidth &&
                 this.x + this.FrameX + this.FrameWidth > obj.x + obj.FrameX &&

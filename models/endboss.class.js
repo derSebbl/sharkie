@@ -4,12 +4,14 @@ class endboss extends movableObject {
     width = 680;
     y = -170;
     x = 3500;
+
+    World;
   
 
-    FrameX = 40;
-    FrameY = 200;
-    FrameWidth = 600;
-    FrameHeight = 350;
+    FrameX = 0;
+    FrameY = 170;
+    FrameWidth = 0;
+    FrameHeight = 0;
 
     IMAGES_SWIM = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
@@ -43,30 +45,28 @@ class endboss extends movableObject {
     firstContact = false;
 
     constructor() {
-        super().loadImg(this.IMAGES_SWIM[0]);
+        super().loadImg(this.IMAGES_INTRODUCE[0]);
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_INTRODUCE);
         this.animate();
     }
 
     animate() {
-        let i = 0;
+        let i = 9;
         setInterval(() => {
-            if(i > 10) {
+            if(i < 8) {
                 this.playAnimation(this.IMAGES_INTRODUCE);
             } 
-            else {
+            if(this.firstContact && i > 8) {
                 this.playAnimation(this.IMAGES_SWIM);
             }
             i++;
 
-            if(World.Contact && !this.firstContact){
+            if(world.char.x > 3050 && !this.firstContact){
                 i = 0;
                 this.firstContact = true;
             } 
-
-            console.log('hi');
-    }, 200) 
+    }, 180) 
 };
     
 }

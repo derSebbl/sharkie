@@ -11,7 +11,6 @@ class World {
     bubbleBuild = false;
     dead = false;
     slap = false;
-    Contact = false;
     hitBy;
    
 
