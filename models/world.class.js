@@ -112,6 +112,7 @@ class World {
         this.addObjectsToWorld(this.bubbles);
         this.addToWorld(this.char);
         this.addObjectsToWorld(this.level.enemies);
+        this.addObjectsToWorld(this.level.coin);
         
 
         this.ctx.translate(-this.camera_x, 0);
