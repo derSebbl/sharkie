@@ -31,7 +31,7 @@ class drawableObjects {
 
 
     drawFrame(ctx){
-        if (this instanceof Character || this instanceof FishPuffer || this instanceof endboss || this instanceof jellyFish || this instanceof bubble) {
+        if (this instanceof Character || this instanceof FishPuffer || this instanceof endboss || this instanceof jellyFish || this instanceof coins || this instanceof poison) {
         ctx.beginPath();
         ctx.lineWidth = "1";
         ctx.strokeStyle = "red";

@@ -49,37 +49,58 @@ class FishPuffer extends movableObject {
     animate() {
         let e = 0
         setInterval(() => {
-            if(e > 17 && e < 20){
-                this.playAnimation(this.IMAGES_TRANSITION);
-                this.FrameHeight = 40;
+            if(e > 16 && e < 20){
+                this.pufferFishTransition();
             }
 
            else if(e > 20 && e < 45){
-                this.playAnimation(this.IMAGES_PUFFED);
-                this.FrameHeight = 54;
+                this.pufferFishPuffed();
             } 
 
             else if(e > 67 && e < 70){
-                this.playAnimation(this.IMAGES_TRANSITION);
-                this.FrameHeight = 40;
+                this.pufferFishTransition();
             }
 
             else if (e > 70 && e < 95){
-                this.playAnimation(this.IMAGES_PUFFED);
-                this.FrameHeight = 54;
+                this.pufferFishPuffed();
+            } 
+
+            else if(e > 120 && e < 123){
+                this.pufferFishTransition();
+            }
+
+            else if (e > 123 && e < 150){
+                this.pufferFishPuffed();
             } 
 
             else {
-            this.playAnimation(this.IMAGES_SWIM);
-            this.FrameHeight = 40;
+                this.pufferFishNormal();
             }
             e++
-    }, 280)
+    }, 280);
+
+    
     setInterval(() => {
         this.moveLeft();
         this.otherDirection = false;
     }, 1000/60);
 };
 
+
+pufferFishTransition() {
+    this.playAnimation(this.IMAGES_TRANSITION);
+    this.FrameHeight = 40;
+
+};
+
+pufferFishPuffed(){
+    this.playAnimation(this.IMAGES_PUFFED);
+    this.FrameHeight = 54;
+};
+
+pufferFishNormal(){
+    this.playAnimation(this.IMAGES_SWIM);
+    this.FrameHeight = 40;
+};
 
 }

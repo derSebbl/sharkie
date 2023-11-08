@@ -11,6 +11,8 @@ class World {
     bubbleBuild = false;
     dead = false;
     slap = false;
+    gold = 0;
+    poison = 0;
     hitBy;
    
     
@@ -42,13 +44,15 @@ class World {
 
     run(){
         setInterval(() => {
-        this.checkCollisions();
+        this.checkCollisionsEnemy();
+        this.checkCollisionsCoin();
+        this.checkCollisionsPoison();
         this.shootBubbles();
     }, 200);
     };
 
 
-    checkCollisions() {
+    checkCollisionsEnemy() {
             this.level.enemies.forEach((enemy) =>{
               if( this.char.isColliding(enemy) ){
                this.char.hit();
@@ -58,6 +62,25 @@ class World {
               };
             });
     };
+
+    checkCollisionsCoin() {           
+        this.level.coin.forEach((gold) =>{
+        if( this.char.isColliding(gold)) {
+            this.gold ++;
+         console.log(this.gold);
+        };
+      });
+};
+
+
+checkCollisionsPoison() {           
+    this.level.poison.forEach((flask) =>{
+    if( this.char.isColliding(flask)) {
+        this.poison ++;
+     console.log(this.poison);
+    };
+  });
+};
 
 
     addToWorld(object) {

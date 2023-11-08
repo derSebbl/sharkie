@@ -3,6 +3,11 @@ class coins extends movableObject {
     height = 40;
     width = 40;
 
+    FrameX = 0;
+    FrameY = 0;
+    FrameWidth = 40;
+    FrameHeight = 40;
+
     IMAGES_COINS = [
         'img/4. Marcadores/1. Coins/1.png',
         'img/4. Marcadores/1. Coins/2.png',

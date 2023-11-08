@@ -2,6 +2,11 @@ class poison extends movableObject {
     height = 60;
     width = 60;
 
+    FrameX = 10;
+    FrameY = 15;
+    FrameWidth = 40;
+    FrameHeight = 45;
+
     IMAGES_POISON = [
         'img/4. Marcadores/Posiขn/Animada/1.png',
         'img/4. Marcadores/Posiขn/Animada/2.png',
