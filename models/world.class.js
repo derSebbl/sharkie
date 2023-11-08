@@ -63,10 +63,12 @@ class World {
             });
     };
 
+
     checkCollisionsCoin() {           
         this.level.coin.forEach((gold) =>{
         if( this.char.isColliding(gold)) {
             this.gold ++;
+            gold.y -= 800;
          console.log(this.gold);
         };
       });
@@ -77,6 +79,7 @@ checkCollisionsPoison() {
     this.level.poison.forEach((flask) =>{
     if( this.char.isColliding(flask)) {
         this.poison ++;
+        flask.y -= 800;
      console.log(this.poison);
     };
   });
