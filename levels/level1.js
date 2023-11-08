@@ -6,6 +6,8 @@ const level1 = new level(
         new FishPuffer(),
         new FishPuffer(),
         new FishPuffer(),
+        ],
+        [
         new jellyFish(),
         new jellyFish(),
         new jellyFish(),
@@ -14,6 +16,8 @@ const level1 = new level(
         new jellyFish(),
         new jellyFish(),
         new jellyFish(),
+        ],
+        [
         new endboss(),
         ],
         [

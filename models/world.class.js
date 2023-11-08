@@ -14,7 +14,7 @@ class World {
     gold = 0;
     poison = 0;
     hitBy;
-   
+
     
 
     char = new Character();
@@ -26,6 +26,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        console.log(this.level.enemies);
     };
 
 
@@ -44,17 +45,21 @@ class World {
 
     run(){
         setInterval(() => {
-        this.checkCollisionsEnemy();
+        this.checkCollisionsPuffer();
+        this.checkCollisionsJelly();
+        this.checkCollisionsBoss();
         this.checkCollisionsCoin();
         this.checkCollisionsPoison();
+        this.checkCollisionsSlap();
+        //this.checkCollisionsBubble();
         this.shootBubbles();
     }, 200);
     };
 
 
-    checkCollisionsEnemy() {
-            this.level.enemies.forEach((enemy) =>{
-              if( this.char.isColliding(enemy) ){
+    checkCollisionsPuffer() {
+            this.level.puffer.forEach((enemy) =>{
+              if( this.char.isColliding(enemy) && !this.slap){
                this.char.hit();
                this.healthbar.setPercantage(this.char.energy);
                this.hitBy = enemy;
@@ -62,6 +67,39 @@ class World {
               };
             });
     };
+
+
+    checkCollisionsJelly() {
+        this.level.jelly.forEach((enemy) =>{
+            if( this.char.isColliding(enemy) && !this.slap){
+             this.char.hit();
+             this.healthbar.setPercantage(this.char.energy);
+             this.hitBy = enemy;
+             console.log(this.char.energy, this.hitBy);
+            };
+          });
+    };
+
+
+    checkCollisionsBoss() {
+        this.level.boss.forEach((enemy) =>{
+            if( this.char.isColliding(enemy) && !this.slap){
+             this.char.hit();
+             this.healthbar.setPercantage(this.char.energy);
+             this.hitBy = enemy;
+             console.log(this.char.energy, this.hitBy);
+            };
+          });
+    };
+
+
+    checkCollisionsSlap() {
+        this.level.puffer.forEach((puffer) =>{
+          if( this.char.isColliding(puffer) && this.slap){
+           puffer.y -= 800;
+          };
+        });
+};
 
 
     checkCollisionsCoin() {           
@@ -84,6 +122,18 @@ checkCollisionsPoison() {
     };
   });
 };
+
+
+/*checkCollisionsBubble() {
+    this.level.enemies.forEach((Jelly) =>{
+        if( bubble.isColliding(Jelly)) {
+         console.log('buublehit');
+        };
+      });
+}; */
+
+
+
 
 
     addToWorld(object) {
@@ -137,7 +187,9 @@ checkCollisionsPoison() {
 
         this.addObjectsToWorld(this.bubbles);
         this.addToWorld(this.char);
-        this.addObjectsToWorld(this.level.enemies);
+        this.addObjectsToWorld(this.level.puffer);
+        this.addObjectsToWorld(this.level.jelly);
+        this.addObjectsToWorld(this.level.boss);
         this.addObjectsToWorld(this.level.coin);
         this.addObjectsToWorld(this.level.poison);
         
@@ -150,6 +202,5 @@ checkCollisionsPoison() {
             self.draw();
         });
     };
-
 
 };

@@ -2,7 +2,7 @@ class Character extends movableObject {
 
     FrameX = 53;
     FrameY = 120;
-    FrameWidth = 170;
+    FrameWidth = 150;
     FrameHeight = 65;
     
     World;

@@ -5,8 +5,8 @@ class bubble extends movableObject {
 
     FrameX = 0;
     FrameY = 0;
-    FrameWidth = 0;
-    FrameHeight = 0;
+    FrameWidth = 30;
+    FrameHeight = 20;
 
     constructor(x, y) {
         super().loadImg('img/1.Sharkie/4.Attack/Bubble trap/Bubble.png');
