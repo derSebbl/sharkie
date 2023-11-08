@@ -96,7 +96,7 @@ class World {
     checkCollisionsSlap() {
         this.level.puffer.forEach((puffer) =>{
           if( this.char.isColliding(puffer) && this.slap){
-           puffer.y -= 800;
+            puffer.y -= 200;
           };
         });
 };
