@@ -16,6 +16,7 @@ class World {
     gold = 0;
     poison = 0;
     hitBy;
+    
 
     
 
@@ -98,7 +99,7 @@ class World {
     checkCollisionsSlap() {
         this.level.puffer.forEach((puffer) =>{
           if( this.char.isColliding(puffer) && this.slap){
-            puffer.y -= 200;
+            puffer.y = -800;
           };
         });
 };

@@ -176,6 +176,7 @@ class Character extends movableObject {
         else if (this.World.keyboard.D) {
             this.finSlap();
             this.World.slap = true;
+            this.FrameWidth = 200;
         }
         else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false) {
             this.playAnimation(this.IMAGES_IDLE);
@@ -183,6 +184,10 @@ class Character extends movableObject {
 
     }, 120);
 };
+
+
+
+
 
     blubShoot() {
         const delayBetweenImages = 80;
@@ -223,6 +228,7 @@ class Character extends movableObject {
                 if (loadedImagesCount === this.IMAGES_FIN_SLAP.length - 1) {
                     this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
                     this.World.slap = false;
+                    this.FrameWidth = 150;
                 }
             }, i * delayBetweenImages);
         }
