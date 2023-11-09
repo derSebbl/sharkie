@@ -6,6 +6,8 @@ class World {
     camera_x;
     level = level1;
     healthbar = new healthBar;
+    coinbar = new coinBar;
+    poisonbar = new poisonBar;
     bubbles = [];
     bubbleShot = false;
     bubbleBuild = false;
@@ -106,7 +108,8 @@ class World {
         this.level.coin.forEach((gold) =>{
         if( this.char.isColliding(gold)) {
             this.gold ++;
-            gold.y -= 800;
+            gold.y = -800;
+            this.coinbar.setPercantage(this.gold)
          console.log(this.gold);
         };
       });
@@ -117,7 +120,8 @@ checkCollisionsPoison() {
     this.level.poison.forEach((flask) =>{
     if( this.char.isColliding(flask)) {
         this.poison ++;
-        flask.y -= 800;
+        flask.y = -800;
+        this.poisonbar.setPercantage(this.poison)
      console.log(this.poison);
     };
   });
@@ -183,6 +187,8 @@ checkCollisionsPoison() {
 
         this.ctx.translate(-this.camera_x, 0);
         this.addToWorld(this.healthbar);
+        this.addToWorld(this.coinbar);
+        this.addToWorld(this.poisonbar);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToWorld(this.bubbles);
