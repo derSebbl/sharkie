@@ -35,6 +35,23 @@ class Character extends movableObject {
         'img/1.Sharkie/1.IDLE/18.png',
     ];
 
+    IMAGES_IDLE_LONG = [
+        'img/1.Sharkie/2.Long_IDLE/i1.png',
+        'img/1.Sharkie/2.Long_IDLE/i2.png',
+        'img/1.Sharkie/2.Long_IDLE/i3.png',
+        'img/1.Sharkie/2.Long_IDLE/i4.png',
+        'img/1.Sharkie/2.Long_IDLE/i5.png',
+        'img/1.Sharkie/2.Long_IDLE/i6.png',
+        'img/1.Sharkie/2.Long_IDLE/i7.png',
+        'img/1.Sharkie/2.Long_IDLE/i8.png',
+        'img/1.Sharkie/2.Long_IDLE/i9.png',
+        'img/1.Sharkie/2.Long_IDLE/i10.png',
+        'img/1.Sharkie/2.Long_IDLE/i11.png',
+        'img/1.Sharkie/2.Long_IDLE/i12.png',
+        'img/1.Sharkie/2.Long_IDLE/i13.png',
+        'img/1.Sharkie/2.Long_IDLE/i14.png',
+    ];
+
     IMAGES_SWIM = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -98,6 +115,7 @@ class Character extends movableObject {
         super().loadImg('img/1.Sharkie/3.Swim/1.png');
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_IDLE_LONG);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HIT_PUFFER);
         this.loadImages(this.IMAGES_HIT_JELLY);
@@ -110,7 +128,7 @@ class Character extends movableObject {
 
 
     animate() {
-
+        let a = 0;
         setInterval(() =>{
             this.swim_sound.pause();
 
@@ -147,6 +165,10 @@ class Character extends movableObject {
        
         setInterval(() => {
 
+        if(a > 50){
+            this.playAnimation(this.IMAGES_IDLE_LONG);
+        }
+
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
                 this.hitByPufferFish();
         }
@@ -181,7 +203,8 @@ class Character extends movableObject {
         else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
-
+        a++;
+        console.log(a);
     }, 120);
 };
 
