@@ -133,18 +133,21 @@ class Character extends movableObject {
             this.swim_sound.pause();
 
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
+                a = 0;
                 this.moveRight();
                 this.swim_sound.play();
             };
 
 
             if (this.World.keyboard.LEFT && this.x > -100){
+                a = 0;
                 this.moveLeft();
                 this.swim_sound.play();
             };
 
 
             if (this.World.keyboard.UP){
+                a = 0;
                 this.swim_sound.play();
                 if(this.y === -113){return this.World.camera_x = -this.x;}
                 else{
@@ -153,6 +156,7 @@ class Character extends movableObject {
 
 
             if (this.World.keyboard.DOWN){
+                a = 0;
                 this.swim_sound.play();
                 if(this.y === 277){return this.World.camera_x = -this.x;}
                 else{
@@ -165,21 +169,19 @@ class Character extends movableObject {
        
         setInterval(() => {
 
-        if(a > 50){
-            this.playAnimation(this.IMAGES_IDLE_LONG);
-        }
-
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
-                this.hitByPufferFish();
+            a = 0;
+            this.hitByPufferFish();
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
-                this.hitByJellyFish();
+            a = 0;
+            this.hitByJellyFish();
         }
 
         else if (this.isDead() && this.World.dead == false) { 
-        this.deadAnimation();
-        this.World.dead = true;
+            this.deadAnimation();
+            this.World.dead = true;
         }
 
         else if(this.World.dead === true){
@@ -193,16 +195,23 @@ class Character extends movableObject {
         else if (this.World.keyboard.SPACE) {
             this.World.bubbleBuild = true;
             this.blubShoot();
+            a = 0;
         }
 
         else if (this.World.keyboard.D) {
             this.finSlap();
             this.World.slap = true;
             this.FrameWidth = 200;
+            a = 0;
         }
-        else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false) {
+        else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false && a < 70) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
+
+        else if((this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false && a > 70)){
+            this.playAnimation(this.IMAGES_IDLE_LONG);
+        }
+
         a++;
         console.log(a);
     }, 120);
