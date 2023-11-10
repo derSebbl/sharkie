@@ -211,7 +211,9 @@ class Character extends movableObject {
         }
 
         else if (this.World.keyboard.F && this.World.poison >= 1) {
-            this.World.bubbleBuild = true;
+            this.World.poisonBuild = true;
+            this.World.poison -= 1;
+            this.World.poisonbar.setPercantage(this.World.poison)
             this.poisonShoot();
             a = 0;
         }
@@ -264,7 +266,7 @@ class Character extends movableObject {
                 loadedImagesCount++;
                 if (loadedImagesCount === this.IMAGES_BUILD_POISON_BUBBLE.length) {
                     this.World.poisonShot = true;
-                    this.World.bubbleBuild = false;
+                    this.World.poisonBuild = false;
                 }
             }, i * delayBetweenImages);
         }
