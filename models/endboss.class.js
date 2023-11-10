@@ -8,10 +8,10 @@ class endboss extends movableObject {
     World;
   
 
-    FrameX = 0;
+    FrameX = 1;
     FrameY = 170;
-    FrameWidth = 0;
-    FrameHeight = 0;
+    FrameWidth = 500;
+    FrameHeight = 600;
 
     boss_sound = new Audio('audio/Boss Music.mp3');
 

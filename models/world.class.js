@@ -13,6 +13,7 @@ class World {
     bubbleShot = false;
     poisonShot = false;
     bubbleBuild = false;
+    bossHit = 0;
     dead = false;
     slap = false;
     gold = 0;
@@ -154,10 +155,13 @@ checkBubbleHitBoss() {
     this.level.boss.forEach((enemy) =>{
         this.poisonBubbles.forEach((bubble) =>{
             if( bubble.isColliding(enemy) && this.poison > 0){
-                enemy.energy = -40;
+                this.bossHit ++;
                 bubble.y = -800;
                 this.poison --;
-            };
+            }
+            if(this.bossHit == 3){
+                enemy.y = -800;
+            }
         });
     });
 };
