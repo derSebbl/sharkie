@@ -113,9 +113,7 @@ class World {
         this.level.puffer.forEach((puffer) =>{
           if( this.char.isColliding(puffer) && this.slap){
            // puffer.y = -800;
-            puffer.hitAnEnemy();
-            this.hitBy = this.char;
-            console.log(puffer);
+           puffer.hitAnEnemy();
           };
         });
 };

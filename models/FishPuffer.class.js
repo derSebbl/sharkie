@@ -7,6 +7,8 @@ class FishPuffer extends movableObject {
     FrameWidth = 50;
     FrameHeight = 40;
 
+    isHit = false;
+
     IMAGES_SWIM = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim2.png',
@@ -44,6 +46,7 @@ class FishPuffer extends movableObject {
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_TRANSITION);
         this.loadImages(this.IMAGES_PUFFED);
+        this.loadImages(this.IMAGES_PUFFERDEAD);
 
         this.animate();
 
@@ -55,14 +58,6 @@ class FishPuffer extends movableObject {
     animate() {
         let e = 0
         setInterval(() => {
-
-            if(this.energy <= 0) {
-                this.playAnimation(this.IMAGES_PUFFERDEAD);
-            }
-
-            if(this.energy == 0){
-                this.playAnimation(this.IMAGES_PUFFERDEAD);
-            };
 
             if(e > 16 && e < 20){
                 this.pufferFishTransition();
@@ -96,8 +91,16 @@ class FishPuffer extends movableObject {
 
     
     setInterval(() => {
+        if(this.isHit == false){
         this.moveLeft();
         this.otherDirection = false;
+        }
+
+        if(this.isHit == true){
+            this.playAnimation(this.IMAGES_PUFFERDEAD);
+            this.y -= 3;
+            this.x += 6;
+        }
     }, 1000/60);
 };
 
@@ -116,6 +119,13 @@ pufferFishPuffed(){
 pufferFishNormal(){
     this.playAnimation(this.IMAGES_SWIM);
     this.FrameHeight = 40;
+};
+
+
+hitAnEnemy() {
+    this.energy -= 100;
+    this.isHit = true;
+    console.log('hitAnEnemy wird ausgeführt');
 };
 
 }
