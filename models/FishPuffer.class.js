@@ -55,6 +55,7 @@ class FishPuffer extends movableObject {
     animate() {
         let e = 0
         setInterval(() => {
+
             if(e > 16 && e < 20){
                 this.pufferFishTransition();
             }

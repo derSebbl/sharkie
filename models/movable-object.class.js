@@ -36,8 +36,7 @@ class movableObject extends drawableObjects {
         }
     };
 
-
-
+    
     isDead() {
         return this.energy == 0;
     };
