@@ -42,6 +42,7 @@ class World {
         this.checkCollisionsCoin();
         this.checkCollisionsPoison();
         this.checkCollisionsSlap();
+        this.checkCollisionsBubble();
         this.shootBubbles();
     }, 200);
     };
@@ -123,6 +124,18 @@ checkCollisionsPoison() {
         this.poisonbar.setPercantage(this.poison)
     };
   });
+};
+
+
+checkCollisionsBubble() {
+    this.level.jelly.forEach((enemy) =>{
+        this.bubbles.forEach((bubble) =>{
+            if( bubble.isColliding(enemy)){
+                enemy.y = -800;
+                bubble.y = -800;
+            };
+        });
+    });
 };
 
 
