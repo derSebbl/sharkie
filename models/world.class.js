@@ -33,6 +33,19 @@ class World {
     };
 
 
+
+    run(){
+        setInterval(() => {
+        this.checkCollisionsPuffer();
+        this.checkCollisionsJelly();
+        this.checkCollisionsBoss();
+        this.checkCollisionsCoin();
+        this.checkCollisionsPoison();
+        this.checkCollisionsSlap();
+        this.shootBubbles();
+    }, 200);
+    };
+
     setWorld() {
         this.char.World = this;
     };
@@ -43,21 +56,10 @@ class World {
             this.bubbles.push(blub);
             this.bubbleShot = false;
         }
+        //console.log(this.bubbles);
     }; 
 
 
-    run(){
-        setInterval(() => {
-        this.checkCollisionsPuffer();
-        this.checkCollisionsJelly();
-        this.checkCollisionsBoss();
-        this.checkCollisionsCoin();
-        this.checkCollisionsPoison();
-        this.checkCollisionsSlap();
-        //this.checkCollisionsBubble();
-        this.shootBubbles();
-    }, 200);
-    };
 
 
     checkCollisionsPuffer() {
@@ -66,7 +68,6 @@ class World {
                this.char.hit();
                this.healthbar.setPercantage(this.char.energy);
                this.hitBy = enemy;
-               console.log(this.char.energy, this.hitBy);
               };
             });
     };
@@ -78,7 +79,6 @@ class World {
              this.char.hit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;
-             console.log(this.char.energy, this.hitBy);
             };
           });
     };
@@ -90,7 +90,6 @@ class World {
              this.char.hit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;
-             console.log(this.char.energy, this.hitBy);
             };
           });
     };
@@ -111,7 +110,6 @@ class World {
             this.gold ++;
             gold.y = -800;
             this.coinbar.setPercantage(this.gold)
-         console.log(this.gold);
         };
       });
 };
@@ -123,22 +121,9 @@ checkCollisionsPoison() {
         this.poison ++;
         flask.y = -800;
         this.poisonbar.setPercantage(this.poison)
-     console.log(this.poison);
     };
   });
 };
-
-
-/*checkCollisionsBubble() {
-    this.level.enemies.forEach((Jelly) =>{
-        if( bubble.isColliding(Jelly)) {
-         console.log('buublehit');
-        };
-      });
-}; */
-
-
-
 
 
     addToWorld(object) {

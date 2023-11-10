@@ -213,7 +213,6 @@ class Character extends movableObject {
         }
 
         a++;
-        console.log(a);
     }, 120);
 };
 

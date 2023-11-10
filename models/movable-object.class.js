@@ -28,7 +28,6 @@ class movableObject extends drawableObjects {
 
     isDead() {
         return this.energy == 0;
-        this.otherDirection = false;
     };
 
 
