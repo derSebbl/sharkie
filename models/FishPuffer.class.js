@@ -56,6 +56,14 @@ class FishPuffer extends movableObject {
         let e = 0
         setInterval(() => {
 
+            if(this.energy <= 0) {
+                this.playAnimation(this.IMAGES_PUFFERDEAD);
+            }
+
+            if(this.energy == 0){
+                this.playAnimation(this.IMAGES_PUFFERDEAD);
+            };
+
             if(e > 16 && e < 20){
                 this.pufferFishTransition();
             }

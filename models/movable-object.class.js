@@ -26,6 +26,17 @@ class movableObject extends drawableObjects {
     };
 
 
+    hitAnEnemy() {
+        this.energy -= 100;
+        if (this.energy < 0){
+            this.energy = 0;
+        } 
+        else {
+            this.lastHit = new Date().getTime();
+        }
+    };
+
+
     bossHit() {
         this.energy -= 20;
         if (this.energy < 0){
