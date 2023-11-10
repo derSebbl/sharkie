@@ -89,6 +89,11 @@ class Character extends movableObject {
         'img/1.Sharkie/5.Hurt/2.Electric shock/3.png',
     ];
 
+    IMAGES_HIT_BOSS = [
+        'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+    ];
+
     IMAGES_BUILD_BUBBLE = [
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
@@ -130,6 +135,7 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HIT_PUFFER);
         this.loadImages(this.IMAGES_HIT_JELLY);
+        this.loadImages(this.IMAGES_HIT_BOSS);
         this.loadImages(this.IMAGES_BUILD_BUBBLE);
         this.loadImages(this.IMAGES_BUILD_POISON_BUBBLE);
         this.loadImages(this.IMAGES_FIN_SLAP);
@@ -184,6 +190,11 @@ class Character extends movableObject {
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
             a = 0;
             this.hitByPufferFish();
+        }
+
+        else if (this.isHurt() && this.World.hitBy instanceof endboss) {
+            a = 0;
+            this.playAnimation(this.IMAGES_HIT_BOSS);
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
