@@ -109,10 +109,21 @@ class Character extends movableObject {
         'img/1.Sharkie/4.Attack/Fin slap/8.png',
     ];
 
+    IMAGES_BUILD_POISON_BUBBLE = [
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png',
+    ];
+
 
 
     constructor() {
-        super().loadImg('img/1.Sharkie/3.Swim/1.png');
+        super().loadImg('img/1.Sharkie/1.IDLE/1.png');
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_IDLE_LONG);
@@ -120,6 +131,7 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_HIT_PUFFER);
         this.loadImages(this.IMAGES_HIT_JELLY);
         this.loadImages(this.IMAGES_BUILD_BUBBLE);
+        this.loadImages(this.IMAGES_BUILD_POISON_BUBBLE);
         this.loadImages(this.IMAGES_FIN_SLAP);
 
         this.animate();
@@ -198,17 +210,24 @@ class Character extends movableObject {
             a = 0;
         }
 
+        else if (this.World.keyboard.F && this.World.poison >= 1) {
+            this.World.bubbleBuild = true;
+            this.poisonShoot();
+            a = 0;
+        }
+
         else if (this.World.keyboard.D) {
             this.finSlap();
             this.World.slap = true;
             this.FrameWidth = 200;
             a = 0;
         }
-        else if(this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false && a < 70) {
+
+        else if(a < 70) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 
-        else if((this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN || this.World.dead === false && this.World.bubbleBuild === false && this.World.slap === false && a > 70)){
+        else if(a > 70){
             this.playAnimation(this.IMAGES_IDLE_LONG);
         }
 
@@ -229,6 +248,22 @@ class Character extends movableObject {
                 loadedImagesCount++;
                 if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length) {
                     this.World.bubbleShot = true;
+                    this.World.bubbleBuild = false;
+                }
+            }, i * delayBetweenImages);
+        }
+    };
+
+
+    poisonShoot() { 
+        const delayBetweenImages = 80;
+        let loadedImagesCount = 1;
+        for (let i = 1; i < this.IMAGES_BUILD_POISON_BUBBLE.length; i++) {
+            setTimeout(() => {
+                this.loadImg(this.IMAGES_BUILD_POISON_BUBBLE[i]);
+                loadedImagesCount++;
+                if (loadedImagesCount === this.IMAGES_BUILD_POISON_BUBBLE.length) {
+                    this.World.poisonShot = true;
                     this.World.bubbleBuild = false;
                 }
             }, i * delayBetweenImages);

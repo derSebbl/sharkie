@@ -33,6 +33,10 @@ window.addEventListener('keyup', (e) => {
     if (e.keyCode == 68) {
         Kboard.D = false;
     }; 
+
+    if (e.keyCode == 70) {
+        Kboard.F = false;
+    };
 });
 
 window.addEventListener('keydown', (e) => {
@@ -59,4 +63,8 @@ window.addEventListener('keydown', (e) => {
     if (e.keyCode == 68) {
         Kboard.D = true;
     }; 
+
+    if (e.keyCode == 70) {
+        Kboard.F = true;
+    };
 });

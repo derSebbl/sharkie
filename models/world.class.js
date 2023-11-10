@@ -9,7 +9,9 @@ class World {
     coinbar = new coinBar;
     poisonbar = new poisonBar;
     bubbles = [];
+    poisonBubbles = [];
     bubbleShot = false;
+    poisonShot = false;
     bubbleBuild = false;
     dead = false;
     slap = false;
@@ -43,7 +45,9 @@ class World {
         this.checkCollisionsPoison();
         this.checkCollisionsSlap();
         this.checkCollisionsBubble();
+        this.checkBubbleHitBoss();
         this.shootBubbles();
+        this. shootPoison();
     }, 200);
     };
 
@@ -57,7 +61,14 @@ class World {
             this.bubbles.push(blub);
             this.bubbleShot = false;
         }
-        //console.log(this.bubbles);
+    }; 
+
+    shootPoison() {
+        if (this.poisonShot == true){
+            let blub = new poisonBubble(this.char.x + 200, this.char.y +150);
+            this.poisonBubbles.push(blub);
+            this.poisonShot = false;
+        }
     }; 
 
 
@@ -139,6 +150,20 @@ checkCollisionsBubble() {
 };
 
 
+checkBubbleHitBoss() {
+    this.level.boss.forEach((enemy) =>{
+        this.poisonBubbles.forEach((bubble) =>{
+            if( bubble.isColliding(enemy) && this.poison > 0){
+                enemy.energy = -40;
+                bubble.y = -800;
+                this.poison --;
+            };
+        });
+    });
+};
+
+
+
     addToWorld(object) {
         if(object.otherDirection){
             this.flipImage(object);
@@ -191,6 +216,7 @@ checkCollisionsBubble() {
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToWorld(this.bubbles);
+        this.addObjectsToWorld(this.poisonBubbles);
         this.addToWorld(this.char);
         this.addObjectsToWorld(this.level.puffer);
         this.addObjectsToWorld(this.level.jelly);
