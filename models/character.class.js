@@ -4,6 +4,10 @@ class Character extends movableObject {
     FrameY = 120;
     FrameWidth = 150;
     FrameHeight = 65;
+
+    bubbleBuild = false;
+    poisonBuild = false;
+    slapping = false;
     
     World;
 
@@ -216,7 +220,6 @@ class Character extends movableObject {
         } 
 
         else if (this.World.keyboard.SPACE) {
-            this.World.bubbleBuild = true;
             this.blubShoot();
             a = 0;
         }
@@ -236,7 +239,7 @@ class Character extends movableObject {
             a = 0;
         }
 
-        else if(a < 70) {
+        else if(a < 70 && this.bubbleBuild == false && this.poisonBuild == false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 
@@ -253,15 +256,21 @@ class Character extends movableObject {
 
 
     blubShoot() {
-        const delayBetweenImages = 80;
-        let loadedImagesCount = 1;
-        for (let i = 1; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
+        if(this.bubbleBuild == true) {
+            return
+        }
+
+        this.bubbleBuild = true;
+    
+        const delayBetweenImages = 40;
+        let loadedImagesCount = 0;
+        for (let i = 0; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
             setTimeout(() => {
                 this.loadImg(this.IMAGES_BUILD_BUBBLE[i]);
                 loadedImagesCount++;
                 if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length) {
+                    this.bubbleBuild = false;
                     this.World.bubbleShot = true;
-                    this.World.bubbleBuild = false;
                 }
             }, i * delayBetweenImages);
         }
@@ -269,15 +278,21 @@ class Character extends movableObject {
 
 
     poisonShoot() { 
-        const delayBetweenImages = 80;
-        let loadedImagesCount = 1;
-        for (let i = 1; i < this.IMAGES_BUILD_POISON_BUBBLE.length; i++) {
+        if(this.poisonBuild == true) {
+            return
+        }
+
+        this.poisonBuild = true;
+
+        const delayBetweenImages = 40;
+        let loadedImagesCount = 0;
+        for (let i = 0; i < this.IMAGES_BUILD_POISON_BUBBLE.length; i++) {
             setTimeout(() => {
                 this.loadImg(this.IMAGES_BUILD_POISON_BUBBLE[i]);
                 loadedImagesCount++;
                 if (loadedImagesCount === this.IMAGES_BUILD_POISON_BUBBLE.length) {
                     this.World.poisonShot = true;
-                    this.World.poisonBuild = false;
+                    this.poisonBuild = false;
                 }
             }, i * delayBetweenImages);
         }
@@ -298,6 +313,11 @@ class Character extends movableObject {
 
 
     finSlap(){
+        if(this.slapping == true) {
+            return
+        }
+        this.slapping = true;
+
         const delayBetweenImages = 80;
         let loadedImagesCount = 0;
         for (let i = 1; i < this.IMAGES_FIN_SLAP.length; i++) {
@@ -308,6 +328,7 @@ class Character extends movableObject {
                     this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
                     this.World.slap = false;
                     this.FrameWidth = 150;
+                    this.slapping = false;
                 }
             }, i * delayBetweenImages);
         }

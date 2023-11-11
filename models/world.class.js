@@ -13,7 +13,6 @@ class World {
     poisonBubbles = [];
     bubbleShot = false;
     poisonShot = false;
-    bubbleBuild = false;
     poisonBuild = false;
     bossHit = 0;
     dead = false;
