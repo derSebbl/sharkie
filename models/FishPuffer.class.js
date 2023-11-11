@@ -59,29 +59,18 @@ class FishPuffer extends movableObject {
         let e = 0
         setInterval(() => {
 
-            if(e > 16 && e < 20){
+            if(e > 16 && e < 18){
                 this.pufferFishTransition();
             }
 
-           else if(e > 20 && e < 45){
+           else if(e > 18 && e < 45){
                 this.pufferFishPuffed();
+        
             } 
 
-            else if(e > 67 && e < 70){
-                this.pufferFishTransition();
+            else if(e > 46){
+                e = 0;
             }
-
-            else if (e > 70 && e < 95){
-                this.pufferFishPuffed();
-            } 
-
-            else if(e > 120 && e < 123){
-                this.pufferFishTransition();
-            }
-
-            else if (e > 123 && e < 150){
-                this.pufferFishPuffed();
-            } 
 
             else {
                 this.pufferFishNormal();

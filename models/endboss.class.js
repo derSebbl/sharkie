@@ -49,6 +49,15 @@ class endboss extends movableObject {
         'img/2.Enemy/3 Final Enemy/1.Introduce/10.png',
     ];
 
+    IMAGES_ATTACK = [
+        'img/2.Enemy/3 Final Enemy/Attack/1.png',
+        'img/2.Enemy/3 Final Enemy/Attack/2.png',
+        'img/2.Enemy/3 Final Enemy/Attack/3.png',
+        'img/2.Enemy/3 Final Enemy/Attack/4.png',
+        'img/2.Enemy/3 Final Enemy/Attack/5.png',
+        'img/2.Enemy/3 Final Enemy/Attack/6.png',
+    ];
+
     IMAGES_HIT = [
         'img/2.Enemy/3 Final Enemy/Hurt/1.png',
         'img/2.Enemy/3 Final Enemy/Hurt/2.png',
@@ -70,6 +79,7 @@ class endboss extends movableObject {
     constructor() {
         super().loadImg(this.IMAGES_INTRODUCE[0]);
         this.loadImages(this.IMAGES_SWIM);
+        this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_INTRODUCE);
         this.loadImages(this.IMAGES_HIT);
         this.loadImages(this.IMAGES_DEAD);
@@ -95,6 +105,11 @@ class endboss extends movableObject {
                 this.boss_sound.play();
             } 
 
+            if(this.firstContact && this.isHit == false && this.isDead == false && i > 60 && i < 66) {
+                this.attackAnimation();
+                i = 8;
+            }
+
             i++;
     }, 180) 
     setInterval(() => { 
@@ -108,7 +123,7 @@ class endboss extends movableObject {
             this.boss_sound.pause();
         }
 
-    }, 300);  
+    }, 180);  
 
 };
 
@@ -118,7 +133,7 @@ hitAnEnemy() {
 
 
 hitAnimation() {
-    const delayBetweenImages = 80;
+    const delayBetweenImages = 60;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_HIT.length; i++) {
         setTimeout(() => {
@@ -133,7 +148,7 @@ hitAnimation() {
 
 
 deadAnimation() {
-    const delayBetweenImages = 80;
+    const delayBetweenImages = 90;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_DEAD.length; i++) {
         setTimeout(() => {
@@ -142,6 +157,18 @@ deadAnimation() {
             if (loadedImagesCount === this.IMAGES_DEAD.length) {
                 this.isDead = false;
             }
+        }, i * delayBetweenImages);
+    }
+};
+
+
+attackAnimation() {
+    const delayBetweenImages = 200;
+    let loadedImagesCount = 0;
+    for (let i = 0; i < this.IMAGES_ATTACK.length; i++) {
+        setTimeout(() => {
+            this.loadImg(this.IMAGES_ATTACK[i]);
+            loadedImagesCount++;
         }, i * delayBetweenImages);
     }
 };

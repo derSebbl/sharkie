@@ -23,10 +23,10 @@ class jellyFish extends movableObject {
         ];
 
     IMAGES_DEAD = [
-        'img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png',
-        'img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png',
-        'img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png',
-        'img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png',
     ];
 
 
@@ -53,13 +53,14 @@ class jellyFish extends movableObject {
                 this.playAnimation(this.IMAGES_ELEKTRO);
             }
 
-            else if(e > 60 && e < 85) {
-                this.playAnimation(this.IMAGES_ELEKTRO);
+            else if(e > 41) {
+               e = 0;
             }
 
             else {
             this.playAnimation(this.IMAGES_SWIM);
             }
+
             e++
         }, 200);
 
