@@ -122,6 +122,7 @@ class endboss extends movableObject {
         if(this.isDead == true && this.isHit == true) {
             this.deadAnimation();
             this.boss_sound.pause();
+            i = 52;
         }
 
     }, 180);  

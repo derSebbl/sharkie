@@ -22,6 +22,7 @@ class World {
     
 
     
+    
 
     char = new Character();
 
@@ -38,6 +39,7 @@ class World {
 
 
     run(){
+
         setInterval(() => {
         this.checkCollisionsPuffer();
         this.checkCollisionsJelly();
@@ -161,7 +163,7 @@ checkBubbleHitBoss() {
                 bubble.y = -800;
                 enemy.hitAnEnemy();
             }
-            if(this.bossHit >= 5){
+            if(this.bossHit >= 3){
                 enemy.isDead = true;
             }
         });

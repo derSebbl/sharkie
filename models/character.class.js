@@ -12,6 +12,9 @@ class Character extends movableObject {
     World;
 
     swim_sound = new Audio('audio/Water Splash.mp3');
+    world_sound = new Audio('audio/Gamesound.mp3');
+    bubble_sound = new Audio('audio/Bubble.mp3');
+    slap_sound = new Audio('audio/Finslap.mp3');
 
     y = 10;
     x = 0;
@@ -153,6 +156,8 @@ class Character extends movableObject {
         let a = 0;
         setInterval(() =>{
             this.swim_sound.pause();
+            this.world_sound.volume = 0.3;
+            this.world_sound.play();
 
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
                 a = 0;
@@ -192,6 +197,10 @@ class Character extends movableObject {
                 this.World.coinbar.setPercantage(this.World.gold);
             };
 
+            if(this.x > 3050){
+                this.world_sound.pause();
+            }
+
             this.World.camera_x = -this.x;
         }, 1000 / 60);
 
@@ -228,6 +237,7 @@ class Character extends movableObject {
 
         else if (this.World.keyboard.SPACE) {
             this.blubShoot();
+            this.bubble_sound.play();
             a = 0;
         }
 
@@ -241,6 +251,7 @@ class Character extends movableObject {
 
         else if (this.World.keyboard.D) {
             this.finSlap();
+            this.slap_sound.play();
             this.World.slap = true;
             this.FrameWidth = 200;
             a = 0;

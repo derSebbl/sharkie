@@ -9,6 +9,8 @@ class FishPuffer extends movableObject {
 
     isHit = false;
 
+    hit_sound = new Audio('audio/PufferHit.mp3');
+
     IMAGES_SWIM = [
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim2.png',
@@ -82,9 +84,12 @@ class FishPuffer extends movableObject {
     
     setInterval(() => {
 
+       
+
         if(this.isHit == false){
         this.moveLeft();
         this.otherDirection = false;
+        this.hit_sound.pause();
         }
 
         if(this.isHit == true){
@@ -117,6 +122,7 @@ pufferFishNormal(){
 hitAnEnemy() {
     this.energy -= 100;
     this.isHit = true;
+    this.hit_sound.play();
 };
 
 }

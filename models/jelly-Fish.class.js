@@ -9,6 +9,8 @@ class jellyFish extends movableObject {
 
     isHit = false;
 
+    hit_sound = new Audio('audio/Jellyhit.mp3');
+
     IMAGES_SWIM = [
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png',
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 2.png',
@@ -78,5 +80,6 @@ class jellyFish extends movableObject {
     hitAnEnemy() {
         this.energy -= 100;
         this.isHit = true;
+        this.hit_sound.play();
     };
 }
