@@ -78,7 +78,7 @@ class World {
 
     checkCollisionsPuffer() {
             this.level.puffer.forEach((enemy) =>{
-              if( this.char.isColliding(enemy) && !this.slap){
+              if( this.char.isColliding(enemy) && !this.slap && enemy.isHit == false){
                this.char.hit();
                this.healthbar.setPercantage(this.char.energy);
                this.hitBy = enemy;
@@ -89,7 +89,7 @@ class World {
 
     checkCollisionsJelly() {
         this.level.jelly.forEach((enemy) =>{
-            if( this.char.isColliding(enemy) && !this.slap){
+            if( this.char.isColliding(enemy) && !this.slap && enemy.isHit == false){
              this.char.hit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;
@@ -112,7 +112,6 @@ class World {
     checkCollisionsSlap() {
         this.level.puffer.forEach((puffer) =>{
           if( this.char.isColliding(puffer) && this.slap){
-           // puffer.y = -800;
            puffer.hitAnEnemy();
           };
         });
@@ -142,10 +141,10 @@ checkCollisionsPoison() {
 
 
 checkCollisionsBubble() {
-    this.level.jelly.forEach((enemy) =>{
+    this.level.jelly.forEach((jelly) =>{
         this.bubbles.forEach((bubble) =>{
-            if( bubble.isColliding(enemy)){
-                enemy.y = -800;
+            if( bubble.isColliding(jelly)){
+                jelly.hitAnEnemy();
                 bubble.y = -800;
             };
         });

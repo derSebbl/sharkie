@@ -7,6 +7,8 @@ class jellyFish extends movableObject {
     FrameWidth = 70;
     FrameHeight = 70;
 
+    isHit = false;
+
     IMAGES_SWIM = [
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png',
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 2.png',
@@ -20,10 +22,20 @@ class jellyFish extends movableObject {
         'img/2.Enemy/2 Jelly fish/S｣per dangerous/Green 3.png',
         ];
 
+    IMAGES_DEAD = [
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png',
+    ];
+
+
     constructor() {
         super().loadImg('img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim1.png');
         this.loadImages(this.IMAGES_SWIM);
         this.loadImages(this.IMAGES_ELEKTRO);
+        this.loadImages(this.IMAGES_DEAD);
+
 
         this.animate();
 
@@ -49,7 +61,21 @@ class jellyFish extends movableObject {
             this.playAnimation(this.IMAGES_SWIM);
             }
             e++
-    }, 280);
-};
+        }, 200);
 
+        setInterval(() => { 
+
+            if(this.isHit == true) {
+            this.playAnimation(this.IMAGES_DEAD);
+            e = 100;
+            }
+
+        }, 100);
+
+    };
+
+    hitAnEnemy() {
+        this.energy -= 100;
+        this.isHit = true;
+    };
 }

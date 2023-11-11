@@ -86,21 +86,24 @@ class FishPuffer extends movableObject {
             else {
                 this.pufferFishNormal();
             }
+
             e++
     }, 280);
 
     
     setInterval(() => {
+
         if(this.isHit == false){
         this.moveLeft();
         this.otherDirection = false;
         }
 
         if(this.isHit == true){
-            this.playAnimation(this.IMAGES_PUFFERDEAD);
-            this.y -= 3;
-            this.x += 6;
+            this.loadImg('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png');
+            this.y -= 9;
+            this.x += 5;
         }
+
     }, 1000/60);
 };
 
@@ -125,7 +128,6 @@ pufferFishNormal(){
 hitAnEnemy() {
     this.energy -= 100;
     this.isHit = true;
-    console.log('hitAnEnemy wird ausgeführt');
 };
 
 }
