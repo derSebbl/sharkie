@@ -148,7 +148,7 @@ hitAnimation() {
 
 
 deadAnimation() {
-    const delayBetweenImages = 90;
+    const delayBetweenImages = 80;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_DEAD.length; i++) {
         setTimeout(() => {

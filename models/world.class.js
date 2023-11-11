@@ -8,6 +8,7 @@ class World {
     healthbar = new healthBar;
     coinbar = new coinBar;
     poisonbar = new poisonBar;
+    endscreen = new endscreen;
     bubbles = [];
     poisonBubbles = [];
     bubbleShot = false;
@@ -160,7 +161,7 @@ checkBubbleHitBoss() {
                 bubble.y = -800;
                 enemy.hitAnEnemy();
             }
-            if(this.bossHit == 3){
+            if(this.bossHit >= 3){
                 enemy.isDead = true;
             }
         });
@@ -218,6 +219,7 @@ checkBubbleHitBoss() {
         this.addToWorld(this.healthbar);
         this.addToWorld(this.coinbar);
         this.addToWorld(this.poisonbar);
+        this.addToWorld(this.endscreen);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToWorld(this.bubbles);
@@ -238,5 +240,4 @@ checkBubbleHitBoss() {
             self.draw();
         });
     };
-
 };
