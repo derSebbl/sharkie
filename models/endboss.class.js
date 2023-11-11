@@ -10,6 +10,7 @@ class endboss extends movableObject {
     isHit = false;
     isDead = false;
     firstContact = false;
+    attacking = false;
     
   
 
@@ -105,7 +106,7 @@ class endboss extends movableObject {
                 this.boss_sound.play();
             } 
 
-            if(this.firstContact && this.isHit == false && this.isDead == false && i > 60 && i < 66) {
+            if(this.firstContact && this.attacking == false && i > 45 && i < 51) {
                 this.attackAnimation();
                 i = 8;
             }
@@ -163,12 +164,20 @@ deadAnimation() {
 
 
 attackAnimation() {
-    const delayBetweenImages = 200;
+    if(this.attacking == true) {
+        return;}
+
+    this.attacking = true;
+
+    const delayBetweenImages = 400;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_ATTACK.length; i++) {
         setTimeout(() => {
             this.loadImg(this.IMAGES_ATTACK[i]);
             loadedImagesCount++;
+            if (loadedImagesCount === this.IMAGES_ATTACK.length) {
+                this.attacking = false;
+            }
         }, i * delayBetweenImages);
     }
 };

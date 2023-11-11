@@ -161,7 +161,7 @@ checkBubbleHitBoss() {
                 bubble.y = -800;
                 enemy.hitAnEnemy();
             }
-            if(this.bossHit >= 3){
+            if(this.bossHit >= 5){
                 enemy.isDead = true;
             }
         });
