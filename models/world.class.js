@@ -22,7 +22,7 @@ class World {
     
 
     
-    
+    electric_sound = new Audio('audio/Electric.mp3');
 
     char = new Character();
 
@@ -96,6 +96,7 @@ class World {
              this.char.hit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;
+             this.electric_sound.play();
             };
           });
     };

@@ -201,6 +201,7 @@ class Character extends movableObject {
                 this.world_sound.pause();
             }
 
+
             this.World.camera_x = -this.x;
         }, 1000 / 60);
 
