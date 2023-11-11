@@ -13,7 +13,6 @@ class World {
     poisonBubbles = [];
     bubbleShot = false;
     poisonShot = false;
-    poisonBuild = false;
     bossHit = 0;
     dead = false;
     slap = false;
@@ -52,6 +51,8 @@ class World {
         this. shootPoison();
     }, 200);
     };
+
+
 
     setWorld() {
         this.char.World = this;
@@ -237,6 +238,6 @@ checkBubbleHitBoss() {
         let self = this;
         requestAnimationFrame(function() {
             self.draw();
-        });
+        }); 
     };
 };

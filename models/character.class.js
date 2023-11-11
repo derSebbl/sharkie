@@ -185,6 +185,13 @@ class Character extends movableObject {
                 this.moveDown();
             }};
 
+            if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
+                this.World.gold -= 4;
+                this.World.poison += 1;
+                this.World.poisonbar.setPercantage(this.World.poison);
+                this.World.coinbar.setPercantage(this.World.gold);
+            };
+
             this.World.camera_x = -this.x;
         }, 1000 / 60);
 
@@ -239,7 +246,7 @@ class Character extends movableObject {
             a = 0;
         }
 
-        else if(a < 70 && this.bubbleBuild == false && this.poisonBuild == false) {
+        else if(a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 

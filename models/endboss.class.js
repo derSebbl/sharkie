@@ -114,11 +114,11 @@ class endboss extends movableObject {
     }, 180) 
     setInterval(() => { 
 
-        if(this.isHit == true) {
+        if(this.isHit == true && this.isDead == false) {
         this.hitAnimation();
         }
 
-        if(this.isDead == true && this.isHit == true){
+        if(this.isDead == true && this.isHit == true) {
             this.deadAnimation();
             this.boss_sound.pause();
         }
@@ -155,7 +155,7 @@ deadAnimation() {
             this.loadImg(this.IMAGES_DEAD[i]);
             loadedImagesCount++;
             if (loadedImagesCount === this.IMAGES_DEAD.length) {
-                this.isDead = false;
+                this.isHit = false;
             }
         }, i * delayBetweenImages);
     }
