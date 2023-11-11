@@ -143,7 +143,7 @@ checkCollisionsPoison() {
 checkCollisionsBubble() {
     this.level.jelly.forEach((jelly) =>{
         this.bubbles.forEach((bubble) =>{
-            if( bubble.isColliding(jelly)){
+            if( bubble.isColliding(jelly) && jelly.isHit == false){
                 jelly.hitAnEnemy();
                 bubble.y = -800;
             };
@@ -158,9 +158,10 @@ checkBubbleHitBoss() {
             if( bubble.isColliding(enemy) && this.poison > 0){
                 this.bossHit ++;
                 bubble.y = -800;
+                enemy.hitAnEnemy();
             }
             if(this.bossHit == 3){
-                enemy.y = -800;
+                enemy.isDead = true;
             }
         });
     });

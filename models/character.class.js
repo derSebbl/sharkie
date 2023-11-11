@@ -194,7 +194,7 @@ class Character extends movableObject {
 
         else if (this.isHurt() && this.World.hitBy instanceof endboss) {
             a = 0;
-            this.playAnimation(this.IMAGES_HIT_BOSS);
+            this.hitByEndboss();
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
@@ -335,4 +335,10 @@ class Character extends movableObject {
     hitByJellyFish() {
         return this.playAnimation(this.IMAGES_HIT_JELLY);
     };
+
+    
+    hitByEndboss() {
+        return this.playAnimation(this.IMAGES_HIT_BOSS);
+    };
+
 }
