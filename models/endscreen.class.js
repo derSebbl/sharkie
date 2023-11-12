@@ -8,9 +8,6 @@ class endscreen extends drawableObjects {
         this.showEndscreen();
     }   
 
-
-
-
     showEndscreen() {
         setInterval(() => {
             if(World.BossDead == true){

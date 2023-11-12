@@ -209,7 +209,7 @@ class Character extends movableObject {
             a = 0;
             this.hitByPufferFish();
         }
-        
+
         else if (this.isHurt() && this.World.hitBy instanceof endboss) {
             a = 0;
             this.hitByEndboss();
@@ -369,7 +369,7 @@ class Character extends movableObject {
         this.deadAnimation();
         this.World.dead = true;
         this.SharkieDie_sound.play();
-        this.world_sound.pause();
+        this.world_sound.pause();  
     };
 
     shootPoisonBubble(){
