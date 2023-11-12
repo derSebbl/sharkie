@@ -21,7 +21,53 @@ span {
 
 canvas {
     background-color: black;
+    display: block;
 }
+
+#canvas-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 720px;
+    height: 480px;
+}
+
+#try-again-button {
+    position: absolute;
+    bottom: 30px;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+#try-again-button img {
+    width: 280px;
+    height: 80px;
+}
+#try-again-button:hover {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
