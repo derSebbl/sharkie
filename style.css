@@ -7,7 +7,7 @@ body {
     align-items: center;
     background-image: url(/img/Wallpaper/abstract-1779612_1920.png);
     background-repeat: no-repeat;
-    background-size:cover; 
+    background-size:auto; 
 }
 
 h3 {
