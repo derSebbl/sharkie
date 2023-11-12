@@ -122,10 +122,10 @@ class endboss extends movableObject {
         }
 
         if(this.bossHit == 3) {
-            this.deadAnimation();
             this.attacking = true;
             this.bossHit = 4;
             World.BossDead = true;
+            this.deadAnimation();
         }
 
     }, 180);  
@@ -168,6 +168,7 @@ deadAnimation() {
             loadedImagesCount++;
             if (loadedImagesCount === this.IMAGES_DEAD.length) {
                 this.isHit = false;
+                clearAllIntervals();
             }
         }, i * delayBetweenImages);
     }

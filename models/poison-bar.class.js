@@ -29,7 +29,7 @@ class poisonBar extends drawableObjects {
 
 
     setPercentIndex(){
-        if (this.percentage == 8) {
+        if (this.percentage >= 8) {
             return 5;
         }
         else if (this.percentage >= 6) {

@@ -4,22 +4,27 @@ class World {
     canvas;
     keyboard;
     camera_x;
+    hitBy;
+
     level = level1;
     healthbar = new healthBar;
     coinbar = new coinBar;
     poisonbar = new poisonBar;
     endscreen = new endscreen;
     endscreenDead = new endscreenLose;
+
     bubbles = [];
     poisonBubbles = [];
+
     bubbleShot = false;
     poisonShot = false;
     dead = false;
     slap = false;
     BossDead = false;
+
     gold = 0;
     poison = 0;
-    hitBy;
+    
     
 
     collectCoin_sound = new Audio('audio/collect Coin.mp3');
@@ -214,15 +219,7 @@ checkBubbleHitBoss() {
 
         this.ctx.translate(this.camera_x, 0);
 
-        
         this.addObjectsToWorld(this.level.BackgroundObjects);
-
-        this.ctx.translate(-this.camera_x, 0);
-        this.addToWorld(this.healthbar);
-        this.addToWorld(this.coinbar);
-        this.addToWorld(this.poisonbar);
-        this.addToWorld(this.endscreen);
-        this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToWorld(this.bubbles);
         this.addObjectsToWorld(this.poisonBubbles);
@@ -231,9 +228,18 @@ checkBubbleHitBoss() {
         this.addObjectsToWorld(this.level.boss);
         this.addObjectsToWorld(this.level.coin);
         this.addObjectsToWorld(this.level.poison);
-        this.addToWorld(this.endscreenDead);
         this.addToWorld(this.char);
-        
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToWorld(this.healthbar);
+        this.addToWorld(this.coinbar);
+        this.addToWorld(this.poisonbar);
+        this.ctx.translate(this.camera_x, 0);
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToWorld(this.endscreen);
+        this.addToWorld(this.endscreenDead);
+        this.ctx.translate(this.camera_x, 0);
 
         this.ctx.translate(-this.camera_x, 0);
         

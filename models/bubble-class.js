@@ -17,11 +17,7 @@ class bubble extends movableObject {
 
 throw() {
     setInterval(()=>{ 
-        if (this.otherDirection == false){
-        this.x += 5;}
-        else if (this.otherDirection == true){
-            this.x -= 5;
-        }
+        this.x += 5;
     }, 1000 / 60);
 };
 

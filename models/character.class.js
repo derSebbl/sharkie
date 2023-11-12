@@ -160,7 +160,7 @@ class Character extends movableObject {
         setInterval(() =>{
             this.swim_sound.pause();
 
-            if(this.World.dead === false){
+            if(this.World.dead === false) {
             this.world_sound.volume = 0.4;
             this.world_sound.play();
             }
@@ -169,74 +169,59 @@ class Character extends movableObject {
                 a = 0;
                 this.moveRight();
                 this.swim_sound.play();
-            };
-
+            }
 
             if (this.World.keyboard.LEFT && this.x > -100 && this.World.dead == false){
                 a = 0;
                 this.moveLeft();
                 this.swim_sound.play();
-            };
-
+            }
 
             if (this.World.keyboard.UP && this.World.dead == false){
                 a = 0;
                 this.swim_sound.play();
-                if(this.y === -113){return this.World.camera_x = -this.x;}
+                if(this.y === -113){this.World.camera_x = -this.x;}
                 else{
                 this.moveUp();
-            }};
-
+            }}
 
             if (this.World.keyboard.DOWN && this.World.dead == false){
                 a = 0;
                 this.swim_sound.play();
-                if(this.y === 277){return this.World.camera_x = -this.x;}
+                if(this.y === 277){this.World.camera_x = -this.x;}
                 else{
                 this.moveDown();
-            }};
+            }}
 
             if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
-                this.buy_sound.play();
-                this.World.gold -= 4;
-                this.World.poison += 1;
-                this.World.poisonbar.setPercantage(this.World.poison);
-                this.World.coinbar.setPercantage(this.World.gold);
-            };
+                this.buyPosion();
+            }
 
             if(this.x > 3050){
                 this.world_sound.pause();
             }
-
-
             this.World.camera_x = -this.x;
         }, 1000 / 60);
 
        
         setInterval(() => {
-
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
             a = 0;
             this.hitByPufferFish();
         }
-
+        
         else if (this.isHurt() && this.World.hitBy instanceof endboss) {
             a = 0;
             this.hitByEndboss();
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
-            this.electric_sound.pause();
             a = 0;
             this.hitByJellyFish();
-            this.electric_sound.play();
         }
 
         else if (this.isDead() && this.World.dead == false) { 
-            this.deadAnimation();
-            this.World.dead = true;
-            this.SharkieDie_sound.play();
-            this.world_sound.pause();
+            this.sharkieDead();
         }
 
         else if(this.World.dead === true){
@@ -248,25 +233,17 @@ class Character extends movableObject {
         } 
 
         else if (this.World.keyboard.SPACE) {
-            this.blubShoot();
-            this.bubble_sound.play();
+            this.shootBubble();
             a = 0;
         }
 
-        else if (this.World.keyboard.F && this.World.poison >= 1) {
-            this.World.poisonBuild = true;
-            this.World.poison -= 1;
-            this.World.poisonbar.setPercantage(this.World.poison)
-            this.poisonShoot();
-            this.bubble_sound.play();
+        else if (this.World.keyboard.F && this.World.poison >= 1 && this.x > 3000) {
+            this.shootPoisonBubble();
             a = 0;
         }
 
         else if (this.World.keyboard.D) {
-            this.finSlap();
-            this.slap_sound.play();
-            this.World.slap = true;
-            this.FrameWidth = 200;
+            this.slapFin();
             a = 0;
         }
 
@@ -277,14 +254,9 @@ class Character extends movableObject {
         else if(a > 70){
             this.playAnimation(this.IMAGES_IDLE_LONG);
         }
-
         a++;
     }, 120);
 };
-
-
-
-
 
     blubShoot() {
         if(this.bubbleBuild == true) {
@@ -331,7 +303,6 @@ class Character extends movableObject {
         }
     };
 
-
     idleAnimation() {
         const delayBetweenImages = 80;
         let loadedImagesCount = 0;
@@ -343,7 +314,6 @@ class Character extends movableObject {
             }, i * delayBetweenImages);
         }
     };
-
 
     finSlap(){
         if(this.slapping == true) {
@@ -368,7 +338,6 @@ class Character extends movableObject {
         }
     };
 
-
     deadAnimation() {
         const delayBetweenImages = 80;
         let loadedImagesCount = 0;
@@ -381,19 +350,54 @@ class Character extends movableObject {
         }
     };
 
-
     hitByPufferFish(){
-        return this.playAnimation(this.IMAGES_HIT_PUFFER);
+        this.playAnimation(this.IMAGES_HIT_PUFFER);
     };
-
 
     hitByJellyFish() {
-        return this.playAnimation(this.IMAGES_HIT_JELLY);
+        this.electric_sound.pause();
+        this.playAnimation(this.IMAGES_HIT_JELLY);
+        this.electric_sound.play();
+        
     };
 
-    
     hitByEndboss() {
-        return this.playAnimation(this.IMAGES_HIT_BOSS);
+        this.playAnimation(this.IMAGES_HIT_BOSS);
+    };
+
+    sharkieDead() {
+        this.deadAnimation();
+        this.World.dead = true;
+        this.SharkieDie_sound.play();
+        this.world_sound.pause();
+    };
+
+    shootPoisonBubble(){
+        this.World.poisonBuild = true;
+        this.World.poison -= 1;
+        this.World.poisonbar.setPercantage(this.World.poison)
+        this.poisonShoot();
+        this.bubble_sound.play();
+    };
+
+    buyPosion(){
+        this.buy_sound.play();
+        this.World.gold -= 4;
+        this.World.poison += 1;
+        this.World.poisonbar.setPercantage(this.World.poison);
+        this.World.coinbar.setPercantage(this.World.gold);
+    };
+
+    shootBubble(){
+        this.blubShoot();
+        this.bubble_sound.play();
+    };
+
+    slapFin(){
+        this.finSlap();
+        this.slap_sound.play();
+        this.World.slap = true;
+        this.FrameWidth = 200;
     };
 
 }

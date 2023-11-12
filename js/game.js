@@ -76,3 +76,8 @@ window.addEventListener('keydown', (e) => {
         Kboard.R = true;
     }
 });
+
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
