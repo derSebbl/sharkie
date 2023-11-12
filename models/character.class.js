@@ -17,6 +17,7 @@ class Character extends movableObject {
     slap_sound = new Audio('audio/Finslap.mp3');
     electric_sound = new Audio('audio/Electric.mp3');
     buy_sound = new Audio('audio/Buy Flask.mp3');
+    SharkieDie_sound = new Audio('audio/Sharkie Die.mp3');
 
     y = 10;
     x = 0;
@@ -158,24 +159,27 @@ class Character extends movableObject {
         let a = 0;
         setInterval(() =>{
             this.swim_sound.pause();
+
+            if(this.World.dead === false){
             this.world_sound.volume = 0.4;
             this.world_sound.play();
+            }
 
-            if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
+            if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x && this.World.dead == false){
                 a = 0;
                 this.moveRight();
                 this.swim_sound.play();
             };
 
 
-            if (this.World.keyboard.LEFT && this.x > -100){
+            if (this.World.keyboard.LEFT && this.x > -100 && this.World.dead == false){
                 a = 0;
                 this.moveLeft();
                 this.swim_sound.play();
             };
 
 
-            if (this.World.keyboard.UP){
+            if (this.World.keyboard.UP && this.World.dead == false){
                 a = 0;
                 this.swim_sound.play();
                 if(this.y === -113){return this.World.camera_x = -this.x;}
@@ -184,7 +188,7 @@ class Character extends movableObject {
             }};
 
 
-            if (this.World.keyboard.DOWN){
+            if (this.World.keyboard.DOWN && this.World.dead == false){
                 a = 0;
                 this.swim_sound.play();
                 if(this.y === 277){return this.World.camera_x = -this.x;}
@@ -231,6 +235,9 @@ class Character extends movableObject {
         else if (this.isDead() && this.World.dead == false) { 
             this.deadAnimation();
             this.World.dead = true;
+            this.World.SharkieDead = true;
+            this.SharkieDie_sound.play();
+            this.world_sound.pause();
         }
 
         else if(this.World.dead === true){

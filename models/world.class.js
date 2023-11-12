@@ -9,12 +9,15 @@ class World {
     coinbar = new coinBar;
     poisonbar = new poisonBar;
     endscreen = new endscreen;
+    endscreenLose = new endscreenLose;
     bubbles = [];
     poisonBubbles = [];
     bubbleShot = false;
     poisonShot = false;
     dead = false;
     slap = false;
+    BossDead = false;
+    SharkieDead = false;
     gold = 0;
     poison = 0;
     hitBy;
@@ -33,7 +36,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        console.log(this.level.enemies);
     };
 
 
@@ -126,7 +128,7 @@ class World {
         if( this.char.isColliding(gold)) {
             this.collectCoin_sound.play();
             this.gold ++;
-            gold.y = -800;
+            gold.y = +800;
             this.coinbar.setPercantage(this.gold)
         };
       });
@@ -138,7 +140,7 @@ checkCollisionsPoison() {
     if( this.char.isColliding(flask)) {
         this.collectFlask_sound.play();
         this.poison ++;
-        flask.y = -800;
+        flask.y = +800;
         this.poisonbar.setPercantage(this.poison)
     };
   });
@@ -221,6 +223,7 @@ checkBubbleHitBoss() {
         this.addToWorld(this.coinbar);
         this.addToWorld(this.poisonbar);
         this.addToWorld(this.endscreen);
+        this.addToWorld(this.endscreenLose);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToWorld(this.bubbles);

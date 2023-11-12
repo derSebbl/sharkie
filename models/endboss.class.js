@@ -125,6 +125,8 @@ class endboss extends movableObject {
             this.deadAnimation();
             this.attacking = true;
             this.bossHit = 4;
+            World.BossDead = true;
+            console.log(World.BossDead);
         }
 
     }, 180);  

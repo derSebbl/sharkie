@@ -5,10 +5,19 @@ class endscreen extends drawableObjects {
 
     constructor() {
         super().loadImg('img/6.Botones/Tittles/You win/Mesa de trabajo 1.png');
+        this.showEndscreen();
     }   
 
-    showEndscreen(){
-        this.height = 480;
-        this.width = 720;
+
+
+
+    showEndscreen() {
+        setInterval(() => {
+            if(World.BossDead == true){
+                this.height = 480;
+                this.width = 720;
+            }   
+        }, 180);
+
     }
 }
