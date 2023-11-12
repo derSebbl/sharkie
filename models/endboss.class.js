@@ -22,6 +22,8 @@ class endboss extends movableObject {
 
     boss_sound = new Audio('audio/Boss Music.mp3');
     boss_hit = new Audio('audio/BossHit.mp3');
+    boss_die = new Audio('audio/Boss Die.mp3');
+
 
     IMAGES_SWIM = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
@@ -76,9 +78,7 @@ class endboss extends movableObject {
         'img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
         'img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
     ];
-
     
-
     constructor() {
         super().loadImg(this.IMAGES_INTRODUCE[0]);
         this.loadImages(this.IMAGES_SWIM);
@@ -97,7 +97,7 @@ class endboss extends movableObject {
                 this.playAnimation(this.IMAGES_INTRODUCE);
             } 
 
-            if(this.firstContact && i > 8 && this.isHit == false && this.bossHit < 3) {
+            if(this.firstContact && i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 3) {
                 this.playAnimation(this.IMAGES_SWIM);
                 this.boss_sound.play();
             }
@@ -108,7 +108,7 @@ class endboss extends movableObject {
                 this.boss_sound.play();
             } 
 
-            if(this.firstContact && this.attacking == false && i > 45 && this.bossHit < 3) {
+            if(this.firstContact && i > 45 && this.bossHit < 3) {
                 this.attackAnimation();
                 i = 8;
             }
@@ -156,6 +156,11 @@ hitAnimation() {
 deadAnimation() {
     const delayBetweenImages = 80;
     let loadedImagesCount = 0;
+
+    this.boss_sound.pause();
+    this.boss_die.play();
+
+
     for (let i = 0; i < this.IMAGES_DEAD.length; i++) {
         setTimeout(() => {
             this.loadImg(this.IMAGES_DEAD[i]);
@@ -169,13 +174,11 @@ deadAnimation() {
 
 
 attackAnimation() {
-    if(this.attacking == true) {
-        return;}
+    const delayBetweenImages = 100;
+    let loadedImagesCount = 0;
 
     this.attacking = true;
 
-    const delayBetweenImages = 100;
-    let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_ATTACK.length; i++) {
         setTimeout(() => {
             this.loadImg(this.IMAGES_ATTACK[i]);

@@ -16,6 +16,7 @@ class Character extends movableObject {
     bubble_sound = new Audio('audio/Bubble.mp3');
     slap_sound = new Audio('audio/Finslap.mp3');
     electric_sound = new Audio('audio/Electric.mp3');
+    buy_sound = new Audio('audio/Buy Flask.mp3');
 
     y = 10;
     x = 0;
@@ -192,6 +193,7 @@ class Character extends movableObject {
             }};
 
             if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
+                this.buy_sound.play();
                 this.World.gold -= 4;
                 this.World.poison += 1;
                 this.World.poisonbar.setPercantage(this.World.poison);

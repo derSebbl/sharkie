@@ -20,7 +20,8 @@ class World {
     hitBy;
     
 
-    
+    collectCoin_sound = new Audio('audio/collect Coin.mp3');
+    collectFlask_sound = new Audio('audio/grab Flask.mp3');
    
 
     char = new Character();
@@ -123,6 +124,7 @@ class World {
     checkCollisionsCoin() {           
         this.level.coin.forEach((gold) =>{
         if( this.char.isColliding(gold)) {
+            this.collectCoin_sound.play();
             this.gold ++;
             gold.y = -800;
             this.coinbar.setPercantage(this.gold)
@@ -134,6 +136,7 @@ class World {
 checkCollisionsPoison() {           
     this.level.poison.forEach((flask) =>{
     if( this.char.isColliding(flask)) {
+        this.collectFlask_sound.play();
         this.poison ++;
         flask.y = -800;
         this.poisonbar.setPercantage(this.poison)
