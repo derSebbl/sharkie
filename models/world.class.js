@@ -9,7 +9,7 @@ class World {
     coinbar = new coinBar;
     poisonbar = new poisonBar;
     endscreen = new endscreen;
-    endscreenLose = new endscreenLose;
+    endscreenDead = new endscreenLose;
     bubbles = [];
     poisonBubbles = [];
     bubbleShot = false;
@@ -17,7 +17,6 @@ class World {
     dead = false;
     slap = false;
     BossDead = false;
-    SharkieDead = false;
     gold = 0;
     poison = 0;
     hitBy;
@@ -52,7 +51,7 @@ class World {
         this.checkCollisionsBubble();
         this.checkBubbleHitBoss();
         this.shootBubbles();
-        this. shootPoison();
+        this.shootPoison();
     }, 200);
     };
 
@@ -223,17 +222,17 @@ checkBubbleHitBoss() {
         this.addToWorld(this.coinbar);
         this.addToWorld(this.poisonbar);
         this.addToWorld(this.endscreen);
-        this.addToWorld(this.endscreenLose);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToWorld(this.bubbles);
         this.addObjectsToWorld(this.poisonBubbles);
-        this.addToWorld(this.char);
         this.addObjectsToWorld(this.level.puffer);
         this.addObjectsToWorld(this.level.jelly);
         this.addObjectsToWorld(this.level.boss);
         this.addObjectsToWorld(this.level.coin);
         this.addObjectsToWorld(this.level.poison);
+        this.addToWorld(this.endscreenDead);
+        this.addToWorld(this.char);
         
 
         this.ctx.translate(-this.camera_x, 0);

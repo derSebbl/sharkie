@@ -235,7 +235,6 @@ class Character extends movableObject {
         else if (this.isDead() && this.World.dead == false) { 
             this.deadAnimation();
             this.World.dead = true;
-            this.World.SharkieDead = true;
             this.SharkieDie_sound.play();
             this.world_sound.pause();
         }

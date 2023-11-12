@@ -15,9 +15,10 @@ class endscreenLose extends drawableObjects {
 
     showEndscreenLose() {
         setInterval(() => {
-            if(World.SharkieDead == true){
+            if(World.dead === true){
                 this.height = 180;
                 this.width = 720;
+                console.log('dead');
             }   
         }, 180);
 
