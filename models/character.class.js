@@ -15,6 +15,7 @@ class Character extends movableObject {
     world_sound = new Audio('audio/Gamesound.mp3');
     bubble_sound = new Audio('audio/Bubble.mp3');
     slap_sound = new Audio('audio/Finslap.mp3');
+    electric_sound = new Audio('audio/Electric.mp3');
 
     y = 10;
     x = 0;
@@ -156,7 +157,7 @@ class Character extends movableObject {
         let a = 0;
         setInterval(() =>{
             this.swim_sound.pause();
-            this.world_sound.volume = 0.3;
+            this.world_sound.volume = 0.4;
             this.world_sound.play();
 
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x){
@@ -219,8 +220,10 @@ class Character extends movableObject {
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
+            this.electric_sound.pause();
             a = 0;
             this.hitByJellyFish();
+            this.electric_sound.play();
         }
 
         else if (this.isDead() && this.World.dead == false) { 
@@ -247,6 +250,7 @@ class Character extends movableObject {
             this.World.poison -= 1;
             this.World.poisonbar.setPercantage(this.World.poison)
             this.poisonShoot();
+            this.bubble_sound.play();
             a = 0;
         }
 
@@ -280,6 +284,7 @@ class Character extends movableObject {
         }
 
         this.bubbleBuild = true;
+        this.bubble_sound.pause();
     
         const delayBetweenImages = 40;
         let loadedImagesCount = 0;
@@ -302,6 +307,7 @@ class Character extends movableObject {
         }
 
         this.poisonBuild = true;
+        this.bubble_sound.pause();
 
         const delayBetweenImages = 40;
         let loadedImagesCount = 0;
@@ -336,6 +342,7 @@ class Character extends movableObject {
             return
         }
         this.slapping = true;
+        this.slap_sound.pause();
 
         const delayBetweenImages = 80;
         let loadedImagesCount = 0;

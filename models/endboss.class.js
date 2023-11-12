@@ -4,6 +4,7 @@ class endboss extends movableObject {
     width = 680;
     y = -170;
     x = 3500;
+    bossHit = 0;    
 
     World;
 
@@ -20,6 +21,7 @@ class endboss extends movableObject {
     FrameHeight = 600;
 
     boss_sound = new Audio('audio/Boss Music.mp3');
+    boss_hit = new Audio('audio/BossHit.mp3');
 
     IMAGES_SWIM = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
@@ -95,7 +97,7 @@ class endboss extends movableObject {
                 this.playAnimation(this.IMAGES_INTRODUCE);
             } 
 
-            if(this.firstContact && i > 8 && this.isHit == false && this.isDead == false) {
+            if(this.firstContact && i > 8 && this.isHit == false && this.bossHit < 3) {
                 this.playAnimation(this.IMAGES_SWIM);
                 this.boss_sound.play();
             }
@@ -106,7 +108,7 @@ class endboss extends movableObject {
                 this.boss_sound.play();
             } 
 
-            if(this.firstContact && this.attacking == false && i > 45 && i < 51) {
+            if(this.firstContact && this.attacking == false && i > 45 && this.bossHit < 3) {
                 this.attackAnimation();
                 i = 8;
             }
@@ -115,14 +117,14 @@ class endboss extends movableObject {
     }, 180) 
     setInterval(() => { 
 
-        if(this.isHit == true && this.isDead == false) {
+        if(this.isHit == true && this.bossHit < 3) {
         this.hitAnimation();
         }
 
-        if(this.isDead == true && this.isHit == true) {
+        if(this.bossHit == 3) {
             this.deadAnimation();
-            this.boss_sound.pause();
-            i = 52;
+            this.attacking = true;
+            this.bossHit = 4;
         }
 
     }, 180);  
@@ -135,6 +137,7 @@ hitAnEnemy() {
 
 
 hitAnimation() {
+    this.boss_hit.play();
     const delayBetweenImages = 60;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_HIT.length; i++) {
@@ -143,6 +146,7 @@ hitAnimation() {
             loadedImagesCount++;
             if (loadedImagesCount === this.IMAGES_HIT.length) {
                 this.isHit = false;
+                this.boss_hit.pause();
             }
         }, i * delayBetweenImages);
     }
@@ -170,7 +174,7 @@ attackAnimation() {
 
     this.attacking = true;
 
-    const delayBetweenImages = 400;
+    const delayBetweenImages = 100;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_ATTACK.length; i++) {
         setTimeout(() => {

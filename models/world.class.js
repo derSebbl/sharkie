@@ -13,7 +13,6 @@ class World {
     poisonBubbles = [];
     bubbleShot = false;
     poisonShot = false;
-    bossHit = 0;
     dead = false;
     slap = false;
     gold = 0;
@@ -22,7 +21,7 @@ class World {
     
 
     
-    electric_sound = new Audio('audio/Electric.mp3');
+   
 
     char = new Character();
 
@@ -96,7 +95,6 @@ class World {
              this.char.hit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;
-             this.electric_sound.play();
             };
           });
     };
@@ -160,12 +158,9 @@ checkBubbleHitBoss() {
     this.level.boss.forEach((enemy) =>{
         this.poisonBubbles.forEach((bubble) =>{
             if( bubble.isColliding(enemy) && this.poison > 0){
-                this.bossHit ++;
+                enemy.bossHit ++;
                 bubble.y = -800;
                 enemy.hitAnEnemy();
-            }
-            if(this.bossHit >= 3){
-                enemy.isDead = true;
             }
         });
     });
