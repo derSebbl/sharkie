@@ -8,6 +8,7 @@ class Character extends movableObject {
     bubbleBuild = false;
     poisonBuild = false;
     slapping = false;
+    sharkieIsDead = false;
     
     World;
 
@@ -370,6 +371,7 @@ class Character extends movableObject {
         this.World.dead = true;
         this.SharkieDie_sound.play();
         this.world_sound.pause();  
+        this.sharkieIsDead = true;
     };
 
     shootPoisonBubble(){
