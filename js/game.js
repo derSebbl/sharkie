@@ -91,6 +91,7 @@ function closeControlls() {
 
 
 function openControlls() {
+    closeInfo();
     let controlls = document.getElementById('controlls');
     if(controlls.style.display == 'none') {
         controlls.style.display = 'flex';
@@ -108,6 +109,7 @@ function closeInfo() {
 
 
 function openInfo() {
+    closeControlls();
     let info = document.getElementById('Info');
     if(info.style.display == 'none') {
         info.style.display = 'flex';
