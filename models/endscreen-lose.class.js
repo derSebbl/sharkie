@@ -15,6 +15,7 @@ class endscreenLose extends drawableObjects {
             if(world.char.sharkieIsDead == true){
                 this.height = 180;
                 this.width = 720;
+                showTryAgainButton();
             }   
         }, 180);
 

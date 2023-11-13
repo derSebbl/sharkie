@@ -81,15 +81,58 @@ window.addEventListener('keydown', (e) => {
 
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
-  }
+  };
 
 
 function closeControlls() {
     let controlls = document.getElementById('controlls');
     controlls.style.display = 'none';
-}
+};
+
 
 function openControlls() {
     let controlls = document.getElementById('controlls');
-    controlls.style.display = 'flex';
+    if(controlls.style.display == 'none') {
+        controlls.style.display = 'flex';
+    }
+    else {
+        controlls.style.display = 'none';
 }
+};
+
+
+function closeInfo() {
+    let info = document.getElementById('Info');
+    info.style.display = 'none';
+};
+
+
+function openInfo() {
+    let info = document.getElementById('Info');
+    if(info.style.display == 'none') {
+        info.style.display = 'flex';
+    }
+    else {
+        info.style.display = 'none';
+}
+};
+
+
+function muteAllSounds() {
+    let allAudioElements = document.getElementsByTagName('audio');
+    for(let i = 0; i < allAudioElements.length; i++) {
+        allAudioElements[i].muted = true;
+    }
+};
+
+
+function showTryAgainButton() {
+    let tryAgainButton = document.getElementById('try-again-button');
+    tryAgainButton.style.display = 'flex';
+};
+
+
+function TryAgain() {
+    let tryAgainButton = document.getElementById('try-again-button');
+    tryAgainButton.style.display = 'none';
+};
