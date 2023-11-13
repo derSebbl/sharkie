@@ -6,6 +6,7 @@ let Kboard = new keyboard();
 function init() {
 canvas = document.getElementById('canvas');
 world = new World(canvas, Kboard);
+clearAllIntervals();  /////////////////////////////////// NICHT VERGESSEN ZU LÖSCHEN///////////////////////////////////
 }
 
 
