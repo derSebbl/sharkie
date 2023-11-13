@@ -83,8 +83,10 @@ function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   };
 
-
+// Functions to open and close the controlls screen
 function closeControlls() {
+    showStartButton();
+    hideBackground();
     let controlls = document.getElementById('controlls');
     controlls.style.display = 'none';
 };
@@ -92,17 +94,23 @@ function closeControlls() {
 
 function openControlls() {
     closeInfo();
+    hideStartButton();
+    showBackground(); 
     let controlls = document.getElementById('controlls');
     if(controlls.style.display == 'none') {
         controlls.style.display = 'flex';
     }
     else {
         controlls.style.display = 'none';
+        showStartButton();
+        hideBackground();
 }
 };
 
-
+// Functions to open and close the info screen
 function closeInfo() {
+    showStartButton();
+    hideBackground();
     let info = document.getElementById('Info');
     info.style.display = 'none';
 };
@@ -110,16 +118,20 @@ function closeInfo() {
 
 function openInfo() {
     closeControlls();
+    hideStartButton();
+    showBackground(); 
     let info = document.getElementById('Info');
     if(info.style.display == 'none') {
         info.style.display = 'flex';
     }
     else {
         info.style.display = 'none';
+        showStartButton();
+        hideBackground();
 }
 };
 
-
+// Functions to mute and unmute the sounds
 function muteAllSounds() {
     let allAudioElements = document.getElementsByTagName('audio');
     for(let i = 0; i < allAudioElements.length; i++) {
@@ -127,7 +139,7 @@ function muteAllSounds() {
     }
 };
 
-
+// Functions to show and hide the Try Again Button
 function showTryAgainButton() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'flex';
@@ -138,3 +150,38 @@ function TryAgain() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'none';
 };
+
+// Functions to show and hide the Start Button
+function hideStartButton() {
+    let startButton = document.getElementById('start-game-button');
+    startButton.style.display = 'none';
+};
+
+
+function showStartButton() {
+    let startButton = document.getElementById('start-game-button');
+    startButton.style.display = 'flex';
+};
+
+// Functions to start the game
+function startGame() {
+    let startscreen = document.getElementById('startscreen-container');
+    let canvas = document.getElementById('canvas-container');
+    startscreen.style.display = 'none';
+    canvas.style.display = 'flex';
+    hideStartButton();
+    init();
+};
+
+// Functions to show and hide the background
+function showBackground() {
+    let background = document.getElementById('background');
+    background.style.display = 'block';
+};
+
+
+function hideBackground() {
+    let background = document.getElementById('background');
+    background.style.display = 'none';
+};
+
