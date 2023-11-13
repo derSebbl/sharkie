@@ -39,24 +39,25 @@
         <button id="try-again-button" onclick="XXXXXXXX"><img src="img/6.Botones/Try again/Recurso 15.png"></button>
             <div id="menu-buttons-container">
                 <button><img src="img/menu/muted.png"></button>
-                <button><img src="img/menu/controlls.png"></button>
+                <button><img onclick="openControlls()" src="img/menu/controlls.png"></button>
                 <button><img src="img/menu/info.png"></button>
             </div>
             <div id="controlls">
-                <div class="controll-keys"><img src="img/controlls/Arrow.png"><div class="controll-text">Move Sharkie</div></div>
-                <div class="controll-keys"><img src="img/controlls/SPACE.png"><div class="controll-text">Bubble Shot</div></div>
-                <div class="controll-keys"><img src="img/controlls/D.png"><div class="controll-text">Fin Slap</div></div>
-                <div class="controll-keys"><img src="img/controlls/F.png"><div class="controll-text">Poison Bubble</div></div>
-                <div class="controll-keys"><img src="img/controlls/R.png"><div class="controll-text">Buy Poison</div></div>
+                <div class="close-controlls"><img onclick="closeControlls()" src="img/controlls/Close .png"></div>
+                <div class="controll-keys"><div class="keys" ><img src="img/controlls/Arrow.png"></div><div class="controll-text">Move Sharkie</div></div>
+                <div class="controll-keys"><div class="space"><img src="img/controlls/SPACE.png"></div><div class="controll-text">Bubble Shot</div></div>
+                <div class="controll-keys"><div class="keys"><img src="img/controlls/D.png"></div><div class="controll-text">Fin Slap</div></div>
+                <div class="controll-keys"><div class="keys"><img src="img/controlls/F.png"></div><div class="controll-text">Poison Bubble</div></div>
+                <div class="controll-keys"><div class="keys"><img src="img/controlls/R.png"></div><div class="controll-text">Buy Poison</div></div>
             </div>
         <canvas width="720" height="480" id="canvas"></canvas>
     </div>
-    <h3>
-        To Move Sharkie use the <span>"Arrow Keys"</span><br> <br>
-        To Attack the Puffer Fishes you must Slap them with the Fin on <span>"D"</span> <br> <br>
-        To Attack the Jellyfishes use the BubbleShot on <span>"SPACE"</span> <br> <br>
-        The Boss can be Damaged with Poison Bubbles! You must collect poison to shoot them on <span>"F"</span> <br> <br>
-        Don't worry! theres Gold in teh World to collect. With 4 Gold you can buy an Poison Flask on <span>"R"</span>
-    </h3>
+    <div class="controlls-under-game">
+        <div class="description-under-game"><span class="keys-under-game">"Arrow Keys"</span><div class="text-under-game">Move Sharkie</div></div>
+        <div class="description-under-game"><span class="keys-under-game">"SPACE"</span><div class="text-under-game">Bubble Shot</div></div>
+        <div class="description-under-game"><span class="keys-under-game">"D"</span><div class="text-under-game">Fin Slap</div></div>
+        <div class="description-under-game"><span class="keys-under-game">"F"</span><div class="text-under-game">Poison Bubble</div></div>
+        <div class="description-under-game"><span class="keys-under-game">"R"</span><div class="text-under-game">Buy Poison</div></div>
+    </div>
 </body>
 </html>

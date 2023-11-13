@@ -82,3 +82,14 @@ window.addEventListener('keydown', (e) => {
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
+
+
+function closeControlls() {
+    let controlls = document.getElementById('controlls');
+    controlls.style.display = 'none';
+}
+
+function openControlls() {
+    let controlls = document.getElementById('controlls');
+    controlls.style.display = 'flex';
+}
