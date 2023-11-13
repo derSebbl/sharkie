@@ -6,7 +6,7 @@ let Kboard = new keyboard();
 function init() {
 canvas = document.getElementById('canvas');
 world = new World(canvas, Kboard);
-clearAllIntervals();  /////////////////////////////////// NICHT VERGESSEN ZU LÖSCHEN///////////////////////////////////
+//clearAllIntervals();  /////////////////////////////////// NICHT VERGESSEN ZU LÖSCHEN///////////////////////////////////
 }
 
 
@@ -184,4 +184,3 @@ function hideBackground() {
     let background = document.getElementById('background');
     background.style.display = 'none';
 };
-
