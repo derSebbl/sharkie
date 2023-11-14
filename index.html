@@ -34,10 +34,13 @@
 
 </head>
 <body>
-    <h1>Sharkie!</h1>
+    <audio id="startPageAudio" controls autoplay loop>
+        <source src="audio/Start Page.mp3" type="audio/mp3">
+    </audio>
+
     <div id="startscreen-container">
         <div id="background"></div>
-        <img src="img/menu/StartScreen.png">
+        <img class="startscreenImg" src="img/menu/StartScreen.png">
         <button id="start-game-button" onclick="startGame()"><img src="img/6.Botones/Start/3.png"></button>
         <div id="menu-buttons-container">
             <button id="audioControll"><img onclick="muteAndUnmute()" src="img/menu/Unmute.png"></button>

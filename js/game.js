@@ -172,6 +172,7 @@ function startGame() {
     let canvas = document.getElementById('canvas-container');
     startscreen.style.display = 'none';
     canvas.style.display = 'flex';
+    pauseStartpageAudio();
     hideStartButton();
     initLevel();
     init();
@@ -196,9 +197,11 @@ function muteAndUnmute() {
     if(Muted == false){
         Muted = true;
         audioControll.innerHTML = `<img onclick="muteAndUnmute()" src="img/menu/muted.png">`;
+        pauseStartpageAudio();
     } else {
         Muted = false;
         audioControll.innerHTML = `<img onclick="muteAndUnmute()" src="img/menu/Unmute.png">`;
+        playStartpageAudio();
     }
 }
 
@@ -208,4 +211,17 @@ function restartGame() {
     intervalIds = [];
     initLevel();
     init();
+}
+
+
+// Functions to start and stop the startpage audio
+function pauseStartpageAudio() {
+    let startPage = document.getElementById('startPageAudio');
+    startPage.pause();
+    startPage.currentTime = 0;
+}
+
+function playStartpageAudio() {
+    let startPage = document.getElementById('startPageAudio');
+    startPage.play();
 }
