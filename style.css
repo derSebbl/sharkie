@@ -115,6 +115,7 @@ canvas {
     justify-content: center;
     display: flex;
     width: 100%;
+    animation: buttonAnimation 2s infinite;
 }
 
 #start-game-button img {
@@ -249,9 +250,11 @@ canvas {
     display: none;
 }
 
-
-
-
+@keyframes buttonAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
 
 
 
