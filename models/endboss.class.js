@@ -117,7 +117,9 @@ class endboss extends movableObject {
                 i = 8;
             }
 
-            console.log(Character.sharkieIsDead);
+            if(world.char.sharkieIsDead == true) {
+                this.boss_music.pause();
+            }
 
             i++;
     }, 180) 
