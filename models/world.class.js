@@ -43,7 +43,6 @@ class World {
     };
 
 
-
     run(){
 
         setStoppableInterval(() => {
@@ -170,7 +169,7 @@ checkCollisionsBubble() {
 checkBubbleHitBoss() {
     this.level.boss.forEach((enemy) =>{
         this.poisonBubbles.forEach((bubble) =>{
-            if( bubble.isColliding(enemy) && this.poison > 0){
+            if( bubble.isColliding(enemy) && this.poison >= 0){
                 enemy.bossHit ++;
                 bubble.y = -800;
                 enemy.hitAnEnemy();

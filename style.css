@@ -71,7 +71,6 @@ canvas {
 #menu-buttons-container button {
     background: none;
     border: none;
-    /*display: none; */
 }
 
 #menu-buttons-container button:hover {
@@ -93,6 +92,7 @@ canvas {
     align-items: center;
     justify-content: center;
     display: none;
+    animation: buttonAnimation 2s infinite;
 }
 
 #try-again-button img {

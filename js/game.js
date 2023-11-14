@@ -7,10 +7,10 @@ let intervalIds = [];
 let Muted = false;
 
 
-function init() {
+async function init() {
+await initLevel();
 canvas = document.getElementById('canvas');
 world = new World(canvas, Kboard);
-//clearAllIntervals();  /////////////////////////////////// NICHT VERGESSEN ZU LÖSCHEN///////////////////////////////////
 }
 
 
@@ -102,7 +102,6 @@ function closeControlls() {
     controlls.style.display = 'none';
 };
 
-
 function openControlls() {
     closeInfo();
     hideStartButton();
@@ -118,6 +117,7 @@ function openControlls() {
 }
 };
 
+
 // Functions to open and close the info screen
 function closeInfo() {
     showStartButton();
@@ -125,7 +125,6 @@ function closeInfo() {
     let info = document.getElementById('Info');
     info.style.display = 'none';
 };
-
 
 function openInfo() {
     closeControlls();
@@ -142,29 +141,21 @@ function openInfo() {
 }
 };
 
-// Functions to mute and unmute the sounds
-function muteAllSounds() {
-    let allAudioElements = document.getElementsByTagName('audio');
-    for(let i = 0; i < allAudioElements.length; i++) {
-        allAudioElements[i].muted = true;
-    }
-};
 
-// Functions to show and hide the Try Again Button
+// Functions to show and hide the Try Again Button and start the game again
 function showTryAgainButton() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'flex';
 };
-
 
 function TryAgain() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'none';
         clearAllIntervals();
         intervalIds = [];
-        initLevel();
         init();
 };
+
 
 // Functions to show and hide the Start Button
 function hideStartButton() {
@@ -172,11 +163,11 @@ function hideStartButton() {
     startButton.style.display = 'none';
 };
 
-
 function showStartButton() {
     let startButton = document.getElementById('start-game-button');
     startButton.style.display = 'flex';
 };
+
 
 // Functions to start the game
 function startGame() {
@@ -189,12 +180,12 @@ function startGame() {
     init();
 };
 
+
 // Functions to show and hide the background
 function showBackground() {
     let background = document.getElementById('background');
     background.style.display = 'block';
 };
-
 
 function hideBackground() {
     let background = document.getElementById('background');
@@ -202,6 +193,7 @@ function hideBackground() {
 };
 
 
+// Functions to set Mutet and Unmutet
 function muteAndUnmute() {
     let audioControll = document.getElementById('audioControll');
     if(Muted == false){

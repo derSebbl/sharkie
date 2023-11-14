@@ -20,7 +20,7 @@ class endboss extends movableObject {
     FrameWidth = 400;
     FrameHeight = 600;
 
-    boss_sound = new Audio('audio/Boss Music.mp3');
+    boss_music = new Audio('audio/Boss Music.mp3');
     boss_hit = new Audio('audio/BossHit.mp3');
     boss_die = new Audio('audio/Boss Die.mp3');
 
@@ -100,7 +100,7 @@ class endboss extends movableObject {
             if(this.firstContact && i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 3) {
                 this.playAnimation(this.IMAGES_SWIM);
                 if(Muted == false){
-                this.boss_sound.play();
+                this.boss_music.play();
                 }
             }
             
@@ -108,7 +108,7 @@ class endboss extends movableObject {
                 i = 0;
                 this.firstContact = true;
                 if(Muted == false){
-                this.boss_sound.play();
+                this.boss_music.play();
                 }
             } 
 
@@ -163,12 +163,11 @@ hitAnimation() {
 deadAnimation() {
     const delayBetweenImages = 80;
     let loadedImagesCount = 0;
+    this.boss_music.pause();
 
-    this.boss_sound.pause();
     if(Muted == false){
     this.boss_die.play();
     }
-
 
     for (let i = 0; i < this.IMAGES_DEAD.length; i++) {
         setTimeout(() => {
@@ -199,5 +198,4 @@ attackAnimation() {
         }, i * delayBetweenImages);
     }
 };
-    
 }
