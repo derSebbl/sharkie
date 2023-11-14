@@ -203,15 +203,12 @@ function hideBackground() {
 
 
 function muteAndUnmute() {
-    let muteButton = document.getElementById('muted');
-    let unmuteButton = document.getElementById('unmuted');
+    let audioControll = document.getElementById('audioControll');
     if(Muted == false){
         Muted = true;
-        muteButton.style.display = 'block';
-        unmuteButton.style.display = 'none';
+        audioControll.innerHTML = `<img onclick="muteAndUnmute()" src="img/menu/muted.png">`;
     } else {
         Muted = false;
-        muteButton.style.display = 'none';
-        unmuteButton.style.display = 'block';
+        audioControll.innerHTML = `<img onclick="muteAndUnmute()" src="img/menu/Unmute.png">`;
     }
 }
