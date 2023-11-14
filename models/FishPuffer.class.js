@@ -122,7 +122,9 @@ pufferFishNormal(){
 hitAnEnemy() {
     this.energy -= 100;
     this.isHit = true;
+    if(Muted == false){
     this.hit_sound.play();
+    }
 };
 
 }

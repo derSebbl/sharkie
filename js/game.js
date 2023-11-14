@@ -4,6 +4,8 @@ let Kboard = new keyboard();
 
 let intervalIds = [];
 
+let Muted = false;
+
 
 function init() {
 canvas = document.getElementById('canvas');
@@ -198,3 +200,18 @@ function hideBackground() {
     let background = document.getElementById('background');
     background.style.display = 'none';
 };
+
+
+function muteAndUnmute() {
+    let muteButton = document.getElementById('muted');
+    let unmuteButton = document.getElementById('unmuted');
+    if(Muted == false){
+        Muted = true;
+        muteButton.style.display = 'block';
+        unmuteButton.style.display = 'none';
+    } else {
+        Muted = false;
+        muteButton.style.display = 'none';
+        unmuteButton.style.display = 'block';
+    }
+}

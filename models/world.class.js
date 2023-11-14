@@ -130,7 +130,9 @@ class World {
     checkCollisionsCoin() {           
         this.level.coin.forEach((gold) =>{
         if( this.char.isColliding(gold)) {
+            if(Muted == false){
             this.collectCoin_sound.play();
+            }
             this.gold ++;
             gold.y = +800;
             this.coinbar.setPercantage(this.gold)
@@ -142,7 +144,9 @@ class World {
 checkCollisionsPoison() {           
     this.level.poison.forEach((flask) =>{
     if( this.char.isColliding(flask)) {
+        if(Muted == false){
         this.collectFlask_sound.play();
+        }
         this.poison ++;
         flask.y = +800;
         this.poisonbar.setPercantage(this.poison)

@@ -99,13 +99,17 @@ class endboss extends movableObject {
 
             if(this.firstContact && i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 3) {
                 this.playAnimation(this.IMAGES_SWIM);
+                if(Muted == false){
                 this.boss_sound.play();
+                }
             }
             
             if(world.char.x > 3050 && !this.firstContact){
                 i = 0;
                 this.firstContact = true;
+                if(Muted == false){
                 this.boss_sound.play();
+                }
             } 
 
             if(this.firstContact && i > 45 && this.bossHit < 3) {
@@ -138,7 +142,9 @@ hitAnEnemy() {
 
 
 hitAnimation() {
+    if(Muted == false){
     this.boss_hit.play();
+    }
     const delayBetweenImages = 60;
     let loadedImagesCount = 0;
     for (let i = 0; i < this.IMAGES_HIT.length; i++) {
@@ -159,7 +165,9 @@ deadAnimation() {
     let loadedImagesCount = 0;
 
     this.boss_sound.pause();
+    if(Muted == false){
     this.boss_die.play();
+    }
 
 
     for (let i = 0; i < this.IMAGES_DEAD.length; i++) {
