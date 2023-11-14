@@ -1,6 +1,6 @@
 let level1; 
 
-async function initLevel() {
+function initLevel() {
 
 level1 = new level(
         [

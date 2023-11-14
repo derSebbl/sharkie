@@ -17,6 +17,8 @@ class Character extends movableObject {
     bubble_sound = new Audio('audio/Bubble.mp3');
     slap_sound = new Audio('audio/Finslap.mp3');
     electric_sound = new Audio('audio/Electric.mp3');
+    poison_sound = new Audio('audio/hit by poison.mp3');
+    bosshit_sound = new Audio('audio/hit by boss.mp3');
     buy_sound = new Audio('audio/Buy Flask.mp3');
     SharkieDie_sound = new Audio('audio/Sharkie Die.mp3');
 
@@ -49,7 +51,6 @@ class Character extends movableObject {
         setStoppableInterval(() =>{
             this.swim_sound.pause();
 
-            if(this.World.dead === false && Muted == false) {
             this.world_sound.volume = 0.4;
             this.world_sound.play();
             }
@@ -248,7 +249,11 @@ class Character extends movableObject {
     };
 
     hitByPufferFish(){
+        this.poison_sound.pause();
         this.playAnimation(this.IMAGES_HIT_PUFFER);
+        if(Muted == false){
+            this.poison_sound.play();
+            }
     };
 
     hitByJellyFish() {
@@ -257,11 +262,14 @@ class Character extends movableObject {
         if(Muted == false){
         this.electric_sound.play();
         }
-        
     };
 
     hitByEndboss() {
+        this.bosshit_sound.pause();
         this.playAnimation(this.IMAGES_HIT_BOSS);
+        if(Muted == false){
+        this.bosshit_sound.play();
+        }
     };
 
     sharkieDead() {
@@ -270,7 +278,7 @@ class Character extends movableObject {
         if(Muted == false){
         this.SharkieDie_sound.play();
         }
-        this.world_sound.pause();  
+        this.world_sound.pause(); 
         this.sharkieIsDead = true;
     };
 

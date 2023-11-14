@@ -20,9 +20,9 @@ class endboss extends movableObject {
     FrameWidth = 400;
     FrameHeight = 600;
 
-    boss_music = new Audio('audio/Boss Music.mp3');
     boss_hit = new Audio('audio/BossHit.mp3');
     boss_die = new Audio('audio/Boss Die.mp3');
+    
 
 
     IMAGES_SWIM = [
@@ -128,7 +128,6 @@ class endboss extends movableObject {
         if(this.bossHit == 3) {
             this.attacking = true;
             this.bossHit = 4;
-            World.BossDead = true;
             this.deadAnimation();
         }
 
@@ -163,7 +162,6 @@ hitAnimation() {
 deadAnimation() {
     const delayBetweenImages = 80;
     let loadedImagesCount = 0;
-    this.boss_music.pause();
 
     if(Muted == false){
     this.boss_die.play();
@@ -175,7 +173,6 @@ deadAnimation() {
             loadedImagesCount++;
             if (loadedImagesCount === this.IMAGES_DEAD.length) {
                 this.isHit = false;
-                clearAllIntervals();
             }
         }, i * delayBetweenImages);
     }
