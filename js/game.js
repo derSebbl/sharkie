@@ -7,8 +7,7 @@ let intervalIds = [];
 let Muted = false;
 
 
-async function init() {
-await initLevel();
+function init() {
 canvas = document.getElementById('canvas');
 world = new World(canvas, Kboard);
 }
@@ -151,9 +150,7 @@ function showTryAgainButton() {
 function TryAgain() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'none';
-        clearAllIntervals();
-        intervalIds = [];
-        init();
+    restartGame();
 };
 
 
@@ -203,4 +200,12 @@ function muteAndUnmute() {
         Muted = false;
         audioControll.innerHTML = `<img onclick="muteAndUnmute()" src="img/menu/Unmute.png">`;
     }
+}
+
+
+function restartGame() {
+    clearAllIntervals();
+    intervalIds = [];
+    initLevel();
+    init();
 }
