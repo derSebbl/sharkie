@@ -1,4 +1,8 @@
-const level1 = new level(
+let level1; 
+
+function initLevel() {
+
+level1 = new level(
         [
         new FishPuffer(),
         new FishPuffer(),
@@ -82,3 +86,4 @@ const level1 = new level(
         new BackgroundObject('img/3. Background/Layers/2. Floor/D2.png', 719*5, 0),
         ],
 )
+};

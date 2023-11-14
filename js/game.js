@@ -158,6 +158,10 @@ function showTryAgainButton() {
 function TryAgain() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'none';
+        clearAllIntervals();
+        intervalIds = [];
+        initLevel();
+        init();
 };
 
 // Functions to show and hide the Start Button
@@ -179,6 +183,7 @@ function startGame() {
     startscreen.style.display = 'none';
     canvas.style.display = 'flex';
     hideStartButton();
+    initLevel();
     init();
 };
 

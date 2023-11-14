@@ -14,6 +14,7 @@ class endscreen extends drawableObjects {
                 this.height = 480;
                 this.width = 720;
                 showTryAgainButton();
+                World.BossDead = false;
             }   
         }, 180);
 
