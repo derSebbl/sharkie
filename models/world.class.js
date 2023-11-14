@@ -46,7 +46,7 @@ class World {
 
     run(){
 
-        setInterval(() => {
+        setStoppableInterval(() => {
         this.checkCollisionsPuffer();
         this.checkCollisionsJelly();
         this.checkCollisionsBoss();

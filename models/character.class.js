@@ -158,7 +158,7 @@ class Character extends movableObject {
 
     animate() {
         let a = 0;
-        setInterval(() =>{
+        setStoppableInterval(() =>{
             this.swim_sound.pause();
 
             if(this.World.dead === false) {
@@ -205,7 +205,7 @@ class Character extends movableObject {
         }, 1000 / 60);
 
        
-        setInterval(() => {
+        setStoppableInterval(() => {
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
             a = 0;
             this.hitByPufferFish();

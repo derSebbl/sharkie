@@ -2,6 +2,8 @@ let canvas;
 let world;
 let Kboard = new keyboard();
 
+let intervalIds = [];
+
 
 function init() {
 canvas = document.getElementById('canvas');
@@ -82,6 +84,13 @@ window.addEventListener('keydown', (e) => {
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   };
+
+
+  function setStoppableInterval(fn, time) {
+    let id = setInterval(fn, time);
+    intervalIds.push(id);
+  };
+
 
 // Functions to open and close the controlls screen
 function closeControlls() {

@@ -9,7 +9,7 @@ class endscreen extends drawableObjects {
     }   
 
     showEndscreen() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             if(World.BossDead == true){
                 this.height = 480;
                 this.width = 720;

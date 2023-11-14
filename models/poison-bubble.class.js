@@ -16,7 +16,7 @@ class poisonBubble extends movableObject {
     }
 
 throw() {
-    setInterval(()=>{ 
+    setStoppableInterval(()=>{ 
         if (this.otherDirection == false){
         this.x += 5;}
         else if (this.otherDirection == true){
