@@ -117,6 +117,8 @@ class endboss extends movableObject {
                 i = 8;
             }
 
+            console.log(Character.sharkieIsDead);
+
             i++;
     }, 180) 
     setInterval(() => { 

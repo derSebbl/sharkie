@@ -17,6 +17,7 @@ class Character extends movableObject {
     bubble_sound = new Audio('audio/Bubble.mp3');
     slap_sound = new Audio('audio/Finslap.mp3');
     electric_sound = new Audio('audio/Electric.mp3');
+    hitByBoss_sound = new Audio('audio/hit by boss.mp3');
     buy_sound = new Audio('audio/Buy Flask.mp3');
     SharkieDie_sound = new Audio('audio/Sharkie Die.mp3');
 
@@ -261,7 +262,11 @@ class Character extends movableObject {
     };
 
     hitByEndboss() {
+        this.hitByBoss_sound.pause();
         this.playAnimation(this.IMAGES_HIT_BOSS);
+        if(Muted == false){
+        this.hitByBoss_sound.play();
+        }
     };
 
     sharkieDead() {
