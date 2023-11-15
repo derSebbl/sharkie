@@ -18,6 +18,7 @@ class Character extends movableObject {
     slap_sound = new Audio('audio/Finslap.mp3');
     electric_sound = new Audio('audio/Electric.mp3');
     hitByBoss_sound = new Audio('audio/hit by boss.mp3');
+    poisoned_sound = new Audio('audio/hit by poison.mp3');
     buy_sound = new Audio('audio/Buy Flask.mp3');
     SharkieDie_sound = new Audio('audio/Sharkie Die.mp3');
 
@@ -51,7 +52,7 @@ class Character extends movableObject {
             this.swim_sound.pause();
 
             if(this.World.dead === false && Muted == false) {
-            this.world_sound.volume = 0.4;
+            this.world_sound.volume = 0.3;
             this.world_sound.play();
             }
 
@@ -249,7 +250,11 @@ class Character extends movableObject {
     };
 
     hitByPufferFish(){
+        this.poisoned_sound.pause();
         this.playAnimation(this.IMAGES_HIT_PUFFER);
+        if(Muted == false){
+        this.poisoned_sound.play();
+        }
     };
 
     hitByJellyFish() {

@@ -170,12 +170,12 @@ function showStartButton() {
 function startGame() {
     let startscreen = document.getElementById('startscreen-container');
     let canvas = document.getElementById('canvas-container');
-    startscreen.style.display = 'none';
-    canvas.style.display = 'flex';
     pauseStartpageAudio();
     hideStartButton();
     initLevel();
     init();
+    startscreen.style.display = 'none';
+    canvas.style.display = 'flex';
 };
 
 
