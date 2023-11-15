@@ -24,6 +24,7 @@ class Character extends movableObject {
 
     y = 10;
     x = 0;
+    a = 0;
 
     speed = 1.5;
 
@@ -47,7 +48,6 @@ class Character extends movableObject {
 
 
     animate() {
-        let a = 0;
         setStoppableInterval(() =>{
             this.swim_sound.pause();
 
@@ -57,7 +57,7 @@ class Character extends movableObject {
             }
 
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x && this.World.dead == false){
-                a = 0;
+                this.a = 0;
                 this.moveRight();
             if(Muted == false){
                 this.swim_sound.play();
@@ -65,7 +65,7 @@ class Character extends movableObject {
             }
 
             if (this.World.keyboard.LEFT && this.x > -100 && this.World.dead == false){
-                a = 0;
+                this.a = 0;
                 this.moveLeft();
                 if(Muted == false){
                 this.swim_sound.play();
@@ -73,7 +73,7 @@ class Character extends movableObject {
             }
 
             if (this.World.keyboard.UP && this.World.dead == false){
-                a = 0;
+                this.a = 0;
                 if(Muted == false){
                 this.swim_sound.play();
                 }
@@ -83,7 +83,7 @@ class Character extends movableObject {
             }}
 
             if (this.World.keyboard.DOWN && this.World.dead == false){
-                a = 0;
+                this.a = 0;
                 if(Muted == false){
                 this.swim_sound.play();
                 }
@@ -104,18 +104,15 @@ class Character extends movableObject {
 
        
         setStoppableInterval(() => {
-        if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
-            a = 0;
             this.hitByPufferFish();
-        }
 
-        else if (this.isHurt() && this.World.hitBy instanceof endboss) {
-            a = 0;
+        if (this.isHurt() && this.World.hitBy instanceof endboss) {
+            this.a = 0;
             this.hitByEndboss();
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
-            a = 0;
+            this.a = 0;
             this.hitByJellyFish();
         }
 
@@ -133,27 +130,27 @@ class Character extends movableObject {
 
         else if (this.World.keyboard.SPACE) {
             this.shootBubble();
-            a = 0;
+            this.a = 0;
         }
 
         else if (this.World.keyboard.F && this.World.poison >= 1) {
             this.shootPoisonBubble();
-            a = 0;
+            this.a = 0;
         }
 
         else if (this.World.keyboard.D) {
             this.slapFin();
-            a = 0;
+            this.a = 0;
         }
 
-        else if(a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
+        else if(this.a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 
-        else if(a > 70){
+        else if(this.a > 70){
             this.playAnimation(this.IMAGES_IDLE_LONG);
         }
-        a++;
+        this.a++;
     }, 120);
 };
 
@@ -250,11 +247,14 @@ class Character extends movableObject {
     };
 
     hitByPufferFish(){
+        this.a = 0;
+        if (this.isHurt() && this.World.hitBy instanceof FishPuffer){
         this.poisoned_sound.pause();
         this.playAnimation(this.IMAGES_HIT_PUFFER);
         if(Muted == false){
         this.poisoned_sound.play();
         }
+    }
     };
 
     hitByJellyFish() {
