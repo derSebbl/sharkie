@@ -97,7 +97,7 @@ class endboss extends movableObject {
                 this.playAnimation(this.IMAGES_INTRODUCE);
             } 
 
-            if(this.firstContact && i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 3) {
+            if(this.firstContact && i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 6) {
                 this.playAnimation(this.IMAGES_SWIM);
                 if(Muted == false){
                 this.boss_music.play();
@@ -112,7 +112,7 @@ class endboss extends movableObject {
                 }
             } 
 
-            if(this.firstContact && i > 45 && this.bossHit < 3) {
+            if(this.firstContact && i > 45 && this.bossHit < 6) {
                 this.attackAnimation();
                 i = 8;
             }
