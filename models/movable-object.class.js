@@ -163,23 +163,26 @@ class movableObject extends drawableObjects {
     moveRight() {
         this.x += this.speed;
         this.otherDirection = false;
+        this.a = 0;
     };
 
 
     moveLeft() {
         this.x -= this.speed;
         this.otherDirection = true;
+        this.a = 0;
     };
 
 
     moveUp() {
         this.y -= this.speed;
+        this.a = 0;
     };
 
 
     moveDown() {
         this.y += this.speed;
-        
+        this.a = 0;
     };
 
 

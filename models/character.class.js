@@ -43,7 +43,9 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_FIN_SLAP);
 
         this.animate();
-        this.getHit();
+        this.moveAndIdleAnimation();
+        this.AttackAnimation();
+        this.getHitAnimation();
         this.speed = 3;
     }
 
@@ -51,51 +53,31 @@ class Character extends movableObject {
     animate() {
         setStoppableInterval(() =>{
             this.swim_sound.pause();
-
-            if(this.World.dead === false && Muted == false) {
-            this.world_sound.volume = 0.3;
-            this.world_sound.play();
-            }
+            this.playWorldSound();
 
             if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x && this.World.dead == false){
-                this.a = 0;
                 this.moveRight();
-            if(Muted == false){
-                this.swim_sound.play();
-                }
+                this.playSwimSound();
             }
 
             if (this.World.keyboard.LEFT && this.x > -100 && this.World.dead == false){
-                this.a = 0;
                 this.moveLeft();
-                if(Muted == false){
-                this.swim_sound.play();
-                }
+                this.playSwimSound();
             }
 
             if (this.World.keyboard.UP && this.World.dead == false){
-                this.a = 0;
-                if(Muted == false){
-                this.swim_sound.play();
-                }
+                this.playSwimSound();
                 if(this.y === -113){this.World.camera_x = -this.x;}
                 else{
                 this.moveUp();
             }}
 
             if (this.World.keyboard.DOWN && this.World.dead == false){
-                this.a = 0;
-                if(Muted == false){
-                this.swim_sound.play();
-                }
+                this.playSwimSound();
                 if(this.y === 277){this.World.camera_x = -this.x;}
                 else{
                 this.moveDown();
             }}
-
-            if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
-                this.buyPosion();
-            }
 
             if(this.x > 3050){
                 this.world_sound.pause();
@@ -104,7 +86,47 @@ class Character extends movableObject {
         }, 1000 / 60);
     };
 
-    getHit() {
+    moveAndIdleAnimation() {
+        setStoppableInterval(() => {
+
+        if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
+            this.playAnimation(this.IMAGES_SWIM);
+        } 
+
+        else if(this.a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
+            this.playAnimation(this.IMAGES_IDLE);
+        } 
+
+        else if(this.a > 70){
+            this.playAnimation(this.IMAGES_IDLE_LONG);
+        }
+        this.a++;
+    }, 120);
+};
+
+
+AttackAnimation() {
+    setStoppableInterval(() => {
+        if (this.World.keyboard.SPACE) {
+            this.shootBubble();
+        }
+
+        else if (this.World.keyboard.F && this.World.poison >= 1) {
+            this.shootPoisonBubble();
+        }
+
+        else if (this.World.keyboard.D) {
+            this.slapFin();
+        }
+
+        else if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
+            this.buyPosion();
+        }
+    }, 120);
+};
+
+
+    getHitAnimation() {
         setStoppableInterval(() => {
         if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
             this.hitByPufferFish();
@@ -126,32 +148,10 @@ class Character extends movableObject {
             this.y -= 15;
         }
 
-        else if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
-            this.playAnimation(this.IMAGES_SWIM);
-        } 
-
-        else if (this.World.keyboard.SPACE) {
-            this.shootBubble();
-        }
-
-        else if (this.World.keyboard.F && this.World.poison >= 1) {
-            this.shootPoisonBubble();
-        }
-
-        else if (this.World.keyboard.D) {
-            this.slapFin();
-        }
-
-        else if(this.a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
-            this.playAnimation(this.IMAGES_IDLE);
-        } 
-
-        else if(this.a > 70){
-            this.playAnimation(this.IMAGES_IDLE_LONG);
-        }
-        this.a++;
     }, 120);
-};
+    };
+
+
 
     blubShoot() {
         if(this.bubbleBuild == true) {
@@ -322,6 +322,19 @@ class Character extends movableObject {
         this.World.slap = true;
         this.FrameWidth = 200;
         this.a = 0;
+    };
+
+    playSwimSound(){
+        if(Muted == false){
+        this.swim_sound.play();
+        }
+    };
+
+    playWorldSound(){
+        if(this.World.dead === false && Muted == false){
+        this.world_sound.volume = 0.3;
+        this.world_sound.play();
+        }
     };
 
 }
