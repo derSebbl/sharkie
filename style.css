@@ -256,6 +256,8 @@ canvas {
 
 #mobile-controlls{
     max-width: 720px;
+    position: absolute;
+    bottom: -12px;
 }
 
 #mobile-controlls, #mobileMove, #mobileAction {
@@ -288,11 +290,15 @@ canvas {
 @media only screen and (max-width: 720px) {
 
     canvas, #canvas-container, #startscreen-container, .startscreenImg {
-        width: 100%;
+        width: 100vw;
     }
 
     #Info {
         height: auto;
+    }
+
+    #mobile-controlls, #mobileMove, #mobileAction {
+        display: flex;
     }
 }
 
@@ -345,7 +351,7 @@ canvas {
 @media only screen and (max-height: 480px) {
 
     canvas, #canvas-container, #startscreen-container, .startscreenImg {
-        height: 82vh;
+        height: 100vh;
     }
 
     #start-game-button-img, #try-again-button-img {
