@@ -136,7 +136,7 @@ class Character extends movableObject {
             a = 0;
         }
 
-        else if (this.World.keyboard.F && this.World.poison >= 1 && this.x > 3000) {
+        else if (this.World.keyboard.F && this.World.poison >= 1) {
             this.shootPoisonBubble();
             a = 0;
         }

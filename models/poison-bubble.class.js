@@ -8,6 +8,8 @@ class poisonBubble extends movableObject {
     FrameWidth = 30;
     FrameHeight = 20;
 
+    distancedTravelled = 0;
+
     constructor(x, y) {
         super().loadImg('img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png');
         this.x = x;
@@ -17,10 +19,10 @@ class poisonBubble extends movableObject {
 
 throw() {
     setStoppableInterval(()=>{ 
-        if (this.otherDirection == false){
-        this.x += 5;}
-        else if (this.otherDirection == true){
-            this.x -= 5;
+        this.x += 5;
+        this.distancedTravelled += 5;
+        if (this.distancedTravelled >= 500) {
+            this.y -= 800;
         }
     }, 1000 / 60);
 };

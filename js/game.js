@@ -168,11 +168,10 @@ function clearAllIntervals() {
   };
 
 /**
- * 
  * set a interval and push the id in the intervalIds array
  * 
- * @param {function} fn 
- * @param {time} time 
+ * @param {function} fn - this is the function that will be executed
+ * @param {number} time - this is the intervall time
  */
 function setStoppableInterval(fn, time) {
     let id = setInterval(fn, time);
@@ -214,8 +213,8 @@ function openControlls() {
 };
 
 /**
- * @function closeInfo
- * @description close the Info Window
+ * close the Info Window
+ * 
  */
 function closeInfo() {
     showStartButton();
@@ -226,8 +225,8 @@ function closeInfo() {
 };
 
 /**
- * @function openInfo
- * @description open the Info Window if its closed and close it if its open. It also show or hide the Background, the Start Button and the Mobile Controlls
+ * open the Info Window if its closed and close it if its open. It also show or hide the Background, the Start Button and the Mobile Controlls
+ * 
  */
 function openInfo() {
     closeControlls();
@@ -247,8 +246,8 @@ function openInfo() {
 };
 
 /**
- * @function showTryAgainButton
- * @description show the Try Again Button
+ * show the Try Again Button
+ * 
  */
 function showTryAgainButton() {
     let tryAgainButton = document.getElementById('try-again-button');
@@ -256,8 +255,8 @@ function showTryAgainButton() {
 };
 
 /**
- * @function TryAgain
- * @description hide the Try Again Button and restart the game
+ * hide the Try Again Button and restart the game
+ * 
  */
 function TryAgain() {
     let tryAgainButton = document.getElementById('try-again-button');
@@ -267,16 +266,16 @@ function TryAgain() {
 
 
 /**
- * @function hideStartButton
- * @description hide the Start Button
+ * hide the Start Button
+ * 
  */
 function hideStartButton() {
     let startButton = document.getElementById('start-game-button');
     startButton.style.display = 'none';
 };
 /**
- * @function showStartButton
- * @description show the Start Button
+ * show the Start Button
+ * 
  */
 function showStartButton() {
     let startButton = document.getElementById('start-game-button');
@@ -284,8 +283,8 @@ function showStartButton() {
 };
 
 /**
- * @function startGame
- * @description paused the music from the startpage, hide the startscreen and start button,load the canvas and level and show the canvas
+ * paused the music from the startpage, hide the startscreen and start button,load the canvas and level and show the canvas
+ * 
  */
 function startGame() {
     let startscreen = document.getElementById('startscreen-container');
@@ -300,8 +299,8 @@ function startGame() {
 
 
 /**
- * @function showBackground
- * @description show the Background over the startscreen/canvas and over the page
+ * show the Background over the startscreen/canvas and over the page
+ * 
  */
 function showBackground() {
     let background = document.getElementById('background');
@@ -310,8 +309,8 @@ function showBackground() {
     backgroundMain.style.display = 'block';
 };
 /**
- * @function hideBackground
- * @description hide the Background over the startscreen/canvas and over the page
+ * hide the Background over the startscreen/canvas and over the page
+ * 
  */
 function hideBackground() {
     let background = document.getElementById('background');
@@ -322,8 +321,8 @@ function hideBackground() {
 
 
 /**
- * @function muteAndUnmute
- * @description set the Muted variable to true or false and change the image of the audio controll. If the variable is true the music is muted and if the variable is false the music is unmuted
+ * set the Muted variable to true or false and change the image of the audio controll. If the variable is true the music is muted and if the variable is false the music is unmuted
+ * 
  */
 function muteAndUnmute() {
     let audioControll = document.getElementById('audioControll');
@@ -339,8 +338,8 @@ function muteAndUnmute() {
 };
 
 /**
- * @function restartGame
- * @description clear all intervals, clear the Array with the interval ids, load the level and load the game
+ * clear all intervals, clear the Array with the interval ids, load the level and load the game
+ * 
  */
 function restartGame() {
     clearAllIntervals();
@@ -350,8 +349,8 @@ function restartGame() {
 };
 
 /**
- * @function pauseStartpageAudio
- * @description pause the music from the startpage and set the current time to 0
+ * pause the music from the startpage and set the current time to 0
+ * 
  */
 function pauseStartpageAudio() {
     let startPage = document.getElementById('startPageAudio');
@@ -360,8 +359,8 @@ function pauseStartpageAudio() {
 };
 
 /**
- * @function playStartpageAudio
- * @description play the music from the startpage
+ * play the music from the startpage
+ * 
  */
 function playStartpageAudio() {
     let startPage = document.getElementById('startPageAudio');
@@ -369,8 +368,8 @@ function playStartpageAudio() {
 };
 
 /**
- * @function hideMobileControlls
- * @description hide the Mobile Controlls
+ * hide the Mobile Controlls
+ * 
  */
 function hideMobileControlls() {
     let mobileControlls = document.getElementById('mobile-controlls');
@@ -378,8 +377,8 @@ function hideMobileControlls() {
 }
 
 /**
- * @function showMobileControlls
- * @description show the Mobile Controlls
+ * show the Mobile Controlls
+ * 
  */
 function showMobileControlls() {
     let mobileControlls = document.getElementById('mobile-controlls');
