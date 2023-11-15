@@ -272,10 +272,12 @@ canvas {
 
 
 @media only screen and (max-width: 480px){
+
     #start-game-button-img, #try-again-button-img {
         height: 60px !important;
         width: 180px !important;
     }
+
 } 
 
 
@@ -293,6 +295,11 @@ canvas {
     #start-game-button-img, #try-again-button-img {
         height: 180px;
         width: 60px;
+    }
+
+
+    #Info {
+        font-size: 14px;
     }
 }
 
