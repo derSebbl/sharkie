@@ -229,8 +229,8 @@ function playStartpageAudio() {
 
 
 document.addEventListener('click', function (event) {
-    var audio = document.getElementById('startPageAudio');
-    if (audio) {
+    let audio = document.getElementById('startPageAudio');
+    if (audio && Muted == false) {
         audio.play();
     }
 });
