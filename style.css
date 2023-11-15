@@ -242,7 +242,7 @@ canvas {
     width: 100%;
 }
 
-#background {
+#background, #background-main {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
@@ -252,6 +252,28 @@ canvas {
 
 #startPageAudio {
     display: none;
+}
+
+#mobile-controlls{
+    max-width: 720px;
+}
+
+#mobile-controlls, #mobileMove, #mobileAction {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#mobileUp, #mobileDown, #mobileLeft, #mobileRight, #mobileSpace, #mobileR, #mobileF {
+    width: 70px;
+    height: 70px;
+}
+
+#mobileD {
+    width: 52px;
+    height: 52px;
+    margin-left: 8px;
 }
 
 @keyframes buttonAnimation {
@@ -264,8 +286,13 @@ canvas {
 
 
 @media only screen and (max-width: 720px) {
+
     canvas, #canvas-container, #startscreen-container, .startscreenImg {
         width: 100%;
+    }
+
+    #Info {
+        height: auto;
     }
 }
 
@@ -278,18 +305,47 @@ canvas {
         width: 180px !important;
     }
 
+    #mobile-controlls, #mobileMove, #mobileAction {
+        display: flex;
+    }
+
+    #mobile-controlls {
+        flex-direction: column;
+    }
+
+    .controlls-under-game {
+        display: none;
+    }
+
+    .content-controlls {
+        margin: 20px;
+    }
+
+    #controlls {
+        height: auto;
+    }
+
+    .controll-keys {
+        width: 100%;
+    }
+
 } 
 
 
 
 
-@media only screen and (max-height: 480px) {
-    canvas, #canvas-container, #startscreen-container, .startscreenImg {
-        height: 100vh;
-    }
+@media only screen and (max-height: 590px) {
 
     .controlls-under-game {
         display: none;
+    }
+}
+
+
+@media only screen and (max-height: 480px) {
+
+    canvas, #canvas-container, #startscreen-container, .startscreenImg {
+        height: 82vh;
     }
 
     #start-game-button-img, #try-again-button-img {
@@ -297,9 +353,14 @@ canvas {
         width: 60px;
     }
 
+    #mobile-controlls, #mobileMove, #mobileAction {
+        display: flex;
+    }
+
 
     #Info {
         font-size: 14px;
+        height: auto;
     }
 }
 

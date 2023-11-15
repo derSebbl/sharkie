@@ -182,12 +182,16 @@ function startGame() {
 // Functions to show and hide the background
 function showBackground() {
     let background = document.getElementById('background');
+    let backgroundMain = document.getElementById('background-main');
     background.style.display = 'block';
+    backgroundMain.style.display = 'block';
 };
 
 function hideBackground() {
     let background = document.getElementById('background');
+    let backgroundMain = document.getElementById('background-main');
     background.style.display = 'none';
+    backgroundMain.style.display = 'none';
 };
 
 
