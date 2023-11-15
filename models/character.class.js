@@ -43,6 +43,7 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_FIN_SLAP);
 
         this.animate();
+        this.getHit();
         this.speed = 3;
     }
 
@@ -101,18 +102,19 @@ class Character extends movableObject {
             }
             this.World.camera_x = -this.x;
         }, 1000 / 60);
+    };
 
-       
+    getHit() {
         setStoppableInterval(() => {
+        if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
             this.hitByPufferFish();
+        }
 
-        if (this.isHurt() && this.World.hitBy instanceof endboss) {
-            this.a = 0;
+        else if (this.isHurt() && this.World.hitBy instanceof endboss) {
             this.hitByEndboss();
         }
 
         else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
-            this.a = 0;
             this.hitByJellyFish();
         }
 
@@ -130,17 +132,14 @@ class Character extends movableObject {
 
         else if (this.World.keyboard.SPACE) {
             this.shootBubble();
-            this.a = 0;
         }
 
         else if (this.World.keyboard.F && this.World.poison >= 1) {
             this.shootPoisonBubble();
-            this.a = 0;
         }
 
         else if (this.World.keyboard.D) {
             this.slapFin();
-            this.a = 0;
         }
 
         else if(this.a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
@@ -255,6 +254,7 @@ class Character extends movableObject {
         this.poisoned_sound.play();
         }
     }
+    this.a = 0;
     };
 
     hitByJellyFish() {
@@ -263,7 +263,7 @@ class Character extends movableObject {
         if(Muted == false){
         this.electric_sound.play();
         }
-        
+        this.a = 0;
     };
 
     hitByEndboss() {
@@ -272,6 +272,7 @@ class Character extends movableObject {
         if(Muted == false){
         this.hitByBoss_sound.play();
         }
+        this.a = 0;
     };
 
     sharkieDead() {
@@ -292,6 +293,7 @@ class Character extends movableObject {
         if(Muted == false){
         this.bubble_sound.play();
         }
+        this.a = 0;
     };
 
     buyPosion(){
@@ -309,6 +311,7 @@ class Character extends movableObject {
         if(Muted == false){
         this.bubble_sound.play();
         }
+        this.a = 0;
     };
 
     slapFin(){
@@ -318,6 +321,7 @@ class Character extends movableObject {
         }
         this.World.slap = true;
         this.FrameWidth = 200;
+        this.a = 0;
     };
 
 }
