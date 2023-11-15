@@ -125,13 +125,13 @@ class endboss extends movableObject {
     }, 180) 
     setInterval(() => { 
 
-        if(this.isHit == true && this.bossHit < 6) {
+        if(this.isHit == true && this.bossHit < 3) {
         this.hitAnimation();
         }
 
-        if(this.bossHit == 6) {
+        if(this.bossHit == 3) {
             this.attacking = true;
-            this.bossHit = 7;
+            this.bossHit = 4;
             World.BossDead = true;
             this.deadAnimation();
         }
