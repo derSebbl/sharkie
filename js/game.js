@@ -203,7 +203,7 @@ function muteAndUnmute() {
         audioControll.innerHTML = `<img onclick="muteAndUnmute()" src="img/menu/Unmute.png">`;
         playStartpageAudio();
     }
-}
+};
 
 
 function restartGame() {
@@ -211,7 +211,7 @@ function restartGame() {
     intervalIds = [];
     initLevel();
     init();
-}
+};
 
 
 // Functions to start and stop the startpage audio
@@ -219,9 +219,18 @@ function pauseStartpageAudio() {
     let startPage = document.getElementById('startPageAudio');
     startPage.pause();
     startPage.currentTime = 0;
-}
+};
 
 function playStartpageAudio() {
     let startPage = document.getElementById('startPageAudio');
     startPage.play();
-}
+};
+
+
+
+document.addEventListener('click', function (event) {
+    var audio = document.getElementById('startPageAudio');
+    if (audio) {
+        audio.play();
+    }
+});
