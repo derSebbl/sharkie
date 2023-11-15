@@ -42,7 +42,8 @@ class Character extends movableObject {
         this.loadImages(this.IMAGES_BUILD_POISON_BUBBLE);
         this.loadImages(this.IMAGES_FIN_SLAP);
 
-        this.animate();
+        this.LeftAndRightAnimation();
+        this.UpAndDownAnimation();
         this.moveAndIdleAnimation();
         this.AttackAnimation();
         this.getHitAnimation();
@@ -50,7 +51,7 @@ class Character extends movableObject {
     }
 
 
-    animate() {
+    LeftAndRightAnimation() {
         setStoppableInterval(() =>{
             this.swim_sound.pause();
             this.playWorldSound();
@@ -64,7 +65,12 @@ class Character extends movableObject {
                 this.moveLeft();
                 this.playSwimSound();
             }
+            this.World.camera_x = -this.x;
+        }, 1000 / 60);
+    };
 
+    UpAndDownAnimation() {
+        setStoppableInterval(() =>{
             if (this.World.keyboard.UP && this.World.dead == false){
                 this.playSwimSound();
                 if(this.y === -113){this.World.camera_x = -this.x;}
