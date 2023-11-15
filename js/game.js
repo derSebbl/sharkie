@@ -226,11 +226,3 @@ function playStartpageAudio() {
     startPage.play();
 };
 
-
-
-document.addEventListener('click', function (event) {
-    let audio = document.getElementById('startPageAudio');
-    if (audio && Muted == false) {
-        audio.play();
-    }
-});
