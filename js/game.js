@@ -197,6 +197,7 @@ function clearAllIntervals() {
 function closeControlls() {
     showStartButton();
     hideBackground();
+    showMobileControlls();
     let controlls = document.getElementById('controlls');
     controlls.style.display = 'none';
 };
@@ -208,11 +209,13 @@ function openControlls() {
     let controlls = document.getElementById('controlls');
     if(controlls.style.display == 'none') {
         controlls.style.display = 'flex';
+        hideMobileControlls();
     }
     else {
         controlls.style.display = 'none';
         showStartButton();
         hideBackground();
+        showMobileControlls();
 }
 };
 
@@ -221,6 +224,7 @@ function openControlls() {
 function closeInfo() {
     showStartButton();
     hideBackground();
+    showMobileControlls();
     let info = document.getElementById('Info');
     info.style.display = 'none';
 };
@@ -232,11 +236,13 @@ function openInfo() {
     let info = document.getElementById('Info');
     if(info.style.display == 'none') {
         info.style.display = 'flex';
+        hideMobileControlls();
     }
     else {
         info.style.display = 'none';
         showStartButton();
         hideBackground();
+        showMobileControlls();
 }
 };
 
@@ -330,3 +336,13 @@ function playStartpageAudio() {
     startPage.play();
 };
 
+
+function hideMobileControlls() {
+    let mobileControlls = document.getElementById('mobile-controlls');
+    mobileControlls.style.display = 'none';
+}
+
+function showMobileControlls() {
+    let mobileControlls = document.getElementById('mobile-controlls');
+    mobileControlls.style.display = 'flex';
+}
