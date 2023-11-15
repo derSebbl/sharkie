@@ -81,6 +81,106 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+// Mobile controlls
+document.addEventListener('DOMContentLoaded', (event) => {
+
+//UP
+document.getElementById('mobileUp').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.UP = true;
+});
+document.getElementById('mobileUp').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.UP = false;
+});
+
+
+//DOWN
+document.getElementById('mobileDown').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.DOWN = true;
+});
+
+document.getElementById('mobileDown').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.DOWN = false;
+});
+
+
+//LEFT
+document.getElementById('mobileLeft').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.LEFT = true;
+});
+
+document.getElementById('mobileLeft').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.LEFT = false;
+});
+
+
+//RIGHT
+document.getElementById('mobileRight').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.RIGHT = true;
+});
+
+document.getElementById('mobileRight').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.RIGHT = false;
+});
+
+
+//SPACE
+document.getElementById('mobileSpace').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.SPACE = true;
+});
+
+document.getElementById('mobileSpace').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.SPACE = false;
+});
+
+
+//F
+document.getElementById('mobileF').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.F = true;
+});
+
+document.getElementById('mobileF').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.F = false;
+});
+
+
+//R
+document.getElementById('mobileR').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.R = true;
+});
+
+document.getElementById('mobileR').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.R = false;
+});
+
+
+//D
+document.getElementById('mobileD').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    Kboard.D = true;
+});
+
+document.getElementById('mobileD').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    Kboard.D = false;
+});
+});
+
+
+
 
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
