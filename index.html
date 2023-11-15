@@ -33,6 +33,7 @@
 
 </head>
 <body>
+<div class="main-container">
     <audio id="startPageAudio" controls autoplay loop>
         <source src="audio/Start Page.mp3" type="audio/mp3">
     </audio>
@@ -40,9 +41,9 @@
     <div id="startscreen-container">
         <div id="background"></div>
         <img class="startscreenImg" src="img/menu/StartScreen.png">
-        <button id="start-game-button" onclick="startGame()"><img src="img/6.Botones/Start/3.png"></button>
+        <button id="start-game-button" onclick="startGame()"><img id="start-game-button-img" src="img/6.Botones/Start/3.png"></button>
         <div id="menu-buttons-container">
-            <button id="audioControll"> <img onclick="muteAndUnmute()" src="img/menu/Unmute.png"> </button>
+            <button id="audioControll"> <img onclick="muteAndUnmute()" src="img/menu/muted.png"> </button>
             <button><img onclick="openControlls()" src="img/menu/controlls.png"></button>
             <button><img onclick="openInfo()" src="img/menu/info.png"></button>
         </div>
@@ -69,7 +70,7 @@
     </div>
     
     <div id="canvas-container">
-        <button id="try-again-button" onclick="TryAgain()"><img src="img/6.Botones/Try again/Recurso 15.png"></button>
+        <button id="try-again-button" onclick="TryAgain()"><img id="try-again-button-img" src="img/6.Botones/Try again/Recurso 15.png"></button>
         <canvas width="720" height="480" id="canvas"></canvas>
     </div>
     <div class="controlls-under-game">
@@ -79,5 +80,6 @@
         <div class="description-under-game"><span class="keys-under-game">"F"</span><div class="text-under-game">Poison Bubble</div></div>
         <div class="description-under-game"><span class="keys-under-game">"R"</span><div class="text-under-game">Buy Poison</div></div>
     </div>
+</div>
 </body>
 </html>

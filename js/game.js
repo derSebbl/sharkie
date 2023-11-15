@@ -4,7 +4,7 @@ let Kboard = new keyboard();
 
 let intervalIds = [];
 
-let Muted = false;
+let Muted = true;
 
 
 function init() {

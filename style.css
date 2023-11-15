@@ -1,16 +1,19 @@
 body {
-    max-width: 1920px;
-    max-height: 1080px;
-    width: 100vw;
-    height: 100vh;
     margin: 0;
+    background-image: url(img/Wallpaper/abstract-1779612_1920.png);
+    background-repeat: no-repeat;
+    background-size:auto; 
+}
+
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(img/Wallpaper/abstract-1779612_1920.png);
-    background-repeat: no-repeat;
-    background-size:auto; 
+    max-width: 1920px;
+    max-height: 1080px;
+    height: 100vh;
+    width: 100vw;
 }
 
 .controlls-under-game {
@@ -61,8 +64,6 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 720px;
-    height: 480px;
 }
 
 #menu-buttons-container {
@@ -234,8 +235,6 @@ canvas {
 
 #startscreen-container {
     position: relative;
-    width: 720px;
-    height: 480px;
 }
 
 #startscreen img {
@@ -257,9 +256,12 @@ canvas {
 
 @keyframes buttonAnimation {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(0.8); }
     100% { transform: scale(1); }
 }
+
+
+
 
 @media only screen and (max-width: 720px) {
     canvas, #canvas-container, #startscreen-container, .startscreenImg {
@@ -267,8 +269,31 @@ canvas {
     }
 }
 
+
+
+@media only screen and (max-width: 480px){
+    #start-game-button-img, #try-again-button-img {
+        height: 60px !important;
+        width: 180px !important;
+    }
+} 
+
+
+
+
 @media only screen and (max-height: 480px) {
     canvas, #canvas-container, #startscreen-container, .startscreenImg {
-        height: 100vh !important;
+        height: 100vh;
+    }
+
+    .controlls-under-game {
+        display: none;
+    }
+
+    #start-game-button-img, #try-again-button-img {
+        height: 180px;
+        width: 60px;
     }
 }
+
+
