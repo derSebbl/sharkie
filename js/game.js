@@ -262,6 +262,7 @@ function TryAgain() {
     let tryAgainButton = document.getElementById('try-again-button');
     tryAgainButton.style.display = 'none';
     restartGame();
+    showMobileControlls();
 };
 
 
@@ -293,6 +294,7 @@ function startGame() {
     hideStartButton();
     initLevel();
     init();
+    showMobileControlls();
     startscreen.style.display = 'none';
     canvas.style.display = 'flex';
 };
@@ -374,6 +376,15 @@ function playStartpageAudio() {
 function hideMobileControlls() {
     let mobileControlls = document.getElementById('mobile-controlls');
     mobileControlls.style.display = 'none';
+}
+
+/**
+ * show the Mobile Controlls
+ * 
+ */
+function showMobileControlls() {
+    let mobileControlls = document.getElementById('mobile-controlls');
+    mobileControlls.style.display = 'flex';
 }
 
 /**
