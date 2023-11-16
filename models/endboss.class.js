@@ -147,8 +147,7 @@ bossGetHit() {
             World.BossDead = true;
             this.deadAnimation();
         }
-
-    }, 180);  
+    }, 180) 
 };
 
 /**
@@ -182,8 +181,6 @@ deadAnimation() {
     this.boss_die.play();
     }
     this.playAnimation(this.IMAGES_DEAD);
-    this.isHit = false;
-    clearAllIntervals();
 };
 
 /**

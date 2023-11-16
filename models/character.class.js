@@ -135,7 +135,9 @@ AttackAnimation() {
         }
 
         else if (this.World.keyboard.D) {
+            this.World.slap = true;
             this.slapFin();
+            console.log(this.World.slap);
         }
 
         else if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
@@ -220,6 +222,7 @@ idleAnimation() {
  * 
  */
 finSlap(){
+    this.FrameX = 90;
     if(this.slapping == true) {
         return
     }
@@ -336,10 +339,9 @@ slapFin(){
         this.slap_sound.play();
     }
     this.World.slap = true;
-    this.FrameWidth = 200;
     this.a = 0;
-    this.World.slap = false;
     this.slapping = false;
+    this.FrameX = 53;
 };
 
 /**

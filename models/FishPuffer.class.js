@@ -72,7 +72,7 @@ setInterval(() => {
     }
 
     if(this.isHit == true){
-        this.loadImg('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png');
+        this.playAnimation(this.IMAGES_PUFFERDEAD);
         this.y -= 9;
         this.x += 5;
     }
