@@ -304,15 +304,7 @@ canvas {
         display: flex;
     }
 
-    #startscreen-container {
-        display: none;
-    }
-
-    #canvas-container {
-        display: none;
-    }
-
-    canvas {
+    #canvas-container, canvas, #startscreen-container,#mobile-controlls {
         display: none;
     }
 

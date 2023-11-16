@@ -109,7 +109,7 @@ moveAndIdleAnimation() {
             this.playAnimation(this.IMAGES_SWIM);
         } 
 
-        else if(this.a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false) {
+        else if(this.a < 70 && this.bubbleBuild == false && this.poisonBuild == false && this.slapping == false && this.World.dead == false) {
             this.playAnimation(this.IMAGES_IDLE);
         } 
 
