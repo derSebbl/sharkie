@@ -4,45 +4,44 @@ async function initLevel() {
 
 level1 = new level(
         [
-        new FishPuffer(),
-        new FishPuffer(),
-        new FishPuffer(),
-        new FishPuffer(),
-        new FishPuffer(),
-        new FishPuffer(),
+        createPufferFish(),
+        createPufferFish(),
+        createPufferFish(),
+        createPufferFish(),
+        createPufferFish(),
+        createPufferFish(),
         ],
         [
-        new jellyFish(),
-        new jellyFish(),
-        new jellyFish(),
-        new jellyFish(),
-        new jellyFish(),
-        new jellyFish(),
-        new jellyFish(),
-        new jellyFish(),
+        createJellyFish(),
+        createJellyFish(),
+        createJellyFish(),
+        createJellyFish(),
+        createJellyFish(),
+        createJellyFish(),
+        createJellyFish(),
         ],
         [
-        new endboss(),
+        createEndboss(),
         ],
         [
-        new coins(),
-        new coins(),
-        new coins(),
-        new coins(),
-        new coins(),
-        new coins(),
-        new coins(),
-        new coins(),
+        createCoins(),
+        createCoins(),
+        createCoins(),
+        createCoins(),
+        createCoins(),
+        createCoins(),
+        createCoins(),
+        createCoins(),
         ],
         [
-        new poison(),
-        new poison(),
-        new poison(),
-        new poison(),
-        new poison(),
-        new poison(),
-        new poison(),
-        new poison(),
+        createPoison(),
+        createPoison(),
+        createPoison(),
+        createPoison(),
+        createPoison(),
+        createPoison(),
+        createPoison(),
+        createPoison(),
         ],
         [
         new BackgroundObject('img/3. Background/Layers/5. Water/D2.png', -719, 0),
@@ -86,4 +85,25 @@ level1 = new level(
         new BackgroundObject('img/3. Background/Layers/2. Floor/D2.png', 719*5, 0),
         ],
 )
+
+function createPufferFish(){
+        return new FishPuffer();
+};
+
+function createJellyFish(){
+        return new jellyFish();
+};
+
+function createEndboss(){
+        return new endboss();
+};
+
+function createCoins(){
+        return new coins();
+};
+
+function createPoison(){
+        return new poison();
+};
+
 };
