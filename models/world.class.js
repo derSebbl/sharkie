@@ -42,9 +42,11 @@ class World {
         this.run();
     };
 
-
+/**
+ * Interval that checks all the collisions and shoots the bubbles and poison bubbles.
+ * 
+ */
     run(){
-
         setStoppableInterval(() => {
         this.checkCollisionsPuffer();
         this.checkCollisionsJelly();
@@ -60,11 +62,18 @@ class World {
     };
 
 
-
+    /**
+     * Set an object to the world.
+     * 
+     */
     setWorld() {
         this.char.World = this;
     };
 
+    /**
+     * Function that shoots the bubbles. It creates a new bubble and pushes it to the array of bubbles.
+     * 
+     */
     shootBubbles() {
         if (this.bubbleShot == true){
             let blub = new bubble(this.char.x + 200, this.char.y +150);
@@ -73,6 +82,10 @@ class World {
         }
     }; 
 
+    /**
+     * Function that shoots the poison bubbles. It creates a new poison bubble and pushes it to the array of poison bubbles.
+     * 
+     */
     shootPoison() {
         if (this.poisonShot == true){
             let blub = new poisonBubble(this.char.x + 200, this.char.y +150);
@@ -81,9 +94,10 @@ class World {
         }
     }; 
 
-
-
-
+    /**
+     * Checks if the character is colliding with an enemy. If it is, the character gets hit and the healthbar is set to the energy of the character. The enemy that hit the character is set to the variable hitBy. In this case it is the Puffer Fish.
+     * 
+     */
     checkCollisionsPuffer() {
             this.level.puffer.forEach((enemy) =>{
               if( this.char.isColliding(enemy) && !this.slap && enemy.isHit == false){
@@ -94,7 +108,10 @@ class World {
             });
     };
 
-
+    /**
+     * Checks if the character is colliding with an enemy. If it is, the character gets hit and the healthbar is set to the energy of the character. The enemy that hit the character is set to the variable hitBy. In this case it is the Jellyfish.
+     * 
+     */
     checkCollisionsJelly() {
         this.level.jelly.forEach((enemy) =>{
             if( this.char.isColliding(enemy) && !this.slap && enemy.isHit == false){
@@ -105,7 +122,10 @@ class World {
           });
     };
 
-
+    /**
+     * Checks if the character is colliding with an enemy. If it is, the character gets hit and the healthbar is set to the energy of the character. The enemy that hit the character is set to the variable hitBy. In this case it is the Boss.
+     * 
+     */
     checkCollisionsBoss() {
         this.level.boss.forEach((enemy) =>{
             if( this.char.isColliding(enemy) && !this.slap){
@@ -116,7 +136,10 @@ class World {
           });
     };
 
-
+    /**
+     * Checks if the Fin Slap is colliding with an enemy. If it is, this enemy gets the hit. 
+     * 
+     */
     checkCollisionsSlap() {
         this.level.puffer.forEach((puffer) =>{
           if( this.char.isColliding(puffer) && this.slap){
@@ -125,7 +148,10 @@ class World {
         });
 };
 
-
+    /**
+     * Checks if the character is colliding with a coin. If it is, the coin is collected and the coinbar is set to the amount of coins collected.The Coin disappears.
+     * 
+     */
     checkCollisionsCoin() {           
         this.level.coin.forEach((gold) =>{
         if( this.char.isColliding(gold)) {
@@ -139,7 +165,10 @@ class World {
       });
 };
 
-
+/**
+ * Checks if the character is colliding with a poison. If it is, the poison is collected and the poisonbar is set to the amount of poison collected.The poison disappears.
+ * 
+ */
 checkCollisionsPoison() {           
     this.level.poison.forEach((flask) =>{
     if( this.char.isColliding(flask)) {
@@ -153,7 +182,10 @@ checkCollisionsPoison() {
   });
 };
 
-
+/**
+ * Checks if a bubble is colliding with an enemy. If the enemy is a Jellyfish and this Jellyfish is not hit yet, the Jellyfish gets hit and the bubble disappears.
+ * 
+ */
 checkCollisionsBubble() {
     this.level.jelly.forEach((jelly) =>{
         this.bubbles.forEach((bubble) =>{
@@ -165,7 +197,10 @@ checkCollisionsBubble() {
     });
 };
 
-
+/**
+ * Checks if a poison bubble is colliding with an enemy. If the enemy is the Boss, he gets a hit and the poison bubble disappears.
+ * 
+ */
 checkBubbleHitBoss() {
     this.level.boss.forEach((enemy) =>{
         this.poisonBubbles.forEach((bubble) =>{
@@ -179,7 +214,11 @@ checkBubbleHitBoss() {
 };
 
 
-
+/**
+ * Checks if the Object is in an otherDirection. If it is, the image is flipped. Draws the object and the frame of the object.
+ * 
+ * @param {value} - the object that will be added to the world.
+ */
     addToWorld(object) {
         if(object.otherDirection){
             this.flipImage(object);
@@ -195,7 +234,11 @@ checkBubbleHitBoss() {
 
     };
 
-
+/**
+ * Flips the image of the object.
+ * 
+ * @param {value} - the object that will be added to the world.
+ */
     flipImage(object){
         this.ctx.save();
         this.ctx.translate(object.width, 0);
@@ -203,20 +246,31 @@ checkBubbleHitBoss() {
         object.x = object.x *-1;
     };
 
-
+    /**
+     * Flips the image of the object back.
+     * 
+     * @param {value} - the object that will be added to the world.
+     */
     flipImageBack(object) {
         object.x = object.x *-1;
         this.ctx.restore();
     };
 
-
+    /**
+     * Adds an Array of objects to the world.
+     * 
+     * @param {Array} - objects that will be added to the world.
+     */
     addObjectsToWorld(objects) {
         objects.forEach(o => {
             this.addToWorld(o);
         })
     };
 
-
+    /**
+     * Draw everything on the canvas.
+     * 
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
