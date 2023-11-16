@@ -126,7 +126,7 @@ moveAndIdleAnimation() {
  */
 AttackAnimation() {
     setStoppableInterval(() => {
-        if (this.World.keyboard.SPACE) {
+        if (this.World.keyboard.SPACE && this.bubbleBuild == false) {
             this.shootBubble();
         }
 
@@ -174,33 +174,20 @@ getHitAnimation() {
 };
 
 /**
- * If a bubble is already in building, it returns and nothing happens. If no bubble is in building it sets the Variable bubbleBuild to true and pause the Bubble Sound. It loads the Images for the Bubble Animation and set the Variable bubbleBuild to false and sets the Variable bubbleShot to true. 
+ * If a bubble is already in building, it returns and nothing happens. If no bubble is in building it sets the Variable bubbleBuild to true and pause the Bubble Sound. It loads the Images for the Bubble Animation.
  * 
  */
 blubShoot() {
     if(this.bubbleBuild == true) {
         return
     }
-
     this.bubbleBuild = true;
     this.bubble_sound.pause();
-    
-    const delayBetweenImages = 40;
-    let loadedImagesCount = 0;
-    for (let i = 0; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_BUILD_BUBBLE[i]);
-            loadedImagesCount++;
-            if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length) {
-                this.bubbleBuild = false;
-                this.World.bubbleShot = true;
-            }
-        }, i * delayBetweenImages);
-    }
+    this.playAnimation(this.IMAGES_BUILD_BUBBLE);
 };
 
 /**
- * If a poison bubble is already in building, it returns and nothing happens. If no poison bubble is in building it sets the Variable poisonBuild to true and pause the Bubble Sound. It loads the Images for the Poison Bubble Animation and set the Variable poisonBuild to false and sets the Variable poisonShot to true.
+ * If a poison bubble is already in building, it returns and nothing happens. If no poison bubble is in building it sets the Variable poisonBuild to true and pause the Bubble Sound. It loads the Images for the Poison Bubble Animation.
  * 
  */
 poisonShoot() { 
@@ -209,18 +196,7 @@ poisonShoot() {
     }
     this.poisonBuild = true;
     this.bubble_sound.pause();
-    const delayBetweenImages = 40;
-    let loadedImagesCount = 0;
-    for (let i = 0; i < this.IMAGES_BUILD_POISON_BUBBLE.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_BUILD_POISON_BUBBLE[i]);
-            loadedImagesCount++;
-            if (loadedImagesCount === this.IMAGES_BUILD_POISON_BUBBLE.length) {
-                this.World.poisonShot = true;
-                this.poisonBuild = false;
-            }
-        }, i * delayBetweenImages);
-    }
+    this.playAnimation(this.IMAGES_BUILD_POISON_BUBBLE);
 };
 
 /**
@@ -249,36 +225,7 @@ finSlap(){
     }
     this.slapping = true;
     this.slap_sound.pause();
-
-    const delayBetweenImages = 80;
-    let loadedImagesCount = 0;
-    for (let i = 1; i < this.IMAGES_FIN_SLAP.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_FIN_SLAP[i]);
-            loadedImagesCount++;
-            if (loadedImagesCount === this.IMAGES_FIN_SLAP.length - 1) {
-                this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
-                this.World.slap = false;
-                this.slapping = false;
-            }
-        }, i * delayBetweenImages);
-    }
-};
-
-/**
- * Loads the Images for the Dead Animation. It loads the Images with a delay of 80ms.
- * 
- */
-deadAnimation() {
-    const delayBetweenImages = 80;
-    let loadedImagesCount = 0;
-    
-    for (let i = 1; i < this.IMAGES_DEAD.length; i++) {
-        setTimeout(() => {
-            this.loadImg(`img/1.Sharkie/6.dead/1.Poisoned/${i}.png`);
-            loadedImagesCount++;
-        }, i * delayBetweenImages);
-    }
+    this.playAnimation(this.IMAGES_FIN_SLAP);
 };
 
 /**
@@ -325,7 +272,7 @@ hitByEndboss() {
  * 
  */
 sharkieDead() {
-    this.deadAnimation();
+    this.playAnimation(this.IMAGES_DEAD);
     this.World.dead = true;
     if(Muted == false){
         this.SharkieDie_sound.play();
@@ -347,6 +294,8 @@ shootPoisonBubble(){
         this.bubble_sound.play();
     }
     this.a = 0;
+    this.World.poisonShot = true;
+    this.poisonBuild = false;
 };
 
 /**
@@ -373,6 +322,8 @@ shootBubble(){
         this.bubble_sound.play();
     }
     this.a = 0;
+    this.bubbleBuild = false;
+    this.World.bubbleShot = true;
 };
 
 /**
@@ -387,6 +338,8 @@ slapFin(){
     this.World.slap = true;
     this.FrameWidth = 200;
     this.a = 0;
+    this.World.slap = false;
+    this.slapping = false;
 };
 
 /**
