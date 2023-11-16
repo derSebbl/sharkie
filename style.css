@@ -278,10 +278,40 @@ canvas {
     margin-left: 8px;
 }
 
+#rotate-phone {
+    height: auto;
+    width: 100vw;
+    position: absolute;
+    display: none;
+    animation: rotateImage 4s infinite;
+}
+
 @keyframes buttonAnimation {
     0% { transform: scale(1); }
     50% { transform: scale(0.8); }
     100% { transform: scale(1); }
+}
+
+@keyframes rotateImage {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+@media screen and (orientation: portrait) {
+    #rotate-phone {
+        display: flex;
+    }
+
+    #startscreen-container {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+        background-image: none;
+    }
 }
 
 
@@ -297,9 +327,6 @@ canvas {
         height: auto;
     }
 
-    #mobile-controlls, #mobileMove, #mobileAction {
-        display: flex;
-    }
 }
 
 
@@ -309,10 +336,6 @@ canvas {
     #start-game-button-img, #try-again-button-img {
         height: 60px !important;
         width: 180px !important;
-    }
-
-    #mobile-controlls, #mobileMove, #mobileAction {
-        display: flex;
     }
 
     #mobile-controlls {
@@ -368,6 +391,8 @@ canvas {
         font-size: 14px;
         height: auto;
     }
+
+
 }
 
 
