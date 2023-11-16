@@ -308,10 +308,19 @@ canvas {
         display: none;
     }
 
+    #canvas-container {
+        display: none;
+    }
+
+    canvas {
+        display: none;
+    }
+
     body {
         background-color: white;
         background-image: none;
     }
+
 }
 
 
