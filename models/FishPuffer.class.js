@@ -8,6 +8,7 @@ class FishPuffer extends movableObject {
     FrameHeight = 40;
 
     isHit = false;
+    e = 0;
 
     hit_sound = new Audio('audio/PufferHit.mp3');
 
@@ -50,63 +51,70 @@ class FishPuffer extends movableObject {
         this.loadImages(this.IMAGES_PUFFED);
         this.loadImages(this.IMAGES_PUFFERDEAD);
 
-        this.animate();
+        this.animateMoveAndHit();
+        this.pufferTransformation();
 
         this.x = 300 + Math.random() * 4000;
         this.y = 0 + Math.random() * 350;
         this.speed = 1 + Math.random() * 0.25; 
     }
 
-    animate() {
-        let e = 0
-        setInterval(() => {
+/**
+ * Animation of the puffer fish, it moves from right to left and when it is hit, it dies and flys away.
+ * 
+ */
+animateMoveAndHit() {
+setInterval(() => {
+    if(this.isHit == false){
+    this.moveLeft();
+    this.otherDirection = false;
+    this.hit_sound.pause();
+    }
 
-            if(e > 16 && e < 18){
-                this.pufferFishTransition();
-            }
+    if(this.isHit == true){
+        this.loadImg('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png');
+        this.y -= 9;
+        this.x += 5;
+    }
 
-           else if(e > 18 && e < 45){
-                this.pufferFishPuffed();
-        
-            } 
-
-            else if(e > 46){
-                e = 0;
-            }
-
-            else {
-                this.pufferFishNormal();
-            }
-
-            e++
-    }, 280);
-
-    
-    setInterval(() => {
-
-       
-
-        if(this.isHit == false){
-        this.moveLeft();
-        this.otherDirection = false;
-        this.hit_sound.pause();
-        }
-
-        if(this.isHit == true){
-            this.loadImg('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.png');
-            this.y -= 9;
-            this.x += 5;
-        }
-
-    }, 1000/60);
+}, 1000/60);
 };
 
+/**
+ * Animation of the puffer fish, it changes from normal to puffed and back to normal.
+ * 
+ */
+pufferTransformation(){
+    setInterval(() => {
+        if(this.e > 16 && this.e < 18){
+            this.pufferFishTransition();
+        }
 
+        else if(this.e > 18 && this.e < 45){
+            this.pufferFishPuffed();
+        } 
+
+        else if(this.e > 46){
+            this.e = 0;
+        }
+
+        else {
+            this.pufferFishNormal();
+        }
+
+    this.e++
+    }, 280);
+};
+
+/**
+ * Animation of the puffer fish, between normal and puffed.
+ * 
+ */
 pufferFishTransition() {
     this.playAnimation(this.IMAGES_TRANSITION);
     this.FrameHeight = 40;
-
 };
+
 
 pufferFishPuffed(){
     this.playAnimation(this.IMAGES_PUFFED);

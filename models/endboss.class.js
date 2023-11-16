@@ -4,7 +4,8 @@ class endboss extends movableObject {
     width = 680;
     y = -170;
     x = 3500;
-    bossHit = 0;    
+    bossHit = 0;   
+    i = 9; 
 
     World;
 
@@ -86,50 +87,61 @@ class endboss extends movableObject {
         this.loadImages(this.IMAGES_INTRODUCE);
         this.loadImages(this.IMAGES_HIT);
         this.loadImages(this.IMAGES_DEAD);
-        this.animate();
+        this.animateIntroAndSwim();
+        this.attack();
+        this.bossGetHit();
     }
 
-    animate() {
-        let i = 9;
-        setInterval(() => {
+/**
+ * Animations for the Intro and Swim of the Boss. 
+ * 
+ */
+animateIntroAndSwim() {
+    setInterval(() => {
+        if(this.i < 8) {
+            this.playAnimation(this.IMAGES_INTRODUCE);
+        } 
 
-            if(i < 8) {
-                this.playAnimation(this.IMAGES_INTRODUCE);
-            } 
-
-            if(this.firstContact && i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 6) {
-                this.playAnimation(this.IMAGES_SWIM);
-                if(Muted == false){
-                this.boss_music.play();
-                }
-            }
+        if(this.firstContact && this.i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 5) {
+            this.playAnimation(this.IMAGES_SWIM);
+            this.playBossMusic();
+            this.x = 3500;
+        }
             
-            if(world.char.x > 3050 && !this.firstContact){
-                i = 0;
-                this.firstContact = true;
-                if(Muted == false){
-                this.boss_music.play();
-                }
-            } 
+        if(world.char.x > 3050 && !this.firstContact){
+            this.i = 0;
+            this.firstContact = true;
+            this.playBossMusic();
+        }
+        this.i++;
+    }, 180)
+};
 
-            if(this.firstContact && i > 45 && this.bossHit < 6) {
-                this.attackAnimation();
-                i = 8;
-            }
-
-            if(world.char.sharkieIsDead == true) {
-                this.boss_music.pause();
-            }
-
-            i++;
-    }, 180) 
-    setInterval(() => { 
-
-        if(this.isHit == true && this.bossHit < 6) {
-        this.hitAnimation();
+attack() {
+    setInterval(() => {
+        if(this.firstContact && this.i > 45 && this.bossHit < 5) {
+            this.attackAnimation();
+            this.i = 8;
+            this.x = 3400;
         }
 
-        if(this.bossHit == 6) {
+        if(world.char.sharkieIsDead == true) {
+            this.boss_music.pause();
+        }
+    }, 180)
+};
+
+/**
+ * Animations for the Boss when he gets hit and when he dies.
+ * 
+ */
+bossGetHit() {
+    setInterval(() => { 
+        if(this.isHit == true && this.bossHit < 5) {
+            this.hitAnimation();
+        }
+
+        if(this.bossHit == 5) {
             this.attacking = true;
             this.bossHit = 7;
             World.BossDead = true;
@@ -137,14 +149,20 @@ class endboss extends movableObject {
         }
 
     }, 180);  
-
 };
 
+/**
+ * Set the variable isHit to true when the Boss gets hit.
+ * 
+ */
 hitAnEnemy() {
     this.isHit = true;
 };
 
-
+/**
+ * Loading the Images for the Hit Animation, with an delay of the Images of 60ms. If the Boss is hit, the Boss Hit Sound will be played.
+ * 
+ */
 hitAnimation() {
     if(Muted == false){
     this.boss_hit.play();
@@ -163,7 +181,10 @@ hitAnimation() {
     }
 };
 
-
+/**
+ * Loading the Images for the Dead Animation, with an delay of the Images of 80ms. If the Boss is dead, the Boss Music will stop and all Intervals will be cleared.
+ * 
+ */
 deadAnimation() {
     const delayBetweenImages = 80;
     let loadedImagesCount = 0;
@@ -185,7 +206,10 @@ deadAnimation() {
     }
 };
 
-
+/**
+ * Loading the Images for the Attack Animation, with an delay between the Images of 100ms.
+ * 
+ */
 attackAnimation() {
     const delayBetweenImages = 100;
     let loadedImagesCount = 0;
@@ -202,4 +226,15 @@ attackAnimation() {
         }, i * delayBetweenImages);
     }
 };
+
+/**
+ * Played the Boss Music if the Game is not muted.
+ * 
+ */
+playBossMusic() {
+    if(Muted == false){
+        this.boss_music.play();
+    }
+};
+
 }

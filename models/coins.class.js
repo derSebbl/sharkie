@@ -25,10 +25,14 @@ class coins extends movableObject {
         this.y = 0 + Math.random() * 350;
     }
 
-    animate() {
+/**
+* Function that animates the coins. It changes the image of the coin every 200 milliseconds.
+* 
+*/
+animate() {
+    setInterval(() =>{ 
+        this.playAnimation(this.IMAGES_COINS);
+    }, 200)
+};
 
-        setInterval(() =>{ 
-            this.playAnimation(this.IMAGES_COINS);
-        }, 200)
-    }
 }

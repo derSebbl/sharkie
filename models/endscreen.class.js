@@ -8,15 +8,20 @@ class endscreen extends drawableObjects {
         this.showEndscreen();
     }   
 
-    showEndscreen() {
-        setStoppableInterval(() => {
-            if(World.BossDead == true){
-                this.height = 480;
-                this.width = 720;
-                showTryAgainButton();
-                World.BossDead = false;
-            }   
-        }, 180);
+/**
+ * If the Boss is dead, the endscreen You Win will be shown, also the button to try again.
+ * 
+ */
+showEndscreen() {
+    setStoppableInterval(() => {
+        if(World.BossDead == true){
+            this.height = 480;
+            this.width = 720;
+            showTryAgainButton();
+            World.BossDead = false;
+        }   
+    }, 180);
 
-    }
+};
+
 }

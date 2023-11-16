@@ -21,33 +21,41 @@ class coinBar extends drawableObjects {
         this.setPercantage(0);
     };
 
-    setPercantage(percent){
-        this.percentage = percent;
-        let path = this.IMAGES_COINBAR[this.setPercentIndex()];
-        this.img = this.imageCache[path];
-    };
+/**
+ * Function that sets the percentage of the coin bar. It sets the image of the coin bar depending on the percentage.
+ * 
+ * @param {number} - This is the percentage of the coin bar. The number is the amount of coins the player has collected.
+ */
+setPercantage(percent){
+    this.percentage = percent;
+    let path = this.IMAGES_COINBAR[this.setPercentIndex()];
+    this.img = this.imageCache[path];
+};
 
-
-    setPercentIndex(){
-        if (this.percentage == 8) {
-            return 5;
-        }
-        else if (this.percentage >= 6) {
-            return 4;
-        }
-        else if (this.percentage >= 4){
-            return 3;
-        }
-        else if (this.percentage >= 2){
-            return 2;
-        }
-        else if (this.percentage >= 1){
-            return 1;
-        }
-        else {
-            return 0;
-        }
-    };
-
+/**
+ * Checks how many coins the player has collected and returns the index of the image that will be set to the coin bar.
+ * 
+ * @returns {number} - This is the index of the image that will be set to the coin bar. It depends on the percentage.
+ */
+setPercentIndex(){
+    if (this.percentage == 8) {
+        return 5;
+    }
+    else if (this.percentage >= 6) {
+        return 4;
+    }
+    else if (this.percentage >= 4){
+        return 3;
+    }
+    else if (this.percentage >= 2){
+        return 2;
+    }
+    else if (this.percentage >= 1){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+};
 
 }

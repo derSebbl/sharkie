@@ -10,14 +10,19 @@ class endscreenLose extends drawableObjects {
         this.showEndscreenLose();
     }   
 
-    showEndscreenLose() {
-        setStoppableInterval(() => {
-            if(world.char.sharkieIsDead == true){
-                this.height = 180;
-                this.width = 720;
-                showTryAgainButton();
-            }   
-        }, 180);
+/**
+ * If the sharkie is dead, the endscreen Game Over will be shown, also the button to try again.
+ * 
+ */
+showEndscreenLose() {
+    setStoppableInterval(() => {
+        if(world.char.sharkieIsDead == true){
+            this.height = 180;
+            this.width = 720;
+            showTryAgainButton();
+        }   
+    }, 180);
 
-    }
+};
+
 }
