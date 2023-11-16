@@ -28,10 +28,14 @@ class poison extends movableObject {
         this.y = 250 + Math.random() * 50;
     }
 
-    animate() {
+/**
+* Function that animates the poison.
+* 
+*/
+animate() {
+    setInterval(() =>{ 
+        this.playAnimation(this.IMAGES_POISON);
+    }, 200)
+};
 
-        setInterval(() =>{ 
-            this.playAnimation(this.IMAGES_POISON);
-        }, 200)
-    }
 }

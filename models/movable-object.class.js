@@ -118,7 +118,12 @@ class movableObject extends drawableObjects {
     ];
 
 
-
+    /**
+     * Check if the movable object is colliding with another object.
+     * 
+     * @param {value} - is the value of the variable that is being checked.
+     * 
+     */
     isColliding(obj) {
         return  this.x + this.FrameX < obj.x + obj.FrameWidth &&
                 this.x + this.FrameX + this.FrameWidth > obj.x + obj.FrameX &&
@@ -126,7 +131,10 @@ class movableObject extends drawableObjects {
                 this.y + this.FrameY + this.FrameHeight > obj.y + obj.FrameY;
     };
 
-
+    /**
+     * if the character is hit, the energy of the character is reduced by 5. If the energy is below 0, the energy is set to 0. The last hit is set to the current time.
+     * 
+     */
     hit() {
         this.energy -= 5;
         if (this.energy < 0){
@@ -137,7 +145,10 @@ class movableObject extends drawableObjects {
         }
     };
 
-
+    /**
+     * if the character is hit by the boss, the energy of the character is reduced by 20. If the energy is below 0, the energy is set to 0. The last hit is set to the current time.
+     * 
+     */
     bossHit() {
         this.energy -= 20;
         if (this.energy < 0){
@@ -148,44 +159,67 @@ class movableObject extends drawableObjects {
         }
     };
 
-    
+    /**
+     * if someone is dead, the energy of this is set to 0.
+     * 
+     */
     isDead() {
         return this.energy == 0;
     };
 
-
+    /**
+     * if someone get hurt, its checked if the last hit was less than 1 second ago.
+     * 
+     */
     isHurt() {
             let timepassed = new Date().getTime() - this.lastHit;
             timepassed = timepassed / 1000;
             return timepassed < 1;
     };
 
+    /**
+     * the character is moved to the right with his speed, the otherDirection is set to false and the Variable a is set to 0.
+     * 
+     */
     moveRight() {
         this.x += this.speed;
         this.otherDirection = false;
         this.a = 0;
     };
 
-
+    /**
+     * the character is moved to the left with his speed, the otherDirection is set to true and the Variable a is set to 0.
+     * 
+     */
     moveLeft() {
         this.x -= this.speed;
         this.otherDirection = true;
         this.a = 0;
     };
 
-
+    /**
+     * the character is moved up with his speed and the Variable a is set to 0.
+     * 
+     */
     moveUp() {
         this.y -= this.speed;
         this.a = 0;
     };
 
-
+    /**
+     * the character is moved down with his speed and the Variable a is set to 0.
+     * 
+     */
     moveDown() {
         this.y += this.speed;
         this.a = 0;
     };
 
-
+    /**
+     * it plays the animation of the object. It checks if the current image is the last image of the array. If it is, the current image is set to 0. If it is not, the current image is increased by 1. The image is set to the image of the current image.
+     * 
+     * @param {Array} - This is the array of images that should be played.
+     */
     playAnimation(images) {
         let i = this.currentImg % images.length;
         let path = images[i];

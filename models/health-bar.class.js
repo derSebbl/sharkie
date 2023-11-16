@@ -21,37 +21,40 @@ class healthBar extends drawableObjects {
         this.setPercantage(100);
     };
 
+/**
+ * Function that sets the percentage of the health bar. It sets the image of the health bar depending on the percentage.
+ * 
+ * @param {number} - This is the percentage of the health bar. The number is the amount of energy the player has left.
+ */
+setPercantage(percent){
+    this.percentage = percent;
+    let path = this.HEALTH_IMAGES[this.setPercentIndex()];
+    this.img = this.imageCache[path];
+};
 
-    setPercantage(percent){
-        this.percentage = percent;
-        let path = this.HEALTH_IMAGES[this.setPercentIndex()];
-        this.img = this.imageCache[path];
-    };
-
-
-    setPercentIndex(){
-        if (this.percentage == 100) {
-            return 5;
-        }
-        else if (this.percentage >= 80) {
-            return 4;
-        }
-        else if (this.percentage >= 60){
-            return 3;
-        }
-        else if (this.percentage >= 40){
-            return 2;
-        }
-        else if (this.percentage >= 1){
-            return 1;
-        }
-        else {
-            return 0;
-        }
-    };
-
-
-
-
+/**
+ * Checks the percentage of the health bar and returns the index of the image that should be displayed.
+ * 
+ */
+setPercentIndex(){
+    if (this.percentage == 100) {
+        return 5;
+    }
+    else if (this.percentage >= 80) {
+        return 4;
+    }
+    else if (this.percentage >= 60){
+        return 3;
+    }
+    else if (this.percentage >= 40){
+        return 2;
+    }
+    else if (this.percentage >= 1){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+};
 
 }

@@ -115,18 +115,28 @@ pufferFishTransition() {
     this.FrameHeight = 40;
 };
 
-
+/**
+ * Animation of the puffer fish, when it is puffed.
+ * 
+ */
 pufferFishPuffed(){
     this.playAnimation(this.IMAGES_PUFFED);
     this.FrameHeight = 54;
 };
 
+/**
+ * Animation of the puffer fish, when it is normal.
+ * 
+ */
 pufferFishNormal(){
     this.playAnimation(this.IMAGES_SWIM);
     this.FrameHeight = 40;
 };
 
-
+/**
+ * If the puffer fish is hit, it will die and if the sound is not muted, the hit sound will be played.
+ * 
+ */
 hitAnEnemy() {
     this.energy -= 100;
     this.isHit = true;

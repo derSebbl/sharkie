@@ -46,42 +46,44 @@ class jellyFish extends movableObject {
         this.speed = 0.15 + Math.random() * 0.25; 
     }
 
+/**
+* Plays the animation of the jelly fish. If the jelly fish is hit, the animation of the jelly fish being dead is played. If Variable e is between 25 and 40, the animation of the jelly fish being electrocuted is played. If Variable e is between 0 and 25, the animation of the jelly fish swimming is played.
+* 
+*/
+animate() {
+    let e = 0;
+    setInterval(() => {
+        if(e > 25 && e < 40) {
+            this.playAnimation(this.IMAGES_ELEKTRO);
+        }
 
+        else if(e > 41) {
+            e = 0;
+        }
 
-    animate() {
-        let e = 0;
-        setInterval(() => {
-            if(e > 25 && e < 40) {
-                this.playAnimation(this.IMAGES_ELEKTRO);
-            }
-
-            else if(e > 41) {
-               e = 0;
-            }
-
-            else {
+        else {
             this.playAnimation(this.IMAGES_SWIM);
-            }
+        }
+        e++
+    }, 200);
 
-            e++
-        }, 200);
-
-        setInterval(() => { 
-
-            if(this.isHit == true) {
+    setInterval(() => { 
+        if(this.isHit == true) {
             this.playAnimation(this.IMAGES_DEAD);
             e = 100;
-            }
-
-        }, 100);
-
-    };
-
-    hitAnEnemy() {
-        this.energy -= 100;
-        this.isHit = true;
-        if(Muted == false){
-        this.hit_sound.play();
         }
-    };
+    }, 100);
+};
+
+/**
+ * If the jelly fish is hit, the jelly fish dies and the hit sound is played if the game is not muted.
+ * 
+ */
+hitAnEnemy() {
+    this.energy -= 100;
+    this.isHit = true;
+    if(Muted == false){
+        this.hit_sound.play();
+    }
+};
 }

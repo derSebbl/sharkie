@@ -17,6 +17,10 @@ class poisonBubble extends movableObject {
         this.throw();
     }
 
+/**
+* Function that throws the poison bubble. It moves the poison bubble to the right and up. If the poison bubble has travelled 500 pixels, it moves the poison bubble up 800 pixels.
+* 
+*/
 throw() {
     setStoppableInterval(()=>{ 
         this.x += 5;
