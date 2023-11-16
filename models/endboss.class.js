@@ -167,18 +167,9 @@ hitAnimation() {
     if(Muted == false){
     this.boss_hit.play();
     }
-    const delayBetweenImages = 60;
-    let loadedImagesCount = 0;
-    for (let i = 0; i < this.IMAGES_HIT.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_HIT[i]);
-            loadedImagesCount++;
-            if (loadedImagesCount === this.IMAGES_HIT.length) {
-                this.isHit = false;
-                this.boss_hit.pause();
-            }
-        }, i * delayBetweenImages);
-    }
+    this.playAnimation(this.IMAGES_HIT);
+    this.isHit = false;
+    this.boss_hit.pause();
 };
 
 /**
@@ -186,24 +177,13 @@ hitAnimation() {
  * 
  */
 deadAnimation() {
-    const delayBetweenImages = 80;
-    let loadedImagesCount = 0;
     this.boss_music.pause();
-
     if(Muted == false){
     this.boss_die.play();
     }
-
-    for (let i = 0; i < this.IMAGES_DEAD.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_DEAD[i]);
-            loadedImagesCount++;
-            if (loadedImagesCount === this.IMAGES_DEAD.length) {
-                this.isHit = false;
-                clearAllIntervals();
-            }
-        }, i * delayBetweenImages);
-    }
+    this.playAnimation(this.IMAGES_DEAD);
+    this.isHit = false;
+    clearAllIntervals();
 };
 
 /**
@@ -211,21 +191,11 @@ deadAnimation() {
  * 
  */
 attackAnimation() {
-    const delayBetweenImages = 100;
-    let loadedImagesCount = 0;
-
     this.attacking = true;
-
-    for (let i = 0; i < this.IMAGES_ATTACK.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_ATTACK[i]);
-            loadedImagesCount++;
-            if (loadedImagesCount === this.IMAGES_ATTACK.length) {
-                this.attacking = false;
-            }
-        }, i * delayBetweenImages);
-    }
+    this.playAnimation(this.IMAGES_ATTACK);
+    this.attacking = false;
 };
+
 
 /**
  * Played the Boss Music if the Game is not muted.
