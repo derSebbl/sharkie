@@ -142,7 +142,7 @@ class World {
      */
     checkCollisionsSlap() {
         this.level.puffer.forEach((puffer) =>{
-          if( this.char.isColliding(puffer) && this.slap){
+          if( this.char.isColliding(puffer) && this.slap ==true){
            puffer.hitAnEnemy();
           };
         });

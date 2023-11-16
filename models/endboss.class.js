@@ -78,6 +78,7 @@ class endboss extends movableObject {
         'img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 8.png',
         'img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 9.png',
         'img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
+        'img/2.Enemy/3 Final Enemy/Dead/Mesa de trabajo 2 copia 10.png',
     ];
     
     constructor() {
@@ -90,6 +91,7 @@ class endboss extends movableObject {
         this.animateIntroAndSwim();
         this.attack();
         this.bossGetHit();
+        this.bossIsDiyng();
     }
 
 /**
@@ -138,16 +140,23 @@ attack() {
 bossGetHit() {
     setInterval(() => { 
         if(this.isHit == true && this.bossHit < 5) {
-            this.hitAnimation();
+            this.bossHitSound();
+            this.playAnimation(this.IMAGES_HIT);
+            this.isHit = false;
         }
+    }, 500)
+};
 
+bossIsDiyng() {
+    setInterval(() => {
         if(this.bossHit == 5) {
-            this.attacking = true;
-            this.bossHit = 7;
             World.BossDead = true;
-            this.deadAnimation();
+            this.bossDieSound();
+            this.playAnimation(this.IMAGES_DEAD);
+            this.animationPlayed = true;
+            this.bossHit = 6; 
         }
-    }, 180) 
+    }, 1000 / 60)
 };
 
 /**
@@ -156,31 +165,6 @@ bossGetHit() {
  */
 hitAnEnemy() {
     this.isHit = true;
-};
-
-/**
- * Loading the Images for the Hit Animation, with an delay of the Images of 60ms. If the Boss is hit, the Boss Hit Sound will be played.
- * 
- */
-hitAnimation() {
-    if(Muted == false){
-    this.boss_hit.play();
-    }
-    this.playAnimation(this.IMAGES_HIT);
-    this.isHit = false;
-    this.boss_hit.pause();
-};
-
-/**
- * Loading the Images for the Dead Animation, with an delay of the Images of 80ms. If the Boss is dead, the Boss Music will stop and all Intervals will be cleared.
- * 
- */
-deadAnimation() {
-    this.boss_music.pause();
-    if(Muted == false){
-    this.boss_die.play();
-    }
-    this.playAnimation(this.IMAGES_DEAD);
 };
 
 /**
@@ -201,6 +185,19 @@ attackAnimation() {
 playBossMusic() {
     if(Muted == false){
         this.boss_music.play();
+    }
+};
+
+bossDieSound() {
+    this.boss_music.pause();
+    if(Muted == false){
+        this.boss_die.play();
+    }
+};
+
+bossHitSound() {
+    if(Muted == false){
+        this.boss_hit.play();
     }
 };
 

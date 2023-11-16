@@ -135,9 +135,8 @@ AttackAnimation() {
         }
 
         else if (this.World.keyboard.D) {
-            this.World.slap = true;
             this.slapFin();
-            console.log(this.World.slap);
+            this.FrameWidth = 200;
         }
 
         else if(this.World.keyboard.R && this.World.gold >= 4 && this.World.poison < 8){
@@ -171,7 +170,6 @@ getHitAnimation() {
     else if(this.World.dead === true){
         this.y -= 15;
     }
-
     }, 120);
 };
 
@@ -189,6 +187,20 @@ blubShoot() {
 };
 
 /**
+ * Shot a bubble.It play the Bubble Sound and set the Variable a to 0.
+ * 
+ */
+shootBubble(){
+    this.blubShoot();
+    if(Muted == false){
+        this.bubble_sound.play();
+    }
+    this.a = 0;
+    this.bubbleBuild = false;
+    this.World.bubbleShot = true;
+};
+
+/**
  * If a poison bubble is already in building, it returns and nothing happens. If no poison bubble is in building it sets the Variable poisonBuild to true and pause the Bubble Sound. It loads the Images for the Poison Bubble Animation.
  * 
  */
@@ -202,33 +214,21 @@ poisonShoot() {
 };
 
 /**
- * Loads the Images for the Idle Animation. It loads the Images with a delay of 80ms.
+ * Fin Slap. It play the Fin Slap Sound and set the Variable a to 0. It also set the Variable slap to true and increase the FrameWidth to 200.
  * 
  */
-idleAnimation() {
-    const delayBetweenImages = 80;
-    let loadedImagesCount = 0;
-    
-    for (let i = 1; i < this.IMAGES_IDLE.length; i++) {
-        setTimeout(() => {
-            this.loadImg(this.IMAGES_IDLE[i]);
-            loadedImagesCount++;
-        }, i * delayBetweenImages);
-    }
-};
-
-/**
- * If a Fin Slap is already in building, it returns and nothing happens. If no Fin Slap is in building it sets the Variable slapping to true and pause the Fin Slap Sound. It loads the Images for the Fin Slap Animation and set the Variable slapping to false and sets the Variable slap to false.
- * 
- */
-finSlap(){
-    this.FrameX = 90;
+slapFin(){
     if(this.slapping == true) {
         return
     }
+    this.World.slap = true;
     this.slapping = true;
     this.slap_sound.pause();
     this.playAnimation(this.IMAGES_FIN_SLAP);
+    this.playSlapSound();
+    this.a = 0;
+    this.slapping = false;
+    this.setSlapBack();
 };
 
 /**
@@ -316,35 +316,6 @@ buyPosion(){
 };
 
 /**
- * Shot a bubble.It play the Bubble Sound and set the Variable a to 0.
- * 
- */
-shootBubble(){
-    this.blubShoot();
-    if(Muted == false){
-        this.bubble_sound.play();
-    }
-    this.a = 0;
-    this.bubbleBuild = false;
-    this.World.bubbleShot = true;
-};
-
-/**
- * Fin Slap. It play the Fin Slap Sound and set the Variable a to 0. It also set the Variable slap to true and increase the FrameWidth to 200.
- * 
- */
-slapFin(){
-    this.finSlap();
-    if(Muted == false){
-        this.slap_sound.play();
-    }
-    this.World.slap = true;
-    this.a = 0;
-    this.slapping = false;
-    this.FrameX = 53;
-};
-
-/**
  * Play the Swim Sound the Muted Variable is false.
  * 
  */
@@ -365,4 +336,16 @@ playWorldSound(){
     }
 };
 
+playSlapSound(){
+    if(Muted == false){
+        this.slap_sound.play();
+    }
+};
+
+setSlapBack(){
+    setTimeout(() => {
+        this.FrameWidth = 150;
+        this.World.slap = false;
+    }, 200);
+};
 }
