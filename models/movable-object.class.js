@@ -124,12 +124,19 @@ class movableObject extends drawableObjects {
      * @param {value} - is the value of the variable that is being checked.
      * 
      */
-    isColliding(obj) {
-        return  this.x + this.FrameX < obj.x + obj.FrameWidth &&
-                this.x + this.FrameX + this.FrameWidth > obj.x + obj.FrameX &&
-                this.y + this.FrameY < obj.y + obj.FrameHeight &&
-                this.y + this.FrameY + this.FrameHeight > obj.y + obj.FrameY;
-    };
+isColliding(obj) {
+    return  this.x + this.FrameX < obj.x + obj.FrameWidth &&
+            this.x + this.FrameX + this.FrameWidth > obj.x &&
+            this.y + this.FrameY < obj.y + obj.FrameHeight &&
+            this.y + this.FrameY + this.FrameHeight > obj.y;
+};
+
+isCollidingBoss(obj) {
+    return  this.x < obj.x + obj.FrameX + obj.FrameWidth &&
+            this.x + this.FrameWidth > obj.x + obj.FrameX &&
+            this.y < obj.y + obj.FrameY + obj.FrameHeight &&
+            this.y + this.FrameHeight > obj.y + obj.FrameY;
+};
 
     /**
      * if the character is hit, the energy of the character is reduced by 5. If the energy is below 0, the energy is set to 0. The last hit is set to the current time.

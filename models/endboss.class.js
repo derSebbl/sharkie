@@ -1,9 +1,15 @@
 class endboss extends movableObject {
 
-    height = 632;
-    width = 680;
-    y = -170;
-    x = 3500;
+    height = 732;
+    width = 780;
+    y = -250;
+    x = 3600;
+
+    FrameX = 0;
+    FrameY = 0;
+    FrameWidth = 480;
+    FrameHeight = 590;
+
     bossHit = 0;   
     i = 9; 
 
@@ -16,10 +22,6 @@ class endboss extends movableObject {
     
   
 
-    FrameX = 40;
-    FrameY = 170;
-    FrameWidth = 400;
-    FrameHeight = 600;
 
     boss_music = new Audio('audio/Boss Music.mp3');
     boss_hit = new Audio('audio/BossHit.mp3');
@@ -143,8 +145,9 @@ bossGetHit() {
             this.bossHitSound();
             this.playAnimation(this.IMAGES_HIT);
             this.isHit = false;
+            this-this.boss_hit.pause();
         }
-    }, 500)
+    }, 200)
 };
 
 bossIsDiyng() {
@@ -154,9 +157,9 @@ bossIsDiyng() {
             this.bossDieSound();
             this.playAnimation(this.IMAGES_DEAD);
             this.animationPlayed = true;
-            this.bossHit = 6; 
+            this.setBossHits();
         }
-    }, 1000 / 60)
+    }, 180)
 };
 
 /**
@@ -188,17 +191,30 @@ playBossMusic() {
     }
 };
 
+/**
+ * Played the Boss Die Sound if the Game is not muted.
+ * 
+ */
 bossDieSound() {
     this.boss_music.pause();
     if(Muted == false){
         this.boss_die.play();
     }
 };
-
+/**
+ * Played the Boss Hit Sound if the Game is not muted.
+ * 
+ */
 bossHitSound() {
     if(Muted == false){
         this.boss_hit.play();
     }
+};
+
+setBossHits() {
+    setTimeout(() => {
+        this.bossHit = 6;
+    }, 500)
 };
 
 }
