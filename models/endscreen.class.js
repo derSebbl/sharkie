@@ -18,6 +18,7 @@ showEndscreen() {
             this.height = 480;
             this.width = 720;
             showTryAgainButton();
+            hideMobileControlls();
             World.BossDead = false;
         }   
     }, 180);

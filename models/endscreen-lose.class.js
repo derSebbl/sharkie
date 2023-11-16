@@ -20,6 +20,7 @@ showEndscreenLose() {
             this.height = 180;
             this.width = 720;
             showTryAgainButton();
+            hideMobileControlls();
         }   
     }, 180);
 

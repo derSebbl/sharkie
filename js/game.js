@@ -384,3 +384,4 @@ function showMobileControlls() {
     let mobileControlls = document.getElementById('mobile-controlls');
     mobileControlls.style.display = 'flex';
 }
+
