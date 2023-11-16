@@ -50,51 +50,61 @@ class Character extends movableObject {
         this.speed = 3;
     }
 
+/**
+ * Checks if i press the key for Right or Left and if i am not dead and at the end of the level left or right it moves the Character and play the swim sound. It also start the Gamesound
+ * 
+ */
+LeftAndRightAnimation() {
+    setStoppableInterval(() =>{
+        this.swim_sound.pause();
+        this.playWorldSound();
 
-    LeftAndRightAnimation() {
-        setStoppableInterval(() =>{
-            this.swim_sound.pause();
-            this.playWorldSound();
+        if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x && this.World.dead == false){
+            this.moveRight();
+            this.playSwimSound();
+        }
 
-            if (this.World.keyboard.RIGHT && this.x < this.World.level.level_end_x && this.World.dead == false){
-                this.moveRight();
-                this.playSwimSound();
-            }
+        if (this.World.keyboard.LEFT && this.x > -100 && this.World.dead == false){
+        this.moveLeft();
+            this.playSwimSound();
+        }
+        this.World.camera_x = -this.x;
+    }, 1000 / 60);
+};
 
-            if (this.World.keyboard.LEFT && this.x > -100 && this.World.dead == false){
-                this.moveLeft();
-                this.playSwimSound();
-            }
-            this.World.camera_x = -this.x;
-        }, 1000 / 60);
-    };
+/**
+ * Checks if i press the key for Up or Down if i press, it moves the Character and play the swim sound. If the Character is on the end of the Top or the Bottom it only shows the Swim Animation. If my Character reached the x position 3050 it stops the Gamesound.
+ * 
+ */
+UpAndDownAnimation() {
+    setStoppableInterval(() =>{
+        if (this.World.keyboard.UP && this.World.dead == false){
+            this.playSwimSound();
+            if(this.y === -113){this.World.camera_x = -this.x;}
+            else{
+            this.moveUp();
+        }}
 
-    UpAndDownAnimation() {
-        setStoppableInterval(() =>{
-            if (this.World.keyboard.UP && this.World.dead == false){
-                this.playSwimSound();
-                if(this.y === -113){this.World.camera_x = -this.x;}
-                else{
-                this.moveUp();
-            }}
+        if (this.World.keyboard.DOWN && this.World.dead == false){
+            this.playSwimSound();
+            if(this.y === 277){this.World.camera_x = -this.x;}
+            else{
+            this.moveDown();
+        }}
 
-            if (this.World.keyboard.DOWN && this.World.dead == false){
-                this.playSwimSound();
-                if(this.y === 277){this.World.camera_x = -this.x;}
-                else{
-                this.moveDown();
-            }}
+        if(this.x > 3050){
+            this.world_sound.pause();
+        }
+        this.World.camera_x = -this.x;
+    }, 1000 / 60);
+};
 
-            if(this.x > 3050){
-                this.world_sound.pause();
-            }
-            this.World.camera_x = -this.x;
-        }, 1000 / 60);
-    };
-
-    moveAndIdleAnimation() {
-        setStoppableInterval(() => {
-
+/**
+ * Checks if i press the key for Right or Left or Up or Down if i press, it shows the Swim Animation. If no key is pressed and no attack ist in build it shows the IDLE Anmimation. If Variable a reaches 70 it shows the Long IDLE Animation. It increase the Variable a by 1 every 120ms.
+ * 
+ */
+moveAndIdleAnimation() {
+    setStoppableInterval(() => {
         if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
             this.playAnimation(this.IMAGES_SWIM);
         } 
@@ -110,7 +120,10 @@ class Character extends movableObject {
     }, 120);
 };
 
-
+/**
+ * Checks if i press the key Space or F or D or R if i press, it shows the Attack Animation. If i press Space it shoots a Bubble. If i press F it shoots a Poison Bubble. If i press D it slaps with the Fin. If i press R it buys a Poison Flask.
+ * 
+ */
 AttackAnimation() {
     setStoppableInterval(() => {
         if (this.World.keyboard.SPACE) {
@@ -131,31 +144,34 @@ AttackAnimation() {
     }, 120);
 };
 
+/**
+ * Checks if i am hit by a Puffer Fish or a Jelly Fish or the Endboss. If i am hit by a Puffer Fish it shows the Hit Animation. If i am hit by a Jelly Fish it shows the Hit Animation. If i am hit by the Endboss it shows the Hit Animation. If i am dead it shows the Dead Animation. If i am dead it moves the Character up.
+ * 
+ */
+getHitAnimation() {
+    setStoppableInterval(() => {
+    if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
+        this.hitByPufferFish();
+    }
 
-    getHitAnimation() {
-        setStoppableInterval(() => {
-        if (this.isHurt() && this.World.hitBy instanceof FishPuffer) {
-            this.hitByPufferFish();
-        }
+    else if (this.isHurt() && this.World.hitBy instanceof endboss) {
+        this.hitByEndboss();
+    }
 
-        else if (this.isHurt() && this.World.hitBy instanceof endboss) {
-            this.hitByEndboss();
-        }
+    else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
+        this.hitByJellyFish();
+    }
 
-        else if(this.isHurt() && this.World.hitBy instanceof jellyFish) {
-            this.hitByJellyFish();
-        }
+    else if (this.isDead() && this.World.dead == false) { 
+        this.sharkieDead();
+    }
 
-        else if (this.isDead() && this.World.dead == false) { 
-            this.sharkieDead();
-        }
-
-        else if(this.World.dead === true){
-            this.y -= 15;
-        }
+    else if(this.World.dead === true){
+        this.y -= 15;
+    }
 
     }, 120);
-    };
+};
 
 
 
