@@ -86,22 +86,42 @@ level1 = new level(
         ],
 )
 
+/**
+ * Creates a new puffer fish
+ * 
+ */
 function createPufferFish(){
         return new FishPuffer();
 };
 
+/**
+ * Creates a new jelly fish
+ * 
+ */
 function createJellyFish(){
         return new jellyFish();
 };
 
+/**
+ * Creates a new endboss
+ * 
+ */
 function createEndboss(){
         return new endboss();
 };
 
+/**
+ * Creates a new coin
+ * 
+ */
 function createCoins(){
         return new coins();
 };
 
+/**
+ * Creates a new poison
+ * 
+ */
 function createPoison(){
         return new poison();
 };

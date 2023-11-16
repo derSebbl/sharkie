@@ -47,13 +47,13 @@ draw(ctx){
  * @param {contex} ctx - This is the context of the canvas.
  */
 drawFrame(ctx){
-    /* if (this instanceof Character || this instanceof bubble || this instanceof poisonBubble || this instanceof FishPuffer || this instanceof endboss || this instanceof jellyFish || this instanceof coins || this instanceof poison) {
+    if (this instanceof Character || this instanceof bubble || this instanceof poisonBubble || this instanceof FishPuffer || this instanceof endboss || this instanceof jellyFish || this instanceof coins || this instanceof poison) {
     ctx.beginPath();
     ctx.lineWidth = "0";
     ctx.strokeStyle = "red";
     ctx.rect(this.x + this.FrameX, this.y + this.FrameY,this.FrameWidth, this.FrameHeight);
     ctx.stroke();
-    } */
+    } 
 }; 
 
 }
