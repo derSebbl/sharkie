@@ -173,190 +173,241 @@ getHitAnimation() {
     }, 120);
 };
 
+/**
+ * If a bubble is already in building, it returns and nothing happens. If no bubble is in building it sets the Variable bubbleBuild to true and pause the Bubble Sound. It loads the Images for the Bubble Animation and set the Variable bubbleBuild to false and sets the Variable bubbleShot to true. 
+ * 
+ */
+blubShoot() {
+    if(this.bubbleBuild == true) {
+        return
+    }
 
-
-    blubShoot() {
-        if(this.bubbleBuild == true) {
-            return
-        }
-
-        this.bubbleBuild = true;
-        this.bubble_sound.pause();
+    this.bubbleBuild = true;
+    this.bubble_sound.pause();
     
-        const delayBetweenImages = 40;
-        let loadedImagesCount = 0;
-        for (let i = 0; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
-            setTimeout(() => {
-                this.loadImg(this.IMAGES_BUILD_BUBBLE[i]);
-                loadedImagesCount++;
-                if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length) {
-                    this.bubbleBuild = false;
-                    this.World.bubbleShot = true;
-                }
-            }, i * delayBetweenImages);
-        }
-    };
+    const delayBetweenImages = 40;
+    let loadedImagesCount = 0;
+    for (let i = 0; i < this.IMAGES_BUILD_BUBBLE.length; i++) {
+        setTimeout(() => {
+            this.loadImg(this.IMAGES_BUILD_BUBBLE[i]);
+            loadedImagesCount++;
+            if (loadedImagesCount === this.IMAGES_BUILD_BUBBLE.length) {
+                this.bubbleBuild = false;
+                this.World.bubbleShot = true;
+            }
+        }, i * delayBetweenImages);
+    }
+};
 
+/**
+ * If a poison bubble is already in building, it returns and nothing happens. If no poison bubble is in building it sets the Variable poisonBuild to true and pause the Bubble Sound. It loads the Images for the Poison Bubble Animation and set the Variable poisonBuild to false and sets the Variable poisonShot to true.
+ * 
+ */
+poisonShoot() { 
+    if(this.poisonBuild == true) {
+        return
+    }
+    this.poisonBuild = true;
+    this.bubble_sound.pause();
+    const delayBetweenImages = 40;
+    let loadedImagesCount = 0;
+    for (let i = 0; i < this.IMAGES_BUILD_POISON_BUBBLE.length; i++) {
+        setTimeout(() => {
+            this.loadImg(this.IMAGES_BUILD_POISON_BUBBLE[i]);
+            loadedImagesCount++;
+            if (loadedImagesCount === this.IMAGES_BUILD_POISON_BUBBLE.length) {
+                this.World.poisonShot = true;
+                this.poisonBuild = false;
+            }
+        }, i * delayBetweenImages);
+    }
+};
 
-    poisonShoot() { 
-        if(this.poisonBuild == true) {
-            return
-        }
-
-        this.poisonBuild = true;
-        this.bubble_sound.pause();
-
-        const delayBetweenImages = 40;
-        let loadedImagesCount = 0;
-        for (let i = 0; i < this.IMAGES_BUILD_POISON_BUBBLE.length; i++) {
-            setTimeout(() => {
-                this.loadImg(this.IMAGES_BUILD_POISON_BUBBLE[i]);
-                loadedImagesCount++;
-                if (loadedImagesCount === this.IMAGES_BUILD_POISON_BUBBLE.length) {
-                    this.World.poisonShot = true;
-                    this.poisonBuild = false;
-                }
-            }, i * delayBetweenImages);
-        }
-    };
-
-    idleAnimation() {
-        const delayBetweenImages = 80;
-        let loadedImagesCount = 0;
+/**
+ * Loads the Images for the Idle Animation. It loads the Images with a delay of 80ms.
+ * 
+ */
+idleAnimation() {
+    const delayBetweenImages = 80;
+    let loadedImagesCount = 0;
     
-        for (let i = 1; i < this.IMAGES_IDLE.length; i++) {
-            setTimeout(() => {
-                this.loadImg(this.IMAGES_IDLE[i]);
-                loadedImagesCount++;
-            }, i * delayBetweenImages);
-        }
-    };
+    for (let i = 1; i < this.IMAGES_IDLE.length; i++) {
+        setTimeout(() => {
+            this.loadImg(this.IMAGES_IDLE[i]);
+            loadedImagesCount++;
+        }, i * delayBetweenImages);
+    }
+};
 
-    finSlap(){
-        if(this.slapping == true) {
-            return
-        }
-        this.slapping = true;
-        this.slap_sound.pause();
+/**
+ * If a Fin Slap is already in building, it returns and nothing happens. If no Fin Slap is in building it sets the Variable slapping to true and pause the Fin Slap Sound. It loads the Images for the Fin Slap Animation and set the Variable slapping to false and sets the Variable slap to false.
+ * 
+ */
+finSlap(){
+    if(this.slapping == true) {
+        return
+    }
+    this.slapping = true;
+    this.slap_sound.pause();
 
-        const delayBetweenImages = 80;
-        let loadedImagesCount = 0;
-        for (let i = 1; i < this.IMAGES_FIN_SLAP.length; i++) {
-            setTimeout(() => {
-                this.loadImg(this.IMAGES_FIN_SLAP[i]);
-                loadedImagesCount++;
-                if (loadedImagesCount === this.IMAGES_FIN_SLAP.length - 1) {
-                    this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
-                    this.World.slap = false;
-                    this.FrameWidth = 150;
-                    this.slapping = false;
-                }
-            }, i * delayBetweenImages);
-        }
-    };
+    const delayBetweenImages = 80;
+    let loadedImagesCount = 0;
+    for (let i = 1; i < this.IMAGES_FIN_SLAP.length; i++) {
+        setTimeout(() => {
+            this.loadImg(this.IMAGES_FIN_SLAP[i]);
+            loadedImagesCount++;
+            if (loadedImagesCount === this.IMAGES_FIN_SLAP.length - 1) {
+                this.loadImg(`img/1.Sharkie/3.Swim/1.png`);
+                this.World.slap = false;
+                this.slapping = false;
+            }
+        }, i * delayBetweenImages);
+    }
+};
 
-    deadAnimation() {
-        const delayBetweenImages = 80;
-        let loadedImagesCount = 0;
+/**
+ * Loads the Images for the Dead Animation. It loads the Images with a delay of 80ms.
+ * 
+ */
+deadAnimation() {
+    const delayBetweenImages = 80;
+    let loadedImagesCount = 0;
     
-        for (let i = 1; i < this.IMAGES_DEAD.length; i++) {
-            setTimeout(() => {
-                this.loadImg(`img/1.Sharkie/6.dead/1.Poisoned/${i}.png`);
-                loadedImagesCount++;
-            }, i * delayBetweenImages);
-        }
-    };
+    for (let i = 1; i < this.IMAGES_DEAD.length; i++) {
+        setTimeout(() => {
+            this.loadImg(`img/1.Sharkie/6.dead/1.Poisoned/${i}.png`);
+            loadedImagesCount++;
+        }, i * delayBetweenImages);
+    }
+};
 
-    hitByPufferFish(){
-        this.a = 0;
-        if (this.isHurt() && this.World.hitBy instanceof FishPuffer){
-        this.poisoned_sound.pause();
-        this.playAnimation(this.IMAGES_HIT_PUFFER);
-        if(Muted == false){
-        this.poisoned_sound.play();
-        }
+/**
+ * The hit animation for the Character if it get hit by a Puffer Fish. It also set the Variable a to 0.
+ * 
+ */
+hitByPufferFish(){
+    this.poisoned_sound.pause();
+    this.playAnimation(this.IMAGES_HIT_PUFFER);
+    if(Muted == false){
+        this.poisoned_sound.play();  
     }
     this.a = 0;
-    };
+};
 
-    hitByJellyFish() {
-        this.electric_sound.pause();
-        this.playAnimation(this.IMAGES_HIT_JELLY);
-        if(Muted == false){
+/**
+ * The hit animation for the Character if it get hit by a Jelly Fish. It also set the Variable a to 0.
+ * 
+ */
+hitByJellyFish() {
+    this.electric_sound.pause();
+    this.playAnimation(this.IMAGES_HIT_JELLY);
+    if(Muted == false){
         this.electric_sound.play();
-        }
-        this.a = 0;
-    };
+    }
+    this.a = 0;
+};
 
-    hitByEndboss() {
-        this.hitByBoss_sound.pause();
-        this.playAnimation(this.IMAGES_HIT_BOSS);
-        if(Muted == false){
+/**
+ * The hit animation for the Character if it get hit by the Endboss. It also set the Variable a to 0.
+ * 
+ */
+hitByEndboss() {
+    this.hitByBoss_sound.pause();
+    this.playAnimation(this.IMAGES_HIT_BOSS);
+    if(Muted == false){
         this.hitByBoss_sound.play();
-        }
-        this.a = 0;
-    };
+    }
+    this.a = 0;
+};
 
-    sharkieDead() {
-        this.deadAnimation();
-        this.World.dead = true;
-        if(Muted == false){
+/**
+ * Animation if Character is dead and it sets the Variable dead to true. It also pause the Gamesound and play the Dead Sound.
+ * 
+ */
+sharkieDead() {
+    this.deadAnimation();
+    this.World.dead = true;
+    if(Muted == false){
         this.SharkieDie_sound.play();
-        }
-        this.world_sound.pause();  
-        this.sharkieIsDead = true;
-    };
+    }
+    this.world_sound.pause();  
+    this.sharkieIsDead = true;
+};
 
-    shootPoisonBubble(){
-        this.World.poisonBuild = true;
-        this.World.poison -= 1;
-        this.World.poisonbar.setPercantage(this.World.poison)
-        this.poisonShoot();
-        if(Muted == false){
+/**
+ * Shot of a poisonbubble. It sets the Variable poisonBuild to true. It degrease the poison by 1 and set the new percentage of the poisonbar. It also play the Bubble Sound and set the Variable a to 0.
+ * 
+ */
+shootPoisonBubble(){
+    this.World.poisonBuild = true;
+    this.World.poison -= 1;
+    this.World.poisonbar.setPercantage(this.World.poison)
+    this.poisonShoot();
+    if(Muted == false){
         this.bubble_sound.play();
-        }
-        this.a = 0;
-    };
+    }
+    this.a = 0;
+};
 
-    buyPosion(){
-        if(Muted == false){
+/**
+ * If i have enough gold and not more than 8 poison i can buy a poison flask. It degrease the gold by 4 and increase the poison by 1 and set the new percentage of the poisonbar and the coinbar. It also play the Buy Flask Sound.
+ * 
+ */
+buyPosion(){
+    if(Muted == false){
         this.buy_sound.play();
-        }
-        this.World.gold -= 4;
-        this.World.poison += 1;
-        this.World.poisonbar.setPercantage(this.World.poison);
-        this.World.coinbar.setPercantage(this.World.gold);
-    };
+    }
+    this.World.gold -= 4;
+    this.World.poison += 1;
+    this.World.poisonbar.setPercantage(this.World.poison);
+    this.World.coinbar.setPercantage(this.World.gold);
+};
 
-    shootBubble(){
-        this.blubShoot();
-        if(Muted == false){
+/**
+ * Shot a bubble.It play the Bubble Sound and set the Variable a to 0.
+ * 
+ */
+shootBubble(){
+    this.blubShoot();
+    if(Muted == false){
         this.bubble_sound.play();
-        }
-        this.a = 0;
-    };
+    }
+    this.a = 0;
+};
 
-    slapFin(){
-        this.finSlap();
-        if(Muted == false){
+/**
+ * Fin Slap. It play the Fin Slap Sound and set the Variable a to 0. It also set the Variable slap to true and increase the FrameWidth to 200.
+ * 
+ */
+slapFin(){
+    this.finSlap();
+    if(Muted == false){
         this.slap_sound.play();
-        }
-        this.World.slap = true;
-        this.FrameWidth = 200;
-        this.a = 0;
-    };
+    }
+    this.World.slap = true;
+    this.FrameWidth = 200;
+    this.a = 0;
+};
 
-    playSwimSound(){
-        if(Muted == false){
+/**
+ * Play the Swim Sound the Muted Variable is false.
+ * 
+ */
+playSwimSound(){
+    if(Muted == false){
         this.swim_sound.play();
-        }
-    };
+    }
+};
 
-    playWorldSound(){
-        if(this.World.dead === false && Muted == false){
+/**
+ * Play the Gamesound if the Character is not dead and the Muted Variable is false.
+ * 
+ */
+playWorldSound(){
+    if(this.World.dead === false && Muted == false){
         this.world_sound.volume = 0.3;
         this.world_sound.play();
-        }
-    };
+    }
+};
 
 }
