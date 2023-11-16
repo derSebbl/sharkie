@@ -2,13 +2,13 @@ class endboss extends movableObject {
 
     height = 732;
     width = 780;
-    y = -250;
+    y = -200;
     x = 3600;
 
     FrameX = 0;
     FrameY = 0;
-    FrameWidth = 480;
-    FrameHeight = 590;
+    FrameWidth = 40;
+    FrameHeight = 40;
 
     bossHit = 0;   
     i = 9; 
@@ -93,6 +93,7 @@ class endboss extends movableObject {
         this.animateIntroAndSwim();
         this.attack();
         this.bossGetHit();
+        /*this.bossSlam();*/
         this.bossIsDiyng();
     }
 
@@ -109,7 +110,6 @@ animateIntroAndSwim() {
         if(this.firstContact && this.i > 8 && this.isHit == false && this.attacking == false && this.bossHit < 5) {
             this.playAnimation(this.IMAGES_SWIM);
             this.playBossMusic();
-            this.x = 3500;
         }
             
         if(world.char.x > 3050 && !this.firstContact){
@@ -123,17 +123,37 @@ animateIntroAndSwim() {
 
 attack() {
     setInterval(() => {
-        if(this.firstContact && this.i > 45 && this.bossHit < 5) {
+        if(this.firstContact && this.i > 70 && this.bossHit < 5) {
+            this.x = 3400;
             this.attackAnimation();
             this.i = 8;
-            this.x = 3400;
         }
 
         if(world.char.sharkieIsDead == true) {
             this.boss_music.pause();
         }
-    }, 180)
+    }, 140)
 };
+
+/* bossSlam() {
+    setInterval(() => {
+        if(this.firstContact && this.i < 30 && this.i > 12 && this.bossHit < 5) {
+            this.x -= 10;
+            this.y -= 4;
+        }
+
+        else if(this.firstContact && this.i > 30 && this.i < 45 && this.bossHit < 5) {
+            this.y += 40;
+            this.FrameHeight = -100;
+        }
+
+        else if(this.firstContact && this.i > 45 && this.i < 70 && this.bossHit < 5) {
+            this.x = 3600;
+            this.y = -250;
+        }
+    }, 140)
+};  */
+
 
 /**
  * Animations for the Boss when he gets hit and when he dies.

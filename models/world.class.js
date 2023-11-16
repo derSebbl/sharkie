@@ -128,7 +128,7 @@ class World {
      */
     checkCollisionsBoss() {
         this.level.boss.forEach((enemy) =>{
-            if( this.char.isColliding(enemy) && !this.slap){
+            if( this.char.isCollidingFromBottom(enemy) && !this.slap){
              this.char.bossHit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;

@@ -131,11 +131,11 @@ isColliding(obj) {
             this.y + this.FrameY + this.FrameHeight > obj.y;
 };
 
-isCollidingBoss(obj) {
-    return  this.x < obj.x + obj.FrameX + obj.FrameWidth &&
-            this.x + this.FrameWidth > obj.x + obj.FrameX &&
-            this.y < obj.y + obj.FrameY + obj.FrameHeight &&
-            this.y + this.FrameHeight > obj.y + obj.FrameY;
+isCollidingFromBottom(obj) {
+    return  this.x + this.FrameX < obj.x + obj.width &&
+            this.x + this.FrameX + this.FrameWidth > obj.x &&
+            this.y + this.FrameY < obj.y + obj.height &&
+            this.y + this.FrameY + this.FrameHeight > obj.y;
 };
 
     /**

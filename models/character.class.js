@@ -105,7 +105,7 @@ UpAndDownAnimation() {
  */
 moveAndIdleAnimation() {
     setStoppableInterval(() => {
-        if (this.World.keyboard.RIGHT || this.World.keyboard.LEFT || this.World.keyboard.UP || this.World.keyboard.DOWN) {
+        if (this.World.keyboard.RIGHT && this.sharkieIsDead == false || this.World.keyboard.LEFT && this.sharkieIsDead == false || this.World.keyboard.UP && this.sharkieIsDead == false || this.World.keyboard.DOWN && this.sharkieIsDead == false) {
             this.playAnimation(this.IMAGES_SWIM);
         } 
 
@@ -168,7 +168,7 @@ getHitAnimation() {
     }
 
     else if(this.World.dead === true){
-        this.y -= 15;
+        this.y -= 25;
     }
     }, 120);
 };
