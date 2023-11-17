@@ -12,6 +12,8 @@ class endboss extends movableObject {
 
     bossHit = 0;   
     i = 9; 
+    h = 6;
+    e = 7;
 
     World;
 
@@ -120,7 +122,10 @@ animateIntroAndSwim() {
         this.i++;
     }, 180)
 };
-
+/**
+ * Animations for the Bite Attack of the Boss.
+ * 
+ */
 attack() {
     setInterval(() => {
         if(this.firstContact && this.i > 70 && this.bossHit < 5) {
@@ -135,6 +140,10 @@ attack() {
     }, 140)
 };
 
+/**
+ * Animations for the Slam Attack of the Boss.
+ * 
+ */
 bossSlam() {
     setInterval(() => {
         if(this.firstContact && this.i < 30 && this.i > 12 && this.bossHit < 5) {
@@ -164,23 +173,30 @@ bossSlam() {
  */
 bossGetHit() {
     setInterval(() => { 
-        if(this.isHit == true && this.bossHit < 5) {
+        this.h++;
+        if(this.bossHit < 5 && this.h <= 4) {
             this.bossHitSound();
             this.playAnimation(this.IMAGES_HIT);
-            this.isHit = false;
             this-this.boss_hit.pause();
         }
     }, 200)
 };
 
+/**
+ * Animations for the Boss when he dies.
+ * 
+ */
 bossIsDiyng() {
     setInterval(() => {
+        this.e++;
         if(this.bossHit == 5) {
+            this.e = 0;
+            this.bossHit = 6;
+        }
+        if(this.e < 1) {
             World.BossDead = true;
             this.bossDieSound();
             this.playAnimation(this.IMAGES_DEAD);
-            this.animationPlayed = true;
-            this.setBossHits();
         }
     }, 180)
 };
@@ -190,7 +206,7 @@ bossIsDiyng() {
  * 
  */
 hitAnEnemy() {
-    this.isHit = true;
+    this.h = 0;
 };
 
 /**
@@ -232,12 +248,6 @@ bossHitSound() {
     if(Muted == false){
         this.boss_hit.play();
     }
-};
-
-setBossHits() {
-    setTimeout(() => {
-        this.bossHit = 6;
-    }, 800)
 };
 
 }
