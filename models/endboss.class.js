@@ -173,13 +173,17 @@ bossSlam() {
  */
 bossGetHit() {
     setInterval(() => { 
+        console.log(this.isHit);
         this.h++;
-        if(this.bossHit < 5 && this.h <= 4) {
+        this-this.boss_hit.pause();
+        if(this.bossHit < 5 && this.h <= 2) {
             this.bossHitSound();
             this.playAnimation(this.IMAGES_HIT);
-            this-this.boss_hit.pause();
         }
-    }, 200)
+        if(this.h > 2) {
+            this.isHit = false;
+        }
+    }, 120)
 };
 
 /**
@@ -189,16 +193,18 @@ bossGetHit() {
 bossIsDiyng() {
     setInterval(() => {
         this.e++;
+        console.log(this.e);
         if(this.bossHit == 5) {
             this.e = 0;
             this.bossHit = 6;
         }
-        if(this.e < 1) {
+        if(this.e < 2) {
             World.BossDead = true;
             this.bossDieSound();
             this.playAnimation(this.IMAGES_DEAD);
+            this.y = -250;
         }
-    }, 180)
+    }, 120)
 };
 
 /**
@@ -206,6 +212,7 @@ bossIsDiyng() {
  * 
  */
 hitAnEnemy() {
+    this.isHit = true;
     this.h = 0;
 };
 
