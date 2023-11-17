@@ -5,10 +5,10 @@ class endboss extends movableObject {
     y = -200;
     x = 3600;
 
-    FrameX = 0;
-    FrameY = 0;
-    FrameWidth = 40;
-    FrameHeight = 40;
+    FrameX = 50;
+    FrameY = 340;
+    FrameWidth = 500;
+    FrameHeight = 250;
 
     bossHit = 0;   
     i = 9; 
@@ -93,7 +93,7 @@ class endboss extends movableObject {
         this.animateIntroAndSwim();
         this.attack();
         this.bossGetHit();
-        /*this.bossSlam();*/
+        this.bossSlam();
         this.bossIsDiyng();
     }
 
@@ -135,24 +135,27 @@ attack() {
     }, 140)
 };
 
-/* bossSlam() {
+bossSlam() {
     setInterval(() => {
         if(this.firstContact && this.i < 30 && this.i > 12 && this.bossHit < 5) {
             this.x -= 10;
-            this.y -= 4;
+            this.y -= 6;
         }
 
         else if(this.firstContact && this.i > 30 && this.i < 45 && this.bossHit < 5) {
-            this.y += 40;
-            this.FrameHeight = -100;
+            this.y += 45;
         }
 
-        else if(this.firstContact && this.i > 45 && this.i < 70 && this.bossHit < 5) {
-            this.x = 3600;
+        else if(this.firstContact && this.i > 45 && this.i < 50 && this.bossHit < 5) {
+            this.x = 3900;
             this.y = -250;
         }
+
+        else if(this.firstContact && this.i > 50 && this.i < 68 && this.bossHit < 5) {
+            this.x -= 18.75;
+        }
     }, 140)
-};  */
+};  
 
 
 /**
@@ -234,7 +237,7 @@ bossHitSound() {
 setBossHits() {
     setTimeout(() => {
         this.bossHit = 6;
-    }, 500)
+    }, 800)
 };
 
 }

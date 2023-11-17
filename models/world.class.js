@@ -128,7 +128,7 @@ class World {
      */
     checkCollisionsBoss() {
         this.level.boss.forEach((enemy) =>{
-            if( this.char.isCollidingFromBottom(enemy) && !this.slap){
+            if( this.char.isCollidingBoss(enemy) && !this.slap){
              this.char.bossHit();
              this.healthbar.setPercantage(this.char.energy);
              this.hitBy = enemy;
@@ -204,7 +204,7 @@ checkCollisionsBubble() {
 checkBubbleHitBoss() {
     this.level.boss.forEach((enemy) =>{
         this.poisonBubbles.forEach((bubble) =>{
-            if( bubble.isColliding(enemy) && this.poison >= 0){
+            if( bubble.isCollidingBoss(enemy) && this.poison >= 0){
                 enemy.bossHit ++;
                 bubble.y = -800;
                 enemy.hitAnEnemy();
