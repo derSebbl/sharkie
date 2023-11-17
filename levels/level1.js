@@ -11,8 +11,11 @@ level1 = new level(
         createBackground(),
 )
 
+
+
+
 /**
- * Creates a new puffer fish
+ * Creates Puffer Fishes
  * 
  */
 function createPufferFish(){
@@ -26,7 +29,7 @@ function createPufferFish(){
 };
 
 /**
- * Creates a new jelly fish
+ * Creates Jelly Fishes
  * 
  */
 function createJellyFish(){
@@ -50,7 +53,7 @@ function createEndboss(){
 };
 
 /**
- * Creates a new coin
+ * Create Coins
  * 
  */
 function createCoins(){
@@ -66,7 +69,7 @@ function createCoins(){
 };
 
 /**
- * Creates a new poison
+ * Create Poison
  * 
  */
 function createPoison(){
@@ -83,7 +86,7 @@ function createPoison(){
 };
 
 /**
- * Creates a new background
+ * Creates Background
  * 
  * 
  */
